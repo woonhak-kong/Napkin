@@ -12,7 +12,7 @@ public:
 
 	virtual void draw();
 	virtual void update();
-	virtual void clean()  = 0;
+	virtual void clean();
 
 
 	// getter

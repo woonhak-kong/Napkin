@@ -34,6 +34,14 @@ int GameObject::getHeight() const
 	return m_height;
 }
 
+glm::vec2 GameObject::getCenterPosition()
+{
+	glm::vec2 position = getTransform().getPosition();
+	position.x = position.x + getWidth() / 2;
+	position.y = position.y + getHeight() / 2;
+	return position;
+}
+
 SDL_Rect GameObject::getRealCollisionRect()
 {
 	if (m_collisionRect.w == 0 && m_collisionRect.h == 0)

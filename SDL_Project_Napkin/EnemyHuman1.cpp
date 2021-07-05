@@ -1,7 +1,7 @@
 #include "EnemyHuman1.h"
 
 #include "Camera.h"
-#include "KnightAI.h"
+#include "EnemyHumanAI.h"
 #include "TextureID.h"
 #include "TextureManager.h"
 
@@ -12,7 +12,7 @@ EnemyHuman1::EnemyHuman1(const LoaderParams& loader) :
 
 	// todo make it automatic
 	setType(GameObjectType::ENEMY);
-	setGameAI(new KnightAI(this));
+	setGameAI(new EnemyHumanAI(this));
 	//////////////////////////////////////
 }
 
@@ -35,7 +35,7 @@ void EnemyHuman1::draw()
 			break;
 		case CharacterState::ATTACK:
 			TextureManager::Instance().playAnimation(getAnimation(TextureID::ENEMY_HUMAN_ATTACK), getTransform().getPosition().x - Camera::Instance().getPosition().x,
-				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.2f, 0.0f, 255, flip);
+				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.2f, 0.0f, 255, flip, [&]() -> void { this->setIsAttacking(false); });
 			break;
 		case CharacterState::RUN:
 			TextureManager::Instance().playAnimation(getAnimation(TextureID::ENEMY_HUMAN_RUN), getTransform().getPosition().x - Camera::Instance().getPosition().x,

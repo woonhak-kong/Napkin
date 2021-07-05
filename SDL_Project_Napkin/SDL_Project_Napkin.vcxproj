@@ -157,6 +157,7 @@ xcopy "$(ProjectDir)assets" "$(TargetDir)assets" /s /h /e /d /y /i</Command>
     <ClInclude Include="Background.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="EnemyHumanAI.h" />
     <ClInclude Include="TextureID.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="CharacterState.h" />
@@ -215,6 +216,7 @@ xcopy "$(ProjectDir)assets" "$(TargetDir)assets" /s /h /e /d /y /i</Command>
     <ClCompile Include="DisplayObject.cpp" />
     <ClCompile Include="EndScene.cpp" />
     <ClCompile Include="EnemyHuman1.cpp" />
+    <ClCompile Include="EnemyHumanAI.cpp" />
     <ClCompile Include="EnemyKnight.cpp" />
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="FontManager.cpp" />

@@ -196,6 +196,9 @@
     <ClInclude Include="TextureID.h">
       <Filter>Enums</Filter>
     </ClInclude>
+    <ClInclude Include="EnemyHumanAI.h">
+      <Filter>AI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -314,6 +317,9 @@
     </ClCompile>
     <ClCompile Include="EnemyHuman1.cpp">
       <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyHumanAI.cpp">
+      <Filter>AI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

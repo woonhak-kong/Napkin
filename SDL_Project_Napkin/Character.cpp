@@ -127,6 +127,11 @@ void Character::update()
 
 }
 
+void Character::clean()
+{
+	delete m_ai;
+}
+
 float Character::getMoveSpeed() const
 {
 	return m_moveSpeed;
@@ -296,6 +301,8 @@ void Character::hit()
 {
 	m_curState = CharacterState::HIT;
 	m_isHit = true;
+	m_isAttacking = false;
+	getRigidBody().getVelocity().x = 0;
 }
 
 void Character::m_makingAttackCollisionBox()

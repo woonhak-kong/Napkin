@@ -13,7 +13,6 @@ public:
 	~KnightAI() = default;
 	void update() override;
 
-private:
 
 };
 

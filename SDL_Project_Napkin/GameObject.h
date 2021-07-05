@@ -32,6 +32,7 @@ public:
 	// getters and setters for game object properties
 	int getWidth() const;
 	int getHeight() const;
+	glm::vec2 getCenterPosition();
 	SDL_Rect getRealCollisionRect();
 	void setWidth(int new_width);
 	void setHeight(int new_height);

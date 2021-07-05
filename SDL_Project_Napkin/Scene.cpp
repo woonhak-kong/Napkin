@@ -56,6 +56,7 @@ void Scene::removeAllChildren()
 {
 	for (auto& count : m_displayList)
 	{
+		count->clean();
 		delete count;
 		count = nullptr;
 	}
@@ -64,6 +65,7 @@ void Scene::removeAllChildren()
 
 	for (auto& count : m_addingListDuringUpdating)
 	{
+		count->clean();
 		delete count;
 		count = nullptr;
 	}
