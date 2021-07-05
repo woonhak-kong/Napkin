@@ -1,0 +1,77 @@
+#pragma once
+#include "CharacterState.h"
+#include "GameAI.h"
+#include "Layer.h"
+#include "LoaderParams.h"
+#include "PhysicsObject.h"
+class Character : public PhysicsObject
+{
+public:
+	Character(const LoaderParams& loader);
+	virtual ~Character() = default;
+
+	virtual void draw();
+	virtual void update();
+	virtual void clean()  = 0;
+
+
+	// getter
+	float getMoveSpeed() const;
+	float getAttackSpeed() const;
+	CharacterState getCurrentState() const;
+	bool isFlip() const;
+	bool isAttacking() const;
+	SDL_Rect getAttackCollisionRect() const;
+	GameAI* getGameAI() const;
+	// setter
+	void setMoveSpeed(float speed);
+	void setAttackSpeed(float speed);
+	void setCurrentState(CharacterState state);
+	void setAttackReach(int reach);
+	void setAttackType(GameObjectType attackType);
+	void setIsAttacking(bool attacking);
+	void setGameAI(GameAI* ai);
+
+	void takeDamage(int damage);
+
+	void jump();
+	void moveToRight();
+	void moveToLeft();
+	void idle();
+	void attack();
+	void hit();
+
+
+
+
+
+private:
+	bool m_isJumping;
+	bool m_isAttacking;
+	bool m_isFlip;
+
+	SDL_Rect m_attackCollisionRect;
+
+	float m_moveSpeed;
+	float m_attackSpeed;
+	int m_attackReach;
+
+	CharacterState m_curState;
+	GameObjectType m_attackType;
+
+	int m_presentHp;
+	int m_maxHp;
+	int m_attackPower;
+
+	GameAI* m_ai;
+
+
+
+private:
+
+
+	void m_makingAttackCollisionBox();
+	void m_setAttackRectSize(int w, int h);
+};
+
+

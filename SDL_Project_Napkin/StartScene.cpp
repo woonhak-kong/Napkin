@@ -1,0 +1,91 @@
+#include "StartScene.h"
+#include <algorithm>
+
+#include "Button.h"
+#include "Game.h"
+#include "glm/gtx/string_cast.hpp"
+#include "EventManager.h"
+#include "Label.h"
+#include "LevelParser.h"
+#include "TextureManager.h"
+
+
+StartScene::StartScene() :
+	m_state(SceneState::START_SCENE)
+{
+
+}
+
+StartScene::~StartScene()
+= default;
+
+void StartScene::draw()
+{
+	SDL_SetRenderDrawColor(TextureManager::Instance().getRenderer(), 0, 0, 255, 255);
+	Scene::drawDisplayList();
+}
+
+void StartScene::update()
+{
+	Scene::updateDisplayList();
+}
+
+void StartScene::clean()
+{
+
+}
+
+bool StartScene::onExit()
+{
+	Scene::removeAllChildren();
+	return true;
+}
+
+void StartScene::handleEvents()
+{
+	EventManager::Instance().update();
+
+	// Keyboard Events
+	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_ESCAPE))
+	{
+		TheGame::Instance().quit();
+	}
+
+}
+
+bool StartScene::onEnter()
+{
+	//const SDL_Color blue = { 0, 0, 255, 255 };
+
+
+
+	Label* name = new Label("Napkin", "Consolas", 200, {0, 255, 0, 255}, glm::vec2(Config::SCREEN_WIDTH /2, 120.0f));
+	addChild(name);
+
+	Button* startButton = new Button("assets/UI/PlayButton.png", "startbutton", GameObjectType::START_BUTTON,
+		glm::vec2(Config::SCREEN_WIDTH / 2, Config::SCREEN_HEIGHT / 2), true);
+
+	startButton->addEventListener(Event::CLICK, [&]()-> void
+		{
+			Game::Instance().changeSceneState(SceneState::PLAY_SCENE1);
+
+		});
+
+	addChild(startButton);
+
+	Button* exitButton = new Button("assets/UI/ExitButton.png", "exitbutton", GameObjectType::EXIT_BUTTON,
+		glm::vec2(Config::SCREEN_WIDTH / 2, Config::SCREEN_HEIGHT / 2 + 120), true);
+	exitButton->addEventListener(Event::CLICK, [&]() -> void
+		{
+			TheGame::Instance().quit();
+		});
+	addChild(exitButton);
+
+	return true;
+}
+
+SceneState StartScene::getState()
+{
+	return m_state;
+}
+
