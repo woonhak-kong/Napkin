@@ -103,7 +103,7 @@
 copy $(SolutionDir)Library\SDL\SDL2_image\lib\x86\*.dll $(TargetDir)
 copy $(SolutionDir)Library\SDL\SDL2_mixer\lib\x86\*.dll $(TargetDir)
 copy $(SolutionDir)Library\SDL\SDL2_ttf\lib\x86\*.dll $(TargetDir)
-xcopy "$(ProjectDir)assets" "$(TargetDir)assets" /s /h /e /d /y</Command>
+xcopy "$(ProjectDir)assets" "$(TargetDir)assets" /s /h /e /d /y /i</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
