@@ -49,6 +49,10 @@ void EnemyHuman1::draw()
 			TextureManager::Instance().playAnimation(getAnimation(TextureID::ENEMY_HUMAN_FALL), getTransform().getPosition().x - Camera::Instance().getPosition().x,
 				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.2f, 0.0f, 255, flip);
 			break;
+		case CharacterState::HIT:
+			TextureManager::Instance().playAnimation(getAnimation(TextureID::ENEMY_HUMAN_HIT), getTransform().getPosition().x - Camera::Instance().getPosition().x,
+				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.2f, 0.0f, 255, flip, [&]() ->  void { this->setIsHit(false); });
+			break;
 		case CharacterState::DEAD:
 
 			break;

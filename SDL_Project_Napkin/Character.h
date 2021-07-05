@@ -30,6 +30,7 @@ public:
 	void setAttackReach(int reach);
 	void setAttackType(GameObjectType attackType);
 	void setIsAttacking(bool attacking);
+	void setIsHit(bool hit);
 	void setGameAI(GameAI* ai);
 
 	void takeDamage(int damage);
@@ -48,6 +49,7 @@ public:
 private:
 	bool m_isJumping;
 	bool m_isAttacking;
+	bool m_isHit;
 	bool m_isFlip;
 
 	SDL_Rect m_attackCollisionRect;

@@ -11,6 +11,7 @@
 Character::Character(const LoaderParams& loader) :
 	m_isJumping(false),
 	m_isAttacking(false),
+	m_isHit(false),
 	m_isFlip(false),
 	m_attackCollisionRect({0, 0, 0, 0}),
 	m_moveSpeed(200),
@@ -206,6 +207,11 @@ void Character::setIsAttacking(bool attacking)
 	m_isAttacking = attacking;
 }
 
+void Character::setIsHit(bool hit)
+{
+	m_isHit = hit;
+}
+
 void Character::setGameAI(GameAI* ai)
 {
 	m_ai = ai;
@@ -219,7 +225,7 @@ void Character::takeDamage(int damage)
 
 void Character::jump()
 {
-	if (!m_isJumping && !m_isAttacking)
+	if (!m_isJumping && !m_isAttacking && !m_isHit)
 	{
 		getRigidBody().getVelocity().y = -(getRigidBody().getMass() * getFallingRate());
 		m_isJumping = true;
@@ -237,7 +243,7 @@ void Character::moveToRight()
 	}
 	else
 	{
-		if (!m_isAttacking)
+		if (!m_isAttacking && !m_isHit)
 		{
 			getRigidBody().getVelocity().x = m_moveSpeed;
 			m_curState = CharacterState::RUN;
@@ -254,7 +260,7 @@ void Character::moveToLeft()
 	}
 	else
 	{
-		if (!m_isAttacking)
+		if (!m_isAttacking && !m_isHit)
 		{
 			getRigidBody().getVelocity().x = -m_moveSpeed;
 			m_curState = CharacterState::RUN;
@@ -265,7 +271,7 @@ void Character::moveToLeft()
 void Character::idle()
 {
 	getRigidBody().getVelocity().x = 0;
-	if (!m_isJumping && !m_isAttacking)
+	if (!m_isJumping && !m_isAttacking && !m_isHit)
 	{
 		m_curState = CharacterState::IDLE;
 	}
@@ -274,7 +280,7 @@ void Character::idle()
 
 void Character::attack()
 {
-	if (!m_isAttacking)
+	if (!m_isAttacking && !m_isHit)
 	{
 		m_curState = CharacterState::ATTACK;
 		m_isAttacking = true;
@@ -289,6 +295,7 @@ void Character::attack()
 void Character::hit()
 {
 	m_curState = CharacterState::HIT;
+	m_isHit = true;
 }
 
 void Character::m_makingAttackCollisionBox()
