@@ -4,7 +4,7 @@
 SoundManager::SoundManager():
 	m_pan(0)
 {
-	Mix_OpenAudio(22050, AUDIO_S16SYS, 2, 2048);
+	Mix_OpenAudio(22050, AUDIO_S16SYS, 4, 2048);
 	panReset();
 }
 

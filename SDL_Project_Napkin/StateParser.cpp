@@ -3,6 +3,7 @@
 #include "TextureManager.h"
 #include "Game.h"
 #include "GameObjectFactory.h"
+#include "SoundManager.h"
 #include "TextureID.h"
 
 StateParser::StateParser()
@@ -50,9 +51,18 @@ bool StateParser::ParseState(const char* stateFile, std::string stateID)
             pTextureRoot = e;
         }
     }
-
     // now parse the textures
     ParseTextures(pTextureRoot);
+
+	// sounds
+    for (TiXmlElement* e = pStateRoot->FirstChildElement(); e != NULL; e = e->NextSiblingElement())
+    {
+        if (e->Value() == std::string("SOUNDS"))
+        {
+            pTextureRoot = e;
+        }
+    }
+    ParseSounds(pTextureRoot);
 
     return true;
 }
@@ -165,5 +175,18 @@ void StateParser::ParseTextures(TiXmlElement* pStateRoot)
             TextureManager::Instance().setAnimation(idAttribute, animation);
             animation.frames.clear();
     	}
+    }
+}
+
+void StateParser::ParseSounds(TiXmlElement* pStateRoot)
+{
+    for (TiXmlElement* e = pStateRoot->FirstChildElement(); e != NULL; e = e->NextSiblingElement())
+    {
+        std::string filenameAttribute = e->Attribute("filename");
+        std::string idAttribute = e->Attribute("ID");
+        std::string soundTypeString = e->Attribute("soundtype");
+        const SoundType soundType = soundTypeString == "bgm" ? SoundType::SOUND_MUSIC : SoundType::SOUND_SFX;
+
+        SoundManager::Instance().load(filenameAttribute, idAttribute, soundType);
     }
 }

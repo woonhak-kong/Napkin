@@ -7,6 +7,7 @@
 #include "CollisionManager.h"
 #include "EventManager.h"
 #include "Scene.h"
+#include "SoundManager.h"
 #include "TextureManager.h"
 
 Napkin::Napkin(const LoaderParams& loader) :
@@ -246,6 +247,10 @@ void Napkin::handleEvent()
 	}
 	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_F))
 	{
+		if (!isAttacking())
+		{
+			SoundManager::Instance().playSound("attack");
+		}
 		attack();
 	}
 }

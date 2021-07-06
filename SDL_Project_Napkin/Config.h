@@ -25,7 +25,7 @@ public:
 	inline static int mapHeight = 0;
 
 	// about texture
-	inline static const std::string TEXTURE_LOCATION = "assets/texture.xml";
+	inline static const std::string TEXTURE_LOCATION = "assets/state.xml";
 
 	inline static const std::string PLAY_SCENE1 = "PLAYSCENE1";
 	inline static const std::string PLAY_SCENE2 = "PLAYSCENE2";

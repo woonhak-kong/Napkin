@@ -18,6 +18,7 @@ public:
 private:
 
 	void ParseTextures(TiXmlElement* pStateRoot);
+	void ParseSounds(TiXmlElement* pStateRoot);
 
 };
 

@@ -90,6 +90,7 @@ bool PlayScene1::onEnter()
 	StateParser stateParser;
 	stateParser.ParseState(Config::TEXTURE_LOCATION.c_str(), Config::PLAY_SCENE2);
 
+	SoundManager::Instance().playMusic("bgm");
 
 
 	Background* background = new Background();

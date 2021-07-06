@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<STATES>
+    <PLAYSCENE1>
+        <TEXTURES>
+            <texture filename="assets/characters/enemy/human1/Human1_64x48.png" ID="enemy_human"/>
+        </TEXTURES>
+        <SOUNDS>
+            <sound filename="assets/sounds/bgm/scene1.mp3" soundtype="bgm" ID="bgm"/>
+            <sound filename="assets/sounds/sfx/hit26.mp3" soundtype="sfx" ID="hit"/>
+            <sound filename="assets/sounds/sfx/sword1.wav" soundtype="sfx" ID="attack"/>
+        </SOUNDS>
+    </PLAYSCENE1>
+    <PLAYSCENE2>
+        <TEXTURES>
+            <texture filename="assets/characters/enemy/human2/Human2_64x48.png" ID="enemy_human"/>
+        </TEXTURES>
+        <SOUNDS>
+            <sound filename="assets/sounds/bgm/scene2.mp3" soundtype="bgm" ID="bgm"/>
+            <sound filename="assets/sounds/sfx/hit26.mp3" soundtype="sfx" ID="hit"/>
+            <sound filename="assets/sounds/sfx/sword1.wav" soundtype="sfx" ID="attack"/>
+        </SOUNDS>
+    </PLAYSCENE2>
+    <PLAYSCENE3>
+        <TEXTURES>
+            <texture filename="assets/characters/enemy/human3/Human3_64x48.png" ID="enemy_human"/>
+        </TEXTURES>
+        <SOUNDS>
+            <sound filename="assets/sounds/bgm/scene3.mp3" soundtype="bgm" ID="bgm"/>
+            <sound filename="assets/sounds/sfx/hit26.mp3" soundtype="sfx" ID="hit"/>
+            <sound filename="assets/sounds/sfx/sword1.wav" soundtype="sfx" ID="attack"/>
+        </SOUNDS>
+    </PLAYSCENE3>
+   
+</STATES>
