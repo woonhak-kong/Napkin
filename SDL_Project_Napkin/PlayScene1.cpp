@@ -8,6 +8,7 @@
 #include "LevelParser.h"
 #include "EventManager.h"
 #include "Game.h"
+#include "SoundManager.h"
 #include "StateParser.h"
 #include "TextureManager.h"
 

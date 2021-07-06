@@ -12,8 +12,12 @@ EnemyHuman1::EnemyHuman1(const LoaderParams& loader) :
 
 	// todo make it automatic
 	setType(GameObjectType::ENEMY);
+	setAttackType(GameObjectType::ENEMY_ATTACK);
 	setGameAI(new EnemyHumanAI(this));
 	//////////////////////////////////////
+	///
+	setAttackSpeed(2);
+	setAttackReach(100);
 }
 
 EnemyHuman1::~EnemyHuman1()

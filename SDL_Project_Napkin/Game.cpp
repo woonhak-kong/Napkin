@@ -10,6 +10,7 @@
 #include "SceneState.h"
 #include "FontManager.h"
 #include "PlayScene1.h"
+#include "SoundManager.h"
 #include "StartScene.h"
 #include "TextureManager.h"
 
@@ -223,7 +224,7 @@ void Game::clean() const
 	//ImGui::DestroyContext();
 	//ImGuiWindowFrame::Instance().Clean();
 	delete m_sceneStateMachine;
-
+	SoundManager::Instance().quit();
 	//TextureManager::Instance().clean();
 	// todo renderer delete
 	//Game::Instance().clean();
