@@ -294,7 +294,6 @@ void Character::attack()
 		{
 			getRigidBody().getVelocity().x = 0;
 		}
-		m_makingAttackCollisionBox();
 	}
 }
 
@@ -306,7 +305,7 @@ void Character::hit()
 	getRigidBody().getVelocity().x = 0;
 }
 
-void Character::m_makingAttackCollisionBox()
+void Character::makingAttackCollisionBox()
 {
 	std::cout << " attack box " << std::endl;
 	getParent()->addChildDuringUpdating(new AttackBox(m_attackCollisionRect, glm::vec2(m_isFlip ? getAttackSpeed() * -10 : getAttackSpeed() * 10, 0), m_attackReach, m_attackType, m_attackPower));

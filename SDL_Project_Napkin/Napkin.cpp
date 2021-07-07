@@ -194,7 +194,20 @@ void Napkin::draw()
 			break;
 		case CharacterState::ATTACK:
 			TextureManager::Instance().playAnimation(getAnimation("attack2"), getTransform().getPosition().x - Camera::Instance().getPosition().x,
-				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), getAttackSpeed(), 0.0f, 255, flip, [&]() -> void {this->setIsAttacking(false); });
+				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), getAttackSpeed(), 0.0f, 255, flip, [&](CallbackType type) -> void
+				{
+					switch (type)
+					{
+						case CallbackType::ATTACK_BOX:
+							this->makingAttackCollisionBox();
+							break;
+						case CallbackType::ANIMATION_END:
+							this->setIsAttacking(false);
+							break;
+						default:
+							break;
+					}
+				},3);
 			break;
 		case CharacterState::RUN:
 			TextureManager::Instance().playAnimation(getAnimation("run"), getTransform().getPosition().x - Camera::Instance().getPosition().x,

@@ -167,6 +167,7 @@ xcopy "$(ProjectDir)assets" "$(TargetDir)assets" /s /h /e /d /y /i</Command>
     <ClInclude Include="AttackBox.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="CallbackType.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="EnemyHumanAI.h" />
     <ClInclude Include="TextureID.h" />

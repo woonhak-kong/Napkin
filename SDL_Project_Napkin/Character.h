@@ -41,6 +41,7 @@ public:
 	void idle();
 	void attack();
 	void hit();
+	void makingAttackCollisionBox();
 
 
 
@@ -72,7 +73,7 @@ private:
 private:
 
 
-	void m_makingAttackCollisionBox();
+
 	void m_setAttackRectSize(int w, int h);
 };
 

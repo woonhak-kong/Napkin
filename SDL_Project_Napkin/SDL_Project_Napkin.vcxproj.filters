@@ -199,6 +199,9 @@
     <ClInclude Include="EnemyHumanAI.h">
       <Filter>AI</Filter>
     </ClInclude>
+    <ClInclude Include="CallbackType.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">

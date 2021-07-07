@@ -1,5 +1,6 @@
 #include "EnemyHuman1.h"
 
+#include "CallbackType.h"
 #include "Camera.h"
 #include "EnemyHumanAI.h"
 #include "TextureID.h"
@@ -39,7 +40,21 @@ void EnemyHuman1::draw()
 			break;
 		case CharacterState::ATTACK:
 			TextureManager::Instance().playAnimation(getAnimation(TextureID::ENEMY_HUMAN_ATTACK), getTransform().getPosition().x - Camera::Instance().getPosition().x,
-				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.2f, 0.0f, 255, flip, [&]() -> void { this->setIsAttacking(false); });
+				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.2f, 0.0f, 255, flip, [&](CallbackType type) -> void
+				{
+					switch (type)
+					{
+						case CallbackType::ATTACK_BOX:
+							this->makingAttackCollisionBox();
+							break;
+						case CallbackType::ANIMATION_END:
+							this->setIsAttacking(false);
+							break;
+						default:
+							break;
+					}
+
+				}, 2);
 			break;
 		case CharacterState::RUN:
 			TextureManager::Instance().playAnimation(getAnimation(TextureID::ENEMY_HUMAN_RUN), getTransform().getPosition().x - Camera::Instance().getPosition().x,
@@ -55,7 +70,7 @@ void EnemyHuman1::draw()
 			break;
 		case CharacterState::HIT:
 			TextureManager::Instance().playAnimation(getAnimation(TextureID::ENEMY_HUMAN_HIT), getTransform().getPosition().x - Camera::Instance().getPosition().x,
-				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.2f, 0.0f, 255, flip, [&]() ->  void { this->setIsHit(false); });
+				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.2f, 0.0f, 255, flip, [&](CallbackType type) ->  void { this->setIsHit(false); });
 			break;
 		case CharacterState::DEAD:
 

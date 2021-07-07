@@ -316,9 +316,9 @@ void TextureManager::playAnimation(
 }
 
 void TextureManager::playAnimation(Animation& animation, int x, int y, int destW, int destH, float speed_factor, double angle, int alpha,
-	SDL_RendererFlip flip, std::function<void()> callback)
+	SDL_RendererFlip flip, std::function<void(CallbackType)> callback /* = nullptr */, int callbackOrder /* = -1*/)
 {
-	const auto totalFrames = animation.frames.size();
+	const int totalFrames = animation.frames.size();
 	const int animationRate = round(totalFrames / 2 / speed_factor);
 
 
@@ -333,8 +333,16 @@ void TextureManager::playAnimation(Animation& animation, int x, int y, int destW
 				animation.current_frame = 0;
 				if (callback != nullptr)
 				{
-					callback();
+					callback(CallbackType::ANIMATION_END);
 				}
+			}
+			if ( callbackOrder > totalFrames - 1)
+			{
+				std::cout << "Error - callbackOrder is lager than totalFrames!!!" << std::endl;
+			}
+			else if (callback != nullptr && callbackOrder == animation.current_frame)
+			{
+				callback(CallbackType::ATTACK_BOX);
 			}
 		}
 	}
