@@ -11,6 +11,8 @@ public:
 	void draw() override;
 	void update() override;
 	void clean() override;
+
+	void hit() override;
 };
 
 #endif // __ENEMY_HUMAN1__

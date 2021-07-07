@@ -21,6 +21,7 @@ public:
 	CharacterState getCurrentState() const;
 	bool isFlip() const;
 	bool isAttacking() const;
+	bool isHit() const;
 	SDL_Rect getAttackCollisionRect() const;
 	GameAI* getGameAI() const;
 	// setter
@@ -40,7 +41,7 @@ public:
 	void moveToLeft();
 	void idle();
 	void attack();
-	void hit();
+	virtual void hit();
 	void makingAttackCollisionBox();
 
 

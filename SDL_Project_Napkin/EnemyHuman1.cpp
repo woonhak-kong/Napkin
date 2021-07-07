@@ -3,6 +3,7 @@
 #include "CallbackType.h"
 #include "Camera.h"
 #include "EnemyHumanAI.h"
+#include "SoundManager.h"
 #include "TextureID.h"
 #include "TextureManager.h"
 
@@ -86,4 +87,13 @@ void EnemyHuman1::update()
 
 void EnemyHuman1::clean()
 {
+}
+
+void EnemyHuman1::hit()
+{
+	if (!isHit())
+	{
+		SoundManager::Instance().playSound("hit");
+	}
+	Character::hit();
 }
