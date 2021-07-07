@@ -103,7 +103,7 @@ void Character::update()
 	if (m_isFlip)
 	{
 		// Left Direction
-		m_attackCollisionRect.x = getRealCollisionRect().x;
+		m_attackCollisionRect.x = getRealCollisionRect().x - getRealCollisionRect().w / 2;
 		m_attackCollisionRect.y = getRealCollisionRect().y;
 		m_attackCollisionRect.w = getRealCollisionRect().w;
 		m_attackCollisionRect.h = getRealCollisionRect().h;
@@ -112,7 +112,7 @@ void Character::update()
 	else
 	{
 		// Right Direction
-		m_attackCollisionRect.x = getRealCollisionRect().x;
+		m_attackCollisionRect.x = getRealCollisionRect().x + getRealCollisionRect().w / 2;
 		m_attackCollisionRect.y = getRealCollisionRect().y;
 		m_attackCollisionRect.w = getRealCollisionRect().w;
 		m_attackCollisionRect.h = getRealCollisionRect().h;
