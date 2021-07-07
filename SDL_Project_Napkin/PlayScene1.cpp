@@ -54,7 +54,6 @@ void PlayScene1::update()
 				{
 					//std::cout << "collsion!!!\n" << std::endl;
 					dynamic_cast<Character*>(objB)->takeDamage(dynamic_cast<AttackBox*>(objA)->getAttackPower());
-					dynamic_cast<Character*>(objB)->hit();
 					dynamic_cast<AttackBox*>(objA)->deleteAttackBox();
 				}
 			}

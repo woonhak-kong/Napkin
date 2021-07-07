@@ -225,6 +225,7 @@ void Character::setGameAI(GameAI* ai)
 void Character::takeDamage(int damage)
 {
 	m_presentHp = m_presentHp - damage;
+	hit();
 }
 
 
