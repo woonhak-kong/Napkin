@@ -23,5 +23,8 @@ public:
 private:
 	EnergyBar* m_energyBar;
 	bool m_gameOver;
+	int m_jumpNum;
+
+	bool m_isJumpPushed;
 };
 

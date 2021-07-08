@@ -15,7 +15,9 @@
 Napkin::Napkin(const LoaderParams& loader) :
 	Character(loader),
 	m_energyBar(nullptr),
-	m_gameOver(false)
+	m_gameOver(false),
+	m_jumpNum(0),
+	m_isJumpPushed(false)
 {
 
 	//todo / we should control load function XML
@@ -142,7 +144,7 @@ Napkin::Napkin(const LoaderParams& loader) :
 
 
 	TextureManager::Instance().load("assets/characters/player/fall/adventurer-fall-00.png", "fall0");
-	TextureManager::Instance().load("assets/characters/player/fall/adventurer-fall-00.png", "fall1");
+	TextureManager::Instance().load("assets/characters/player/fall/adventurer-fall-01.png", "fall1");
 
 	animation.name = "fall";
 	for (int i = 0; i < 2; ++i)
@@ -275,7 +277,14 @@ void Napkin::update()
 {
 	handleEvent();
 	Character::update();
+	if (getRigidBody().getVelocity().y >= 0)
+	{
+		if (isOnGround())
+		{
+			m_jumpNum = 0;
+		}
 
+	}
 }
 
 void Napkin::clean()
@@ -320,7 +329,33 @@ void Napkin::handleEvent()
 
 	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_SPACE))
 	{
-		jump();
+		//jump();
+		if (!m_isJumpPushed)
+		{
+			if (getCurrentState() == CharacterState::FALL && m_jumpNum == 0)
+			{
+				setIsJumping(false);
+				m_jumpNum = 2;
+				jump();
+
+			}
+			else if (m_jumpNum == 0)
+			{
+				m_jumpNum++;
+				jump();
+			}
+			else if (m_jumpNum == 1)
+			{
+				setIsJumping(false);
+				m_jumpNum++;
+				jump();
+			}
+		}
+		m_isJumpPushed = true;
+	}
+	else
+	{
+		m_isJumpPushed = false;
 	}
 	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_F))
 	{

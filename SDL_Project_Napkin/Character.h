@@ -32,6 +32,7 @@ public:
 	void setCurrentState(CharacterState state);
 	void setAttackReach(int reach);
 	void setAttackType(GameObjectType attackType);
+	void setIsJumping(bool jumping);
 	void setIsAttacking(bool attacking);
 	void setIsDead(bool dead);
 	void setIsHit(bool hit);

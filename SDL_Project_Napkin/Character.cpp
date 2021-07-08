@@ -49,15 +49,17 @@ void Character::update()
 
 
 	// checking player is on ground
-	if (isOnGround())
+	if (getRigidBody().getVelocity().y >= 0)
 	{
-		m_isJumping = false;
+		if (isOnGround())
+		{
+			m_isJumping = false;
+		}
+		else
+		{
+			m_isJumping = true;
+		}
 	}
-	else
-	{
-		m_isJumping = true;
-	}
-
 
 	//m_setGravity();
 
@@ -211,6 +213,11 @@ void Character::setAttackReach(int reach)
 void Character::setAttackType(GameObjectType attackType)
 {
 	m_attackType = attackType;
+}
+
+void Character::setIsJumping(bool jumping)
+{
+	m_isJumping = jumping;
 }
 
 void Character::m_setAttackRectSize(int w, int h)
