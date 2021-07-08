@@ -74,6 +74,7 @@ void PlayScene1::clean()
 bool PlayScene1::onExit()
 {
 	Scene::removeAllChildren();
+	SoundManager::Instance().clear();
 	return true;
 }
 

@@ -37,6 +37,7 @@ public:
 	void panRight(const unsigned increment = 5, const int channel = MIX_CHANNEL_POST);
 	void panReset(const int channel = MIX_CHANNEL_POST);
 	void panSet(const int amount, const int channel = MIX_CHANNEL_POST);
+	void clear();
 	void quit();
 
 private: // Methods.

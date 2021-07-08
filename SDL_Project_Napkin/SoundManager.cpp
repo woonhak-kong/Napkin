@@ -149,6 +149,33 @@ void SoundManager::panSet(const int amount, const int channel)
 	Mix_SetPanning(channel, leftVol, rightVol);
 }
 
+void SoundManager::clear()
+{
+	// Clean up sound effects.
+	if (Mix_Playing(-1))
+	{
+		Mix_HaltChannel(-1); // Halt all channels.
+	}
+
+	for (auto const& i : m_sfxs)
+	{
+		Mix_FreeChunk(m_sfxs[i.first]);
+	}
+	m_sfxs.clear();
+
+	// Clean up music.
+	if (Mix_PlayingMusic())
+	{
+		Mix_HaltMusic();
+	}
+
+	for (auto const& i : m_music)
+	{
+		Mix_FreeMusic(m_music[i.first]);
+	}
+	m_music.clear();
+}
+
 void SoundManager::quit()
 {
 	// Clean up sound effects.
