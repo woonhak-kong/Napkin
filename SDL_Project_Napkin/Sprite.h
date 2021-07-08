@@ -16,6 +16,7 @@ public:
 	virtual void update() = 0;
 	virtual void clean() = 0;
 
+	void collision(DisplayObject* obj) override;
 	// getters
 	SpriteSheet* getSpriteSheet();
 	Animation& getAnimation(const std::string& state);

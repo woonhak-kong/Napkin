@@ -8,6 +8,7 @@ public:
 	void draw() override;
 	void update() override;
 	void clean() override;
+	void collision(DisplayObject* obj) override;
 	int getAttackPower() const;
 	void deleteAttackBox();
 

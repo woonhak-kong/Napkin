@@ -1,8 +1,12 @@
 #include "EnemyHuman1.h"
 
+#include "AttackBox.h"
 #include "CallbackType.h"
 #include "Camera.h"
 #include "EnemyHumanAI.h"
+#include "Explosion.h"
+#include "Scene.h"
+#include "SoundID.h"
 #include "SoundManager.h"
 #include "TextureID.h"
 #include "TextureManager.h"
@@ -87,13 +91,24 @@ void EnemyHuman1::update()
 
 void EnemyHuman1::clean()
 {
+
+	getParent()->addChildDuringUpdating(new Explosion(getTransform().getPosition().x, getTransform().getPosition().y, getWidth(), getHeight(), ExplosionType::EXPLOSION_BIG));
+}
+
+void EnemyHuman1::collision(DisplayObject* obj)
+{
+	if (obj->getType() == GameObjectType::PLAYER_ATTACK)
+	{
+		takeDamage(dynamic_cast<AttackBox*>(obj)->getAttackPower());
+		dynamic_cast<AttackBox*>(obj)->deleteAttackBox();
+	}
 }
 
 void EnemyHuman1::hit()
 {
 	if (!isHit())
 	{
-		SoundManager::Instance().playSound("hit");
+		SoundManager::Instance().playSound(SoundID::HIT);
 	}
 	Character::hit();
 }

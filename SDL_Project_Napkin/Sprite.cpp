@@ -6,6 +6,10 @@ Sprite::Sprite() :
 }
 
 
+void Sprite::collision(DisplayObject* obj)
+{
+}
+
 SpriteSheet* Sprite::getSpriteSheet()
 {
 	return m_pSpriteSheet;

@@ -8,6 +8,10 @@ DisplayObject::DisplayObject() :
 {
 }
 
+void DisplayObject::collision(DisplayObject* obj)
+{
+}
+
 Scene* DisplayObject::getParent() const
 {
 	return m_pParentScene;

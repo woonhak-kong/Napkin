@@ -95,6 +95,10 @@ void PhysicsObject::clean()
 {
 }
 
+void PhysicsObject::collision(DisplayObject* obj)
+{
+}
+
 bool PhysicsObject::isOnGround()
 {
 	return m_isGroundCollision;

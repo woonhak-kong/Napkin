@@ -11,7 +11,7 @@ Background::Background()
 	TextureManager::Instance().load("assets/maps/PixelPlatformerSet2v/Background/background4.png", "background4");
 	TextureManager::Instance().load("assets/maps/PixelPlatformerSet2v/Background/background5.png", "background5");
 	TextureManager::Instance().load("assets/maps/PixelPlatformerSet2v/Background/background6.png", "background6");
-
+	//setType(GameObjectType::NONE);
 }
 
 void Background::draw()

@@ -3,31 +3,40 @@
     <PLAYSCENE1>
         <TEXTURES>
             <texture filename="assets/characters/enemy/human1/Human1_64x48.png" ID="enemy_human"/>
+            <texture filename="assets/particles/explosion/explosion1.png" ID="explosion1"/>
+            <texture filename="assets/particles/explosion/explosion2.png" ID="explosion2"/>
         </TEXTURES>
         <SOUNDS>
             <sound filename="assets/sounds/bgm/scene1.mp3" soundtype="bgm" ID="bgm"/>
             <sound filename="assets/sounds/sfx/hit26.mp3" soundtype="sfx" ID="hit"/>
             <sound filename="assets/sounds/sfx/sword1.wav" soundtype="sfx" ID="attack"/>
+            <sound filename="assets/sounds/sfx/enemy_explosion.wav" soundtype="sfx" ID="enemy_explosion"/>
         </SOUNDS>
     </PLAYSCENE1>
     <PLAYSCENE2>
         <TEXTURES>
             <texture filename="assets/characters/enemy/human2/Human2_64x48.png" ID="enemy_human"/>
+            <texture filename="assets/particles/explosion/explosion1.png" ID="explosion1"/>
+            <texture filename="assets/particles/explosion/explosion2.png" ID="explosion2"/>
         </TEXTURES>
         <SOUNDS>
             <sound filename="assets/sounds/bgm/scene2.mp3" soundtype="bgm" ID="bgm"/>
             <sound filename="assets/sounds/sfx/hit26.mp3" soundtype="sfx" ID="hit"/>
             <sound filename="assets/sounds/sfx/sword1.wav" soundtype="sfx" ID="attack"/>
+            <sound filename="assets/sounds/sfx/enemy_explosion.wav" soundtype="sfx" ID="enemy_explosion"/>
         </SOUNDS>
     </PLAYSCENE2>
     <PLAYSCENE3>
         <TEXTURES>
             <texture filename="assets/characters/enemy/human3/Human3_64x48.png" ID="enemy_human"/>
+            <texture filename="assets/particles/explosion/explosion1.png" ID="explosion1"/>
+            <texture filename="assets/particles/explosion/explosion2.png" ID="explosion2"/>
         </TEXTURES>
         <SOUNDS>
             <sound filename="assets/sounds/bgm/scene3.mp3" soundtype="bgm" ID="bgm"/>
             <sound filename="assets/sounds/sfx/hit26.mp3" soundtype="sfx" ID="hit"/>
             <sound filename="assets/sounds/sfx/sword1.wav" soundtype="sfx" ID="attack"/>
+            <sound filename="assets/sounds/sfx/enemy_explosion.wav" soundtype="sfx" ID="enemy_explosion"/>
         </SOUNDS>
     </PLAYSCENE3>
    

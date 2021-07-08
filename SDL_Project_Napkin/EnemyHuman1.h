@@ -12,6 +12,8 @@ public:
 	void update() override;
 	void clean() override;
 
+	void collision(DisplayObject* obj) override;
+
 	void hit() override;
 };
 

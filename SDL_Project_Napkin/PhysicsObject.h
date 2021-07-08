@@ -10,6 +10,8 @@ public:
 	void update() override;
 	void clean() override;
 
+	void collision(DisplayObject* obj) override;
+
 	bool isOnGround();
 	float getFallingRate();
 

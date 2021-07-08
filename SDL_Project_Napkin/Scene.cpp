@@ -1,6 +1,7 @@
 #include "Scene.h"
 
 #include <algorithm>
+#include <iostream>
 
 #include "DisplayObject.h"
 
@@ -36,7 +37,8 @@ void Scene::addChild(DisplayObject* child, uint32_t layer_index, std::optional<u
 
 void Scene::addChildDuringUpdating(DisplayObject* child)
 {
-	child->m_pParentScene = this;
+	//child->m_pParentScene = this;
+	//child->setLayerIndex(0, m_nextLayerIndex++);
 	m_addingListDuringUpdating.push_back(child);
 }
 
@@ -48,6 +50,7 @@ void Scene::addChildRemoving(DisplayObject* child)
 
 void Scene::removeChild(DisplayObject* child)
 {
+	child->clean();
 	delete child;
 	m_displayList.erase(std::remove(m_displayList.begin(), m_displayList.end(), child), m_displayList.end());
 }
@@ -112,7 +115,11 @@ void Scene::updateDisplayList()
 	}
 	if (m_addingListDuringUpdating.size() > 0)
 	{
-		m_displayList.insert(m_displayList.end(), m_addingListDuringUpdating.begin(), m_addingListDuringUpdating.end());
+		//m_displayList.insert(m_displayList.end(), m_addingListDuringUpdating.begin(), m_addingListDuringUpdating.end());
+		for (auto& element : m_addingListDuringUpdating)
+		{
+			addChild(element);
+		}
 		m_addingListDuringUpdating.clear();
 	}
 	for (auto& count : m_removingListDuringUpdating)
@@ -120,6 +127,7 @@ void Scene::updateDisplayList()
 		removeChild(count);
 	}
 	m_removingListDuringUpdating.clear();
+
 }
 
 void Scene::drawDisplayList()

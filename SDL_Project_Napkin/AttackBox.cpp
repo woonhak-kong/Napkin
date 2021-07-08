@@ -49,6 +49,11 @@ void AttackBox::clean()
 {
 }
 
+void AttackBox::collision(DisplayObject* obj)
+{
+
+}
+
 int AttackBox::getAttackPower() const
 {
 	return m_power;

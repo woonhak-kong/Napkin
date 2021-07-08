@@ -17,7 +17,7 @@ int main(int argc, char* args[])
 	//AllocConsole();
 	//freopen("CON", "w", stdout);
 
-	TheGame::Instance().init("Napkin", 100, 100, Config::SCREEN_WIDTH, Config::SCREEN_HEIGHT, false);
+	TheGame::Instance().init("Napkin", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, Config::SCREEN_WIDTH, Config::SCREEN_HEIGHT, false);
 
 	while (TheGame::Instance().isRunning())
 	{

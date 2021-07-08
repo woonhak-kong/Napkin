@@ -15,6 +15,8 @@ public:
 	virtual void update() = 0;
 	virtual void clean() = 0;
 
+	virtual void collision(DisplayObject* obj);
+
 	Scene* getParent() const;
 	void setParent(Scene* parent);
 

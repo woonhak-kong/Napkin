@@ -7,6 +7,7 @@
 #include "CollisionManager.h"
 #include "EventManager.h"
 #include "Scene.h"
+#include "SoundID.h"
 #include "SoundManager.h"
 #include "TextureManager.h"
 
@@ -239,6 +240,10 @@ void Napkin::clean()
 {
 }
 
+void Napkin::collision(DisplayObject* obj)
+{
+}
+
 void Napkin::handleEvent()
 {
 	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_RIGHT))
@@ -262,7 +267,7 @@ void Napkin::handleEvent()
 	{
 		if (!isAttacking())
 		{
-			SoundManager::Instance().playSound("attack");
+			SoundManager::Instance().playSound(SoundID::ATTACK);
 		}
 		attack();
 	}

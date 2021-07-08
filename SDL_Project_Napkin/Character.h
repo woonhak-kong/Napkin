@@ -14,7 +14,7 @@ public:
 	virtual void update();
 	virtual void clean();
 
-
+	void collision(DisplayObject* obj) override;
 	// getter
 	float getMoveSpeed() const;
 	float getAttackSpeed() const;

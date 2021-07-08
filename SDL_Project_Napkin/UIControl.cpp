@@ -11,7 +11,6 @@ UIControl::UIControl() :
 {
 }
 
-
 bool UIControl::addEventListener(const Event event, const EventHandler & handler)
 {
 	if (m_eventExists(event))

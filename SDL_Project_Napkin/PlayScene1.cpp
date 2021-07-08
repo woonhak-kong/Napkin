@@ -8,6 +8,7 @@
 #include "LevelParser.h"
 #include "EventManager.h"
 #include "Game.h"
+#include "SoundID.h"
 #include "SoundManager.h"
 #include "StateParser.h"
 #include "TextureManager.h"
@@ -41,20 +42,24 @@ void PlayScene1::update()
 
 	// Checking all Collisions
 	auto displayList = getDisplayList();
-	for (std::vector<DisplayObject*>::iterator iterA = displayList.begin(); iterA != displayList.end();)
+	//std::cout << displayList.size() << std::endl;
+	for (auto iterA = displayList.begin(); iterA != displayList.end();)
 	{
 		DisplayObject* objA = *iterA;
 		iterA++;
-		for (std::vector<DisplayObject*>::iterator iterB = iterA; iterB != displayList.end(); iterB++)
+		for (auto iterB = iterA; iterB != displayList.end(); iterB++)
 		{
-			DisplayObject* objB = static_cast<DisplayObject*>(*iterB);
-			if (objA->getType() == GameObjectType::PLAYER_ATTACK && objB->getType() == GameObjectType::ENEMY)
+
+			DisplayObject* objB = *iterB;
+			if (objA->getType() != GameObjectType::NONE && objB->getType() != GameObjectType::NONE)
 			{
-				if (CollisionManager::AABBCheckByRealCollisionBox(objA, objB))
+				if (objA->getType() != objB->getType())
 				{
-					//std::cout << "collsion!!!\n" << std::endl;
-					dynamic_cast<Character*>(objB)->takeDamage(dynamic_cast<AttackBox*>(objA)->getAttackPower());
-					dynamic_cast<AttackBox*>(objA)->deleteAttackBox();
+					if (CollisionManager::AABBCheckByRealCollisionBox(objA, objB))
+					{
+						objA->collision(objB);
+						objB->collision(objA);
+					}
 				}
 			}
 		}
@@ -89,7 +94,7 @@ bool PlayScene1::onEnter()
 	StateParser stateParser;
 	stateParser.ParseState(Config::TEXTURE_LOCATION.c_str(), Config::PLAY_SCENE2);
 
-	SoundManager::Instance().playMusic("bgm");
+	SoundManager::Instance().playMusic(SoundID::BGM);
 
 
 	Background* background = new Background();
