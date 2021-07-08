@@ -24,6 +24,7 @@ public:
 	bool isHit() const;
 	SDL_Rect getAttackCollisionRect() const;
 	GameAI* getGameAI() const;
+	int getPresentHp() const;
 	// setter
 	void setMoveSpeed(float speed);
 	void setAttackSpeed(float speed);
@@ -42,6 +43,7 @@ public:
 	void idle();
 	void attack();
 	virtual void hit();
+	virtual void die();
 	void makingAttackCollisionBox();
 
 

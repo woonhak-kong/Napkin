@@ -247,8 +247,23 @@ void Napkin::clean()
 	delete m_energyBar;
 }
 
+void Napkin::hit()
+{
+	m_energyBar->setEnergy(getPresentHp());
+}
+
 void Napkin::collision(DisplayObject* obj)
 {
+	if (obj->getType() == GameObjectType::ENEMY_ATTACK)
+	{
+		takeDamage(dynamic_cast<AttackBox*>(obj)->getAttackPower());
+		dynamic_cast<AttackBox*>(obj)->deleteAttackBox();
+	}
+}
+
+void Napkin::die()
+{
+
 }
 
 void Napkin::handleEvent()

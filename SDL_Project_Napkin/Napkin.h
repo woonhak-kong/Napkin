@@ -12,8 +12,10 @@ public:
 	void update() override;
 	void clean() override;
 
+	void hit() override;
 	void collision(DisplayObject* obj) override;
 
+	void die() override;
 	void handleEvent();
 
 private:

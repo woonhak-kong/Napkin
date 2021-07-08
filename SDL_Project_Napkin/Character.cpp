@@ -122,7 +122,7 @@ void Character::update()
 
 	if (m_presentHp <= 0)
 	{
-		getParent()->addChildRemoving(this);
+		die();
 	}
 
 }
@@ -181,6 +181,11 @@ GameAI* Character::getGameAI() const
 	return m_ai;
 }
 
+int Character::getPresentHp() const
+{
+	return m_presentHp;
+}
+
 
 void Character::setMoveSpeed(float speed)
 {
@@ -234,6 +239,10 @@ void Character::setGameAI(GameAI* ai)
 void Character::takeDamage(int damage)
 {
 	m_presentHp = m_presentHp - damage;
+	if ( m_presentHp < 0)
+	{
+		m_presentHp = 0;
+	}
 	hit();
 }
 
@@ -312,6 +321,11 @@ void Character::hit()
 	m_isHit = true;
 	m_isAttacking = false;
 	getRigidBody().getVelocity().x = 0;
+}
+
+void Character::die()
+{
+	getParent()->addChildRemoving(this);
 }
 
 void Character::makingAttackCollisionBox()
