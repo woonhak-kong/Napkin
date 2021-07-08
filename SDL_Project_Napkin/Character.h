@@ -21,6 +21,7 @@ public:
 	CharacterState getCurrentState() const;
 	bool isFlip() const;
 	bool isAttacking() const;
+	bool isDead() const;
 	bool isHit() const;
 	SDL_Rect getAttackCollisionRect() const;
 	GameAI* getGameAI() const;
@@ -32,6 +33,7 @@ public:
 	void setAttackReach(int reach);
 	void setAttackType(GameObjectType attackType);
 	void setIsAttacking(bool attacking);
+	void setIsDead(bool dead);
 	void setIsHit(bool hit);
 	void setGameAI(GameAI* ai);
 
@@ -53,6 +55,7 @@ public:
 private:
 	bool m_isJumping;
 	bool m_isAttacking;
+	bool m_isDead;
 	bool m_isHit;
 	bool m_isFlip;
 

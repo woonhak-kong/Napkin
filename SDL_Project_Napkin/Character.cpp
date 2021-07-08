@@ -11,6 +11,7 @@
 Character::Character(const LoaderParams& loader) :
 	m_isJumping(false),
 	m_isAttacking(false),
+	m_isDead(false),
 	m_isHit(false),
 	m_isFlip(false),
 	m_attackCollisionRect({0, 0, 0, 0}),
@@ -120,7 +121,7 @@ void Character::update()
 
 
 
-	if (m_presentHp <= 0)
+	if (!m_isDead && m_presentHp <= 0)
 	{
 		die();
 	}
@@ -164,6 +165,11 @@ bool Character::isFlip() const
 bool Character::isAttacking() const
 {
 	return m_isAttacking;
+}
+
+bool Character::isDead() const
+{
+	return m_isDead;
 }
 
 bool Character::isHit() const
@@ -226,6 +232,11 @@ void Character::setIsAttacking(bool attacking)
 	m_isAttacking = attacking;
 }
 
+void Character::setIsDead(bool dead)
+{
+	m_isDead = dead;
+}
+
 void Character::setIsHit(bool hit)
 {
 	m_isHit = hit;
@@ -238,93 +249,112 @@ void Character::setGameAI(GameAI* ai)
 
 void Character::takeDamage(int damage)
 {
-	m_presentHp = m_presentHp - damage;
-	if ( m_presentHp < 0)
+	if (!m_isDead)
 	{
-		m_presentHp = 0;
+		m_presentHp = m_presentHp - damage;
+		if (m_presentHp < 0)
+		{
+			m_presentHp = 0;
+		}
+		hit();
 	}
-	hit();
 }
 
 
 void Character::jump()
 {
-	if (!m_isJumping && !m_isAttacking && !m_isHit)
+	if (!m_isDead)
 	{
-		getRigidBody().getVelocity().y = -(getRigidBody().getMass() * getFallingRate());
-		m_isJumping = true;
-		m_curState = CharacterState::JUMP;
+		if (!m_isJumping && !m_isAttacking && !m_isHit)
+		{
+			getRigidBody().getVelocity().y = -(getRigidBody().getMass() * getFallingRate());
+			m_isJumping = true;
+			m_curState = CharacterState::JUMP;
+		}
 	}
-
-
 }
 
 void Character::moveToRight()
 {
-	if (m_isJumping)
+	if (!m_isDead)
 	{
-		getRigidBody().getVelocity().x = m_moveSpeed;
-	}
-	else
-	{
-		if (!m_isAttacking && !m_isHit)
+		if (m_isJumping)
 		{
 			getRigidBody().getVelocity().x = m_moveSpeed;
-			m_curState = CharacterState::RUN;
+		}
+		else
+		{
+			if (!m_isAttacking && !m_isHit)
+			{
+				getRigidBody().getVelocity().x = m_moveSpeed;
+				m_curState = CharacterState::RUN;
+			}
 		}
 	}
-
 }
 
 void Character::moveToLeft()
 {
-	if (m_isJumping)
+	if (!m_isDead)
 	{
-		getRigidBody().getVelocity().x = -m_moveSpeed;
-	}
-	else
-	{
-		if (!m_isAttacking && !m_isHit)
+		if (m_isJumping)
 		{
 			getRigidBody().getVelocity().x = -m_moveSpeed;
-			m_curState = CharacterState::RUN;
+		}
+		else
+		{
+			if (!m_isAttacking && !m_isHit)
+			{
+				getRigidBody().getVelocity().x = -m_moveSpeed;
+				m_curState = CharacterState::RUN;
+			}
 		}
 	}
 }
 
 void Character::idle()
 {
-	getRigidBody().getVelocity().x = 0;
-	if (!m_isJumping && !m_isAttacking && !m_isHit)
+	if (!m_isDead)
 	{
-		m_curState = CharacterState::IDLE;
+		getRigidBody().getVelocity().x = 0;
+		if (!m_isJumping && !m_isAttacking && !m_isHit)
+		{
+			m_curState = CharacterState::IDLE;
+		}
 	}
-
 }
 
 void Character::attack()
 {
-	if (!m_isAttacking && !m_isHit)
+	if (!m_isDead)
 	{
-		m_curState = CharacterState::ATTACK;
-		m_isAttacking = true;
-		if (!m_isJumping)
+		if (!m_isAttacking && !m_isHit)
 		{
-			getRigidBody().getVelocity().x = 0;
+			m_curState = CharacterState::ATTACK;
+			m_isAttacking = true;
+			if (!m_isJumping)
+			{
+				getRigidBody().getVelocity().x = 0;
+			}
 		}
 	}
 }
 
 void Character::hit()
 {
-	m_curState = CharacterState::HIT;
-	m_isHit = true;
-	m_isAttacking = false;
-	getRigidBody().getVelocity().x = 0;
+	if (!m_isDead)
+	{
+		m_curState = CharacterState::HIT;
+		m_isHit = true;
+		m_isAttacking = false;
+		getRigidBody().getVelocity().x = 0;
+	}
 }
 
 void Character::die()
 {
+	m_curState = CharacterState::DEAD;
+	m_isDead = true;
 	getParent()->addChildRemoving(this);
 }
 

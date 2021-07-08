@@ -6,6 +6,7 @@
 #include "Camera.h"
 #include "CollisionManager.h"
 #include "EventManager.h"
+#include "Game.h"
 #include "Scene.h"
 #include "SoundID.h"
 #include "SoundManager.h"
@@ -13,7 +14,8 @@
 
 Napkin::Napkin(const LoaderParams& loader) :
 	Character(loader),
-	m_energyBar(nullptr)
+	m_energyBar(nullptr),
+	m_gameOver(false)
 {
 
 	//todo / we should control load function XML
@@ -155,6 +157,29 @@ Napkin::Napkin(const LoaderParams& loader) :
 	TextureManager::Instance().setAnimation(animationName, animation);
 	animation.frames.clear();
 
+	// dead
+	TextureManager::Instance().load("assets/characters/player/die/adventurer-knock-dwn-00.png", "die0");
+	TextureManager::Instance().load("assets/characters/player/die/adventurer-knock-dwn-01.png", "die1");
+	TextureManager::Instance().load("assets/characters/player/die/adventurer-knock-dwn-02.png", "die2");
+	TextureManager::Instance().load("assets/characters/player/die/adventurer-knock-dwn-03.png", "die3");
+	TextureManager::Instance().load("assets/characters/player/die/adventurer-knock-dwn-04.png", "die4");
+	TextureManager::Instance().load("assets/characters/player/die/adventurer-knock-dwn-05.png", "die5");
+	TextureManager::Instance().load("assets/characters/player/die/adventurer-knock-dwn-06.png", "die6");
+
+
+	animation.name = "die";
+	for (int i = 0; i < 7; ++i)
+	{
+		frame.name = "die" + std::to_string(i);
+		frame.x = 0;
+		frame.y = 0;
+		frame.w = size.x;
+		frame.h = size.y;
+		animation.frames.push_back(frame);
+	}
+	TextureManager::Instance().setAnimation(animationName, animation);
+	animation.frames.clear();
+
 	setAnimation(TextureManager::Instance().getAnimation("napkin"));
 
 
@@ -199,7 +224,7 @@ void Napkin::draw()
 			break;
 		case CharacterState::ATTACK:
 			TextureManager::Instance().playAnimation(getAnimation("attack2"), getTransform().getPosition().x - Camera::Instance().getPosition().x,
-				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), getAttackSpeed(), 0.0f, 255, flip, [&](CallbackType type) -> void
+				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), getAttackSpeed(), 0.0f, 255, flip, true, [&](CallbackType type) -> void
 				{
 					switch (type)
 					{
@@ -227,7 +252,18 @@ void Napkin::draw()
 				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, 255, flip);
 			break;
 		case CharacterState::DEAD:
-
+			TextureManager::Instance().playAnimation(getAnimation("die"), getTransform().getPosition().x - Camera::Instance().getPosition().x,
+				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, 255, flip, false, [&](CallbackType type) -> void
+				{
+					switch (type)
+					{
+						case CallbackType::ANIMATION_END:
+							m_gameOver = true;
+							break;
+						default:
+							break;
+					}
+				});
 			break;
 	}
 
@@ -263,7 +299,8 @@ void Napkin::collision(DisplayObject* obj)
 
 void Napkin::die()
 {
-
+	setIsDead(true);
+	setCurrentState(CharacterState::DEAD);
 }
 
 void Napkin::handleEvent()
@@ -287,10 +324,15 @@ void Napkin::handleEvent()
 	}
 	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_F))
 	{
-		if (!isAttacking())
+		if (!isDead() && !isAttacking())
 		{
 			SoundManager::Instance().playSound(SoundID::ATTACK);
 		}
 		attack();
 	}
+}
+
+bool Napkin::getGameOver() const
+{
+	return m_gameOver;
 }

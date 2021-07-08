@@ -11,7 +11,8 @@ enum class CharacterState
 	JUMP,
 	FALL,
 	HIT,
-	DEAD
+	DEAD,
+	NONE
 };
 
 

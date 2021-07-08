@@ -18,8 +18,10 @@ public:
 	void die() override;
 	void handleEvent();
 
+	bool getGameOver() const;
+
 private:
 	EnergyBar* m_energyBar;
-
+	bool m_gameOver;
 };
 
