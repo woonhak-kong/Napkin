@@ -3,6 +3,8 @@
 
 #include "Character.h"
 #include "Scene.h"
+#include "SoundID.h"
+#include "SoundManager.h"
 
 EnemyHumanAI::EnemyHumanAI(Character* character) :
 	GameAI(character),
@@ -45,7 +47,9 @@ void EnemyHumanAI::update()
 		}
 		else
 		{
+
 			m_self->attack();
+
 		}
 
 	}

@@ -51,6 +51,7 @@ void EnemyHuman1::draw()
 					{
 						case CallbackType::ATTACK_BOX:
 							this->makingAttackCollisionBox();
+							SoundManager::Instance().playSound(SoundID::ENEMY_MELEE_ATTACK);
 							break;
 						case CallbackType::ANIMATION_END:
 							this->setIsAttacking(false);

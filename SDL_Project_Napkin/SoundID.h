@@ -11,6 +11,7 @@ public:
 	inline static const std::string HIT = "hit";
 	inline static const std::string ATTACK = "attack";
 	inline static const std::string ENEMY_EXPLOSION = "enemy_explosion";
+	inline static const std::string ENEMY_MELEE_ATTACK = "enemy_melee_attack";
 
 };
 
