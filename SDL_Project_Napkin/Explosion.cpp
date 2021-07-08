@@ -4,6 +4,7 @@
 
 #include "CallbackType.h"
 #include "Camera.h"
+#include "Scene.h"
 #include "SoundID.h"
 #include "SoundManager.h"
 #include "TextureID.h"
@@ -39,7 +40,7 @@ void Explosion::draw()
 					switch (type)
 					{
 						case CallbackType::ANIMATION_END:
-
+							getParent()->addChildRemoving(this);
 							break;
 						default:
 							break;
@@ -54,7 +55,7 @@ void Explosion::draw()
 					switch (type)
 					{
 						case CallbackType::ANIMATION_END:
-
+							getParent()->addChildRemoving(this);
 							break;
 						default:
 							break;

@@ -328,13 +328,19 @@ void TextureManager::playAnimation(Animation& animation, int x, int y, int destW
 		{
 			animation.current_frame++;
 
-			if (animation.current_frame > totalFrames - 1)
+			if(animation.current_frame == totalFrames - 1)
 			{
-				animation.current_frame = 0;
 				if (callback != nullptr)
 				{
 					callback(CallbackType::ANIMATION_END);
+
 				}
+			}
+
+			if (animation.current_frame > totalFrames - 1)
+			{
+				animation.current_frame = 0;
+
 			}
 			if ( callbackOrder > totalFrames - 1)
 			{
