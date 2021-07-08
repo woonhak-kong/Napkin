@@ -5,6 +5,7 @@
             <texture filename="assets/characters/enemy/human1/Human1_64x48.png" ID="enemy_human"/>
             <texture filename="assets/particles/explosion/explosion1.png" ID="explosion1"/>
             <texture filename="assets/particles/explosion/explosion2.png" ID="explosion2"/>
+            <texture filename="assets/UI/energy_background.png" ID="energy_background"/>
         </TEXTURES>
         <SOUNDS>
             <sound filename="assets/sounds/bgm/scene1.mp3" soundtype="bgm" ID="bgm"/>
@@ -18,6 +19,7 @@
             <texture filename="assets/characters/enemy/human2/Human2_64x48.png" ID="enemy_human"/>
             <texture filename="assets/particles/explosion/explosion1.png" ID="explosion1"/>
             <texture filename="assets/particles/explosion/explosion2.png" ID="explosion2"/>
+            <texture filename="assets/UI/energy_background.png" ID="energy_background"/>
         </TEXTURES>
         <SOUNDS>
             <sound filename="assets/sounds/bgm/scene2.mp3" soundtype="bgm" ID="bgm"/>
@@ -31,6 +33,7 @@
             <texture filename="assets/characters/enemy/human3/Human3_64x48.png" ID="enemy_human"/>
             <texture filename="assets/particles/explosion/explosion1.png" ID="explosion1"/>
             <texture filename="assets/particles/explosion/explosion2.png" ID="explosion2"/>
+            <texture filename="assets/UI/energy_background.png" ID="energy_background"/>
         </TEXTURES>
         <SOUNDS>
             <sound filename="assets/sounds/bgm/scene3.mp3" soundtype="bgm" ID="bgm"/>

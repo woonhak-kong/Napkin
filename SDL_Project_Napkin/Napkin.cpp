@@ -12,7 +12,8 @@
 #include "TextureManager.h"
 
 Napkin::Napkin(const LoaderParams& loader) :
-	Character(loader)
+	Character(loader),
+	m_energyBar(nullptr)
 {
 
 	//todo / we should control load function XML
@@ -172,6 +173,9 @@ Napkin::Napkin(const LoaderParams& loader) :
 
 	// only player can have Camera.
 	Camera::Instance().setTarget(&getTransform().getPosition());
+
+	//UI
+	m_energyBar = new EnergyBar(loader.m_maxHp);
 }
 
 Napkin::~Napkin()
@@ -227,6 +231,8 @@ void Napkin::draw()
 			break;
 	}
 
+	//UI
+	m_energyBar->draw();
 }
 
 void Napkin::update()
@@ -238,6 +244,7 @@ void Napkin::update()
 
 void Napkin::clean()
 {
+	delete m_energyBar;
 }
 
 void Napkin::collision(DisplayObject* obj)

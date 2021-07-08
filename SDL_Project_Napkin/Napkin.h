@@ -1,5 +1,7 @@
 #pragma once
 #include "Character.h"
+#include "EnergyBar.h"
+
 class Napkin : public Character
 {
 public:
@@ -14,6 +16,8 @@ public:
 
 	void handleEvent();
 
+private:
+	EnergyBar* m_energyBar;
 
 };
 

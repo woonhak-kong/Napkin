@@ -211,6 +211,9 @@
     <ClInclude Include="SoundID.h">
       <Filter>Enums</Filter>
     </ClInclude>
+    <ClInclude Include="EnergyBar.h">
+      <Filter>UIGameObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -335,6 +338,9 @@
     </ClCompile>
     <ClCompile Include="Explosion.cpp">
       <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="EnergyBar.cpp">
+      <Filter>UIGameObject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

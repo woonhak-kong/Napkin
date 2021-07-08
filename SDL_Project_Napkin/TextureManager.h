@@ -40,6 +40,7 @@ public:
 
 	void drawTile(const std::string& id, int margin, int spacing, int x, int y, int width, int height, int currentRow, int currentFrame);
 	void drawRect(int x, int y, int w, int h, const SDL_Color color);
+	void drawFillRect(int x, int y, int w, int h, const SDL_Color color);
 
 
 	// animation functions

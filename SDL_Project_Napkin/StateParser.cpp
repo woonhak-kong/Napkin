@@ -205,32 +205,33 @@ void StateParser::ParseTextures(TiXmlElement* pStateRoot)
         }
         else if (idAttribute == TextureID::EXPLOSION2)
         {
-        Animation animation = Animation();
-        Frame frame;
-        const glm::vec2 size(100, 100);
-        int total = 0;
+	        Animation animation = Animation();
+	        Frame frame;
+	        const glm::vec2 size(100, 100);
+	        int total = 0;
 
-        animation.name = TextureID::EXPLOSION2;
+	        animation.name = TextureID::EXPLOSION2;
 
-        for (int i = 0; i < 7; ++i)
-        {
-            for (int j = 0; j < 10; ++j)
-            {
-                frame.name = idAttribute;
-                frame.x = size.x * j;
-                frame.y = size.y * i;
-                frame.w = size.x;
-                frame.h = size.y;
-                animation.frames.push_back(frame);
-                if (total >= 63)
-                    break;
-                total++;
-            }
+	        for (int i = 0; i < 7; ++i)
+	        {
+	            for (int j = 0; j < 10; ++j)
+	            {
+	                frame.name = idAttribute;
+	                frame.x = size.x * j;
+	                frame.y = size.y * i;
+	                frame.w = size.x;
+	                frame.h = size.y;
+	                animation.frames.push_back(frame);
+	                if (total >= 63)
+	                    break;
+	                total++;
+	            }
 
+	        }
+	        TextureManager::Instance().setAnimation(idAttribute, animation);
+	        animation.frames.clear();
         }
-        TextureManager::Instance().setAnimation(idAttribute, animation);
-        animation.frames.clear();
-        }
+
     }
 }
 

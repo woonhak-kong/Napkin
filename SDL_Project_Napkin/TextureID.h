@@ -16,6 +16,7 @@ public:
 	inline static const std::string ENEMY_HUMAN_JUMP = "enemy_human_jump";
 	inline static const std::string EXPLOSION1 = "explosion1";
 	inline static const std::string EXPLOSION2 = "explosion2";
+	inline static const std::string ENERGY_BACKGROUND = "energy_background";
 };
 
 #endif //__TEXTURE_ID__

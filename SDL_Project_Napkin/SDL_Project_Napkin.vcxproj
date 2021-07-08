@@ -170,6 +170,7 @@ xcopy "$(ProjectDir)assets" "$(TargetDir)assets" /s /h /e /d /y /i</Command>
     <ClInclude Include="CallbackType.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="EnemyHumanAI.h" />
+    <ClInclude Include="EnergyBar.h" />
     <ClInclude Include="Explosion.h" />
     <ClInclude Include="ExplosionType.h" />
     <ClInclude Include="SoundID.h" />
@@ -233,6 +234,7 @@ xcopy "$(ProjectDir)assets" "$(TargetDir)assets" /s /h /e /d /y /i</Command>
     <ClCompile Include="EnemyHuman1.cpp" />
     <ClCompile Include="EnemyHumanAI.cpp" />
     <ClCompile Include="EnemyKnight.cpp" />
+    <ClCompile Include="EnergyBar.cpp" />
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="Explosion.cpp" />
     <ClCompile Include="FontManager.cpp" />

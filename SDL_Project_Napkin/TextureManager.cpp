@@ -438,6 +438,14 @@ void TextureManager::drawRect(int x, int y, int w, int h, const SDL_Color color)
 	SDL_SetRenderDrawColor(m_pRenderer, 255,255,255,255);
 }
 
+void TextureManager::drawFillRect(int x, int y, int w, int h, const SDL_Color color)
+{
+	SDL_Rect rect = { x, y, w, h };
+	SDL_SetRenderDrawColor(m_pRenderer, color.r, color.g, color.b, color.a);
+	SDL_RenderFillRect(m_pRenderer, &rect);
+	SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
+}
+
 glm::vec2 TextureManager::getTextureSize(const std::string & id)
 {
 	int width, height;
