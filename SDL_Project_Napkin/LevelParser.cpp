@@ -6,6 +6,7 @@
 #include <iostream>
 #include <GLM/gtc/constants.hpp>
 
+#include "Boss1.h"
 #include "Config.h"
 #include "EnemyHuman1.h"
 #include "EnemyKnight.h"
@@ -176,13 +177,18 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, Scene* scene)
             }*/
 
         	// Todo implemeting characters.
+            LoaderParams loader = LoaderParams(x, y, widthOfTexture, heightOfTexture, realWidth, realHeight, maxHP, power, ID);
             if (ID == EnemyType::EnemyKnight)
             {
-                scene->addChild(new EnemyKnight(LoaderParams(x, y, widthOfTexture, heightOfTexture, realWidth, realHeight, maxHP, power, ID)));
+                scene->addChild(new EnemyKnight(loader),1);
             }
-            else if (ID == TextureID::ENEMY_HUMAN)
+            else if (ID == EnemyType::EnemyHuman1)
             {
-                scene->addChild(new EnemyHuman1(LoaderParams(x, y, widthOfTexture, heightOfTexture, realWidth, realHeight, maxHP, power, ID)));
+                scene->addChild(new EnemyHuman1(loader),1 );
+            }
+            else if (ID == EnemyType::Boss1)
+            {
+                scene->addChild(new Boss1(loader), 1);
             }
            // pGameObject->load(new LoaderParams(x, y, width, height, textureID, numFrames, callbackID, animSpeed));
            // pObjectLayer->getGameObjects()->push_back(pGameObject);

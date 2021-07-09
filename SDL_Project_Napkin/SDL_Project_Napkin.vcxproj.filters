@@ -214,6 +214,9 @@
     <ClInclude Include="EnergyBar.h">
       <Filter>UIGameObject</Filter>
     </ClInclude>
+    <ClInclude Include="Boss1.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -341,6 +344,9 @@
     </ClCompile>
     <ClCompile Include="EnergyBar.cpp">
       <Filter>UIGameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss1.cpp">
+      <Filter>GameObjects</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

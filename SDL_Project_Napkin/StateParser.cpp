@@ -75,7 +75,7 @@ void StateParser::ParseTextures(TiXmlElement* pStateRoot)
         std::string filenameAttribute = e->Attribute("filename");
         std::string idAttribute = e->Attribute("ID");
         TextureManager::Instance().load(filenameAttribute, idAttribute);
-
+        std::cout << idAttribute << std::endl;
     	if (idAttribute == TextureID::ENEMY_HUMAN)
     	{
             Animation animation = Animation();
@@ -230,6 +230,167 @@ void StateParser::ParseTextures(TiXmlElement* pStateRoot)
 	        }
 	        TextureManager::Instance().setAnimation(idAttribute, animation);
 	        animation.frames.clear();
+        }
+        else if (idAttribute == TextureID::BOSS1_ATTACK1)
+        {
+            Animation animation = Animation();
+            Frame frame;
+            const glm::vec2 size(250, 250);
+
+            animation.name = TextureID::BOSS1_ATTACK1;
+
+            for (int i = 0; i < 8; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = size.x * i;
+                frame.y = 0;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(TextureID::BOSS1, animation);
+            animation.frames.clear();
+        }
+        else if (idAttribute == TextureID::BOSS1_ATTACK2)
+        {
+            Animation animation = Animation();
+            Frame frame;
+            const glm::vec2 size(250, 250);
+
+            animation.name = TextureID::BOSS1_ATTACK2;
+
+            for (int i = 0; i < 8; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = size.x * i;
+                frame.y = 0;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(TextureID::BOSS1, animation);
+            animation.frames.clear();
+        }
+        else if (idAttribute == TextureID::BOSS1_DEAD)
+        {
+            Animation animation = Animation();
+            Frame frame;
+            const glm::vec2 size(250, 250);
+
+            animation.name = TextureID::BOSS1_DEAD;
+
+            for (int i = 0; i < 7; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = size.x * i;
+                frame.y = 0;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(TextureID::BOSS1, animation);
+            animation.frames.clear();
+        }
+        else if (idAttribute == TextureID::BOSS1_FALL)
+        {
+            Animation animation = Animation();
+            Frame frame;
+            const glm::vec2 size(250, 250);
+
+            animation.name = TextureID::BOSS1_FALL;
+
+            for (int i = 0; i < 2; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = size.x * i;
+                frame.y = 0;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(TextureID::BOSS1, animation);
+            animation.frames.clear();
+        }
+        else if (idAttribute == TextureID::BOSS1_IDLE)
+        {
+
+            Animation animation = Animation();
+            Frame frame;
+            const glm::vec2 size(250, 250);
+
+            animation.name = TextureID::BOSS1_IDLE;
+
+            for (int i = 0; i < 8; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = size.x * i;
+                frame.y = 0;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(TextureID::BOSS1, animation);
+            animation.frames.clear();
+        }
+        else if (idAttribute == TextureID::BOSS1_JUMP)
+        {
+            Animation animation = Animation();
+            Frame frame;
+            const glm::vec2 size(250, 250);
+
+            animation.name = TextureID::BOSS1_JUMP;
+
+            for (int i = 0; i < 2; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = size.x * i;
+                frame.y = 0;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(TextureID::BOSS1, animation);
+            animation.frames.clear();
+        }
+        else if (idAttribute == TextureID::BOSS1_RUN)
+        {
+            Animation animation = Animation();
+            Frame frame;
+            const glm::vec2 size(250, 250);
+
+            animation.name = TextureID::BOSS1_RUN;
+
+            for (int i = 0; i < 8; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = size.x * i;
+                frame.y = 0;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(TextureID::BOSS1, animation);
+            animation.frames.clear();
+        }
+        else if (idAttribute == TextureID::BOSS1_HIT)
+        {
+            Animation animation = Animation();
+            Frame frame;
+            const glm::vec2 size(250, 250);
+
+            animation.name = TextureID::BOSS1_HIT;
+
+            for (int i = 0; i < 3; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = size.x * i;
+                frame.y = 0;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(TextureID::BOSS1, animation);
+            animation.frames.clear();
         }
 
     }

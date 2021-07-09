@@ -6,6 +6,14 @@
             <texture filename="assets/particles/explosion/explosion1.png" ID="explosion1"/>
             <texture filename="assets/particles/explosion/explosion2.png" ID="explosion2"/>
             <texture filename="assets/UI/energy_background.png" ID="energy_background"/>
+            <texture filename="assets/characters/boss1/Attack1.png" ID="boss1_attack1"/>
+            <texture filename="assets/characters/boss1/Attack2.png" ID="boss1_attack2"/>
+            <texture filename="assets/characters/boss1/Death.png" ID="boss1_death"/>
+            <texture filename="assets/characters/boss1/Fall.png" ID="boss1_fall"/>
+            <texture filename="assets/characters/boss1/Idle.png" ID="boss1_idle"/>
+            <texture filename="assets/characters/boss1/Jump.png" ID="boss1_jump"/>
+            <texture filename="assets/characters/boss1/Run.png" ID="boss1_run"/>
+            <texture filename="assets/characters/boss1/Take_hit.png" ID="boss1_hit"/>
         </TEXTURES>
         <SOUNDS>
             <sound filename="assets/sounds/bgm/scene1.mp3" soundtype="bgm" ID="bgm"/>

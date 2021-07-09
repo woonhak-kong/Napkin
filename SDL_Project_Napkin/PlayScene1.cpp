@@ -93,7 +93,7 @@ bool PlayScene1::onEnter()
 {
 	// texture loading
 	StateParser stateParser;
-	stateParser.ParseState(Config::TEXTURE_LOCATION.c_str(), Config::PLAY_SCENE2);
+	stateParser.ParseState(Config::TEXTURE_LOCATION.c_str(), Config::PLAY_SCENE1);
 
 	SoundManager::Instance().playMusic(SoundID::BGM);
 
@@ -107,7 +107,7 @@ bool PlayScene1::onEnter()
 
 
 	Napkin* player = new Napkin(LoaderParams(100, 400, 80, 70, 40, 70, 50, 20, "napkin"));
-	addChild(player);
+	addChild(player, 1);
 
 
 	//EnemyKnight* enemy = new EnemyKnight(glm::vec2(300, 0), 200, 10, level->getCollisionLayers());

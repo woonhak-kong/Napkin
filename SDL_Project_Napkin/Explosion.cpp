@@ -35,7 +35,7 @@ void Explosion::draw()
 	{
 		case ExplosionType::EXPLOSION_SMALL:
 			TextureManager::Instance().playAnimation(getAnimation(TextureID::EXPLOSION2), getTransform().getPosition().x - Camera::Instance().getPosition().x,
-				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 40.0f, 0.0f, 255, SDL_FLIP_NONE, false, [&](CallbackType type) -> void
+				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getWidth(), 40.0f, 0.0f, 255, SDL_FLIP_NONE, false, [&](CallbackType type) -> void
 				{
 					switch (type)
 					{
@@ -50,7 +50,7 @@ void Explosion::draw()
 			break;
 		case ExplosionType::EXPLOSION_BIG:
 			TextureManager::Instance().playAnimation(getAnimation(TextureID::EXPLOSION1), getTransform().getPosition().x - Camera::Instance().getPosition().x,
-				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 40.0f, 0.0f, 255, SDL_FLIP_NONE, false, [&](CallbackType type) -> void
+				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getWidth(), 40.0f, 0.0f, 255, SDL_FLIP_NONE, false, [&](CallbackType type) -> void
 				{
 					switch (type)
 					{

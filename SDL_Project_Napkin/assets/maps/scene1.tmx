@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="400" height="100" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="132">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="400" height="100" tilewidth="16" tileheight="16" infinite="0" nextlayerid="14" nextobjectid="134">
  <properties>
   <property name="Player" value="player.png"/>
  </properties>
  <tileset firstgid="1" name="level2_build1" tilewidth="16" tileheight="16" tilecount="7056" columns="84">
   <image source="PixelPlatformerSet2v/main_lev_buildA.png" width="1344" height="1344"/>
  </tileset>
+ <objectgroup id="13" name="boss1">
+  <properties>
+   <property name="heightOfTexture" type="int" value="500"/>
+   <property name="id" value="boss1"/>
+   <property name="maxHp" type="int" value="300"/>
+   <property name="power" type="int" value="10"/>
+   <property name="realHeight" type="int" value="160"/>
+   <property name="realWidth" type="int" value="80"/>
+   <property name="widthOfTexture" type="int" value="500"/>
+  </properties>
+  <object id="133" x="425.333" y="169.333" width="500" height="500"/>
+ </objectgroup>
  <objectgroup id="8" name="knight_enemy">
   <properties>
    <property name="heightOfTexture" type="int" value="70"/>
@@ -20,14 +32,14 @@
  <objectgroup id="10" name="enemy_human1">
   <properties>
    <property name="heightOfTexture" type="int" value="96"/>
-   <property name="id" value="enemy_human"/>
+   <property name="id" value="enemy_human1"/>
    <property name="maxHp" type="int" value="300"/>
    <property name="power" type="int" value="10"/>
    <property name="realHeight" type="int" value="60"/>
    <property name="realWidth" type="int" value="40"/>
    <property name="widthOfTexture" type="int" value="128"/>
   </properties>
-  <object id="129" x="729.333" y="456.667"/>
+  <object id="129" x="1212" y="392.667"/>
   <object id="131" x="986.667" y="400.667"/>
  </objectgroup>
  <layer id="7" name="back_layer" width="400" height="100">
