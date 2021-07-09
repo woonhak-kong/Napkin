@@ -22,7 +22,7 @@ const glm::vec2 Camera::getPosition() const
 {
 	if (m_pTarget != nullptr)
 	{
-		glm::vec2 pos(m_pTarget->x - (Config::SCREEN_WIDTH / 2), 0);
+		glm::vec2 pos(m_pTarget->x - (Config::SCREEN_WIDTH / 2), m_pTarget->y - (Config::SCREEN_HEIGHT * 0.66));
 
 		// todo if we want to set max size, modify here
 		// we don't fix our max size of map yet.

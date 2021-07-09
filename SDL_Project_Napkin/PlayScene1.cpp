@@ -35,7 +35,7 @@ void PlayScene1::update()
 	Scene::updateDisplayList();
 	//m_testPlayer->update();
 
-if (getPlayer()->getTransform().getPosition().y > Config::SCREEN_HEIGHT || dynamic_cast<Napkin*>(getPlayer())->getGameOver())
+	if (dynamic_cast<Napkin*>(getPlayer())->getGameOver())
 	{
 		TheGame::Instance().changeSceneState(SceneState::END_SCENE);
 	}
@@ -106,7 +106,7 @@ bool PlayScene1::onEnter()
 	addChild(level);
 
 
-	Napkin* player = new Napkin(LoaderParams(0, 0, 80, 70, 40, 70, 50, 20, "napkin"));
+	Napkin* player = new Napkin(LoaderParams(100, 400, 80, 70, 40, 70, 50, 20, "napkin"));
 	addChild(player);
 
 
