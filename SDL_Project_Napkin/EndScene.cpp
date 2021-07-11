@@ -4,6 +4,8 @@
 #include "EventManager.h"
 #include "Game.h"
 #include "Label.h"
+#include "SoundID.h"
+#include "SoundManager.h"
 
 EndScene::EndScene() :
 	m_state(SceneState::END_SCENE)
@@ -59,6 +61,7 @@ bool EndScene::onEnter()
 	m_pMenuButton->addEventListener(Event::MOUSE_OVER, [&]() -> void
 		{
 			m_pMenuButton->setAlpha(150);
+			SoundManager::Instance().playSound(SoundID::BTN_HOVER);
 		});
 
 	m_pMenuButton->addEventListener(Event::MOUSE_OUT, [&]() -> void
@@ -77,6 +80,7 @@ bool EndScene::onEnter()
 	m_pExitButton->addEventListener(Event::MOUSE_OVER, [&]() -> void
 		{
 			m_pExitButton->setAlpha(150);
+			SoundManager::Instance().playSound(SoundID::BTN_HOVER);
 		});
 
 	m_pExitButton->addEventListener(Event::MOUSE_OUT, [&]() -> void

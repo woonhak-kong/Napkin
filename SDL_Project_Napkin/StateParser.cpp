@@ -41,7 +41,7 @@ bool StateParser::ParseState(const char* stateFile, std::string stateID)
     }
 
     // pre declare the texture root
-    TiXmlElement* pTextureRoot = 0;
+    TiXmlElement* pTextureRoot = nullptr;
 
     // get the root of the texture elements
     for (TiXmlElement* e = pStateRoot->FirstChildElement(); e != NULL; e = e->NextSiblingElement())
@@ -52,7 +52,10 @@ bool StateParser::ParseState(const char* stateFile, std::string stateID)
         }
     }
     // now parse the textures
-    ParseTextures(pTextureRoot);
+    if (pTextureRoot != nullptr)
+    {
+        ParseTextures(pTextureRoot);
+    }
 
 	// sounds
     for (TiXmlElement* e = pStateRoot->FirstChildElement(); e != NULL; e = e->NextSiblingElement())
@@ -62,7 +65,10 @@ bool StateParser::ParseState(const char* stateFile, std::string stateID)
             pTextureRoot = e;
         }
     }
-    ParseSounds(pTextureRoot);
+    if (pTextureRoot != nullptr)
+    {
+        ParseSounds(pTextureRoot);
+    }
 
     return true;
 }

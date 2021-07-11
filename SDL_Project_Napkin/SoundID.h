@@ -13,6 +13,8 @@ public:
 	inline static const std::string ENEMY_EXPLOSION = "enemy_explosion";
 	inline static const std::string ENEMY_MELEE_ATTACK = "enemy_melee_attack";
 
+	inline static const std::string BTN_HOVER = "btn_hover";
+
 };
 
 #endif //__SOUND_ID__

@@ -7,7 +7,10 @@
 #include "EventManager.h"
 #include "Label.h"
 #include "LevelParser.h"
+#include "SoundID.h"
+#include "StateParser.h"
 #include "TextureManager.h"
+#include "SoundManager.h"
 
 
 StartScene::StartScene() :
@@ -56,7 +59,8 @@ void StartScene::handleEvents()
 bool StartScene::onEnter()
 {
 	//const SDL_Color blue = { 0, 0, 255, 255 };
-
+	StateParser stateParser;
+	stateParser.ParseState(Config::TEXTURE_LOCATION.c_str(), Config::START_SCENE);
 
 
 	Label* name = new Label("Napkin", "Consolas", 200, {0, 255, 0, 255}, glm::vec2(Config::SCREEN_WIDTH /2, 120.0f));
@@ -70,10 +74,10 @@ bool StartScene::onEnter()
 			Game::Instance().changeSceneState(SceneState::PLAY_SCENE1);
 
 		});
-
 	m_pSartButton->addEventListener(Event::MOUSE_OVER, [&]() -> void
 		{
 			m_pSartButton->setAlpha(150);
+			SoundManager::Instance().playSound(SoundID::BTN_HOVER);
 		});
 
 	m_pSartButton->addEventListener(Event::MOUSE_OUT, [&]() -> void
@@ -92,6 +96,7 @@ bool StartScene::onEnter()
 	m_pExitButton->addEventListener(Event::MOUSE_OVER, [&]() -> void
 		{
 			m_pExitButton->setAlpha(150);
+			SoundManager::Instance().playSound(SoundID::BTN_HOVER);
 		});
 
 	m_pExitButton->addEventListener(Event::MOUSE_OUT, [&]() -> void
