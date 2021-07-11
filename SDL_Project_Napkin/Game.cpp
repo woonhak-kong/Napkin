@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <SDL_ttf.h>
 
+#include "ClearScene.h"
 #include "EndScene.h"
 #include "glm/gtx/string_cast.hpp"
 #include "EventManager.h"
@@ -167,6 +168,10 @@ void Game::changeSceneState(const SceneState new_state)
 				m_sceneStateMachine->changeState(new EndScene());
 				std::cout << "End scene activated" << std::endl;
 				break;
+			case SceneState::CLEAR_SCENE:
+				m_sceneStateMachine->changeState(new ClearScene());
+				std::cout << "Clear scene activated" << std::endl;
+				break;
 			default:
 				std::cout << "default case activated" << std::endl;
 				break;
@@ -192,6 +197,10 @@ void Game::pushSceneState(SceneState newState)
 		case SceneState::END_SCENE:
 			m_sceneStateMachine->pushState(new EndScene());
 			std::cout << "End scene activated" << std::endl;
+			break;
+		case SceneState::CLEAR_SCENE:
+			m_sceneStateMachine->pushState(new ClearScene());
+			std::cout << "Clear scene activated" << std::endl;
 			break;
 		default:
 			std::cout << "default case activated" << std::endl;
