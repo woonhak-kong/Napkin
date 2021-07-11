@@ -34,6 +34,14 @@ const glm::vec2 Camera::getPosition() const
 		{
 			pos.x = Config::mapWidth - (Config::SCREEN_WIDTH);
 		}
+		if (pos.y < 0)
+		{
+			pos.y = 0;
+		}
+		if (pos.y > Config::mapHeight - Config::SCREEN_HEIGHT)
+		{
+			pos.y = Config::mapHeight - Config::SCREEN_HEIGHT;
+		}
 
 		//std::cout << "x : " << pos.x << "    y : " << pos.y << std::endl;
 		return pos;
