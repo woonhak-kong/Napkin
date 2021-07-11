@@ -1,5 +1,20 @@
 <?xml version="1.0" ?>
 <STATES>
+    <TUTORIALSCENE>
+        <TEXTURES>
+            <texture filename="assets/characters/enemy/human1/Human1_64x48.png" ID="enemy_human"/>
+            <texture filename="assets/particles/explosion/explosion1.png" ID="explosion1"/>
+            <texture filename="assets/particles/explosion/explosion2.png" ID="explosion2"/>
+            <texture filename="assets/UI/energy_background.png" ID="energy_background"/>
+        </TEXTURES>
+        <SOUNDS>
+            <sound filename="assets/sounds/bgm/scene1.mp3" soundtype="bgm" ID="bgm"/>
+            <sound filename="assets/sounds/sfx/hit26.mp3" soundtype="sfx" ID="hit"/>
+            <sound filename="assets/sounds/sfx/sword1.wav" soundtype="sfx" ID="attack"/>
+            <sound filename="assets/sounds/sfx/enemy_explosion.wav" soundtype="sfx" ID="enemy_explosion"/>
+            <sound filename="assets/sounds/sfx/enemy_attack.wav" soundtype="sfx" ID="enemy_melee_attack"/>
+        </SOUNDS>
+    </TUTORIALSCENE>
     <STARTSCENE>
         <SOUNDS>
             <sound filename="assets/sounds/sfx/btn_hover.ogg" soundtype="sfx" ID="btn_hover"/>

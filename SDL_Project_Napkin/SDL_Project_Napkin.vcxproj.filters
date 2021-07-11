@@ -220,6 +220,9 @@
     <ClInclude Include="ScoreManager.h">
       <Filter>Managers</Filter>
     </ClInclude>
+    <ClInclude Include="TutorialScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -353,6 +356,9 @@
     </ClCompile>
     <ClCompile Include="ScoreManager.cpp">
       <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="TutorialScene.cpp">
+      <Filter>Scenes</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

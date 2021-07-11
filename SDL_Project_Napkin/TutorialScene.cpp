@@ -1,44 +1,39 @@
-#include "PlayScene1.h"
+#include "TutorialScene.h"
 
-#include "AttackBox.h"
 #include "Background.h"
 #include "CollisionManager.h"
-#include "Config.h"
-#include "EnemyKnight.h"
-#include "LevelParser.h"
 #include "EventManager.h"
 #include "Game.h"
-#include "Label.h"
+#include "Napkin.h"
 #include "ScoreManager.h"
-#include "SoundID.h"
+#include "TextureManager.h"
 #include "SoundManager.h"
 #include "StateParser.h"
-#include "TextureManager.h"
+#include "LevelParser.h"
 
-PlayScene1::PlayScene1() :
+TutorialScene::TutorialScene() :
 	m_state(SceneState::PLAY_SCENE1),
 	m_score(0)
 {
 }
 
-PlayScene1::~PlayScene1()
+TutorialScene::~TutorialScene()
 {
 }
 
-void PlayScene1::draw()
+void TutorialScene::draw()
 {
 	SDL_SetRenderDrawColor(TextureManager::Instance().getRenderer(), 0, 0, 255, 255);
 	Scene::drawDisplayList();
-
-	//m_testPlayer->draw();
 }
 
-void PlayScene1::update()
+void TutorialScene::clean()
+{
+}
+
+void TutorialScene::update()
 {
 	Scene::updateDisplayList();
-	//m_testPlayer->update();
-
-
 
 	// Checking all Collisions
 	auto displayList = getDisplayList();
@@ -75,18 +70,14 @@ void PlayScene1::update()
 	}
 }
 
-void PlayScene1::clean()
-{
-}
-
-bool PlayScene1::onExit()
+bool TutorialScene::onExit()
 {
 	Scene::removeAllChildren();
 	SoundManager::Instance().clear();
 	return true;
 }
 
-void PlayScene1::handleEvents()
+void TutorialScene::handleEvents()
 {
 	EventManager::Instance().update();
 
@@ -97,20 +88,18 @@ void PlayScene1::handleEvents()
 	}
 }
 
-bool PlayScene1::onEnter()
+bool TutorialScene::onEnter()
 {
-	// texture loading
+	ScoreManager::resetScore();
+
 	StateParser stateParser;
-	stateParser.ParseState(Config::TEXTURE_LOCATION.c_str(), Config::PLAY_SCENE1);
-
-	SoundManager::Instance().playMusic(SoundID::BGM);
-
+	stateParser.ParseState(Config::TEXTURE_LOCATION.c_str(), Config::TUTORIAL_SCENE);
 
 	Background* background = new Background();
 	addChild(background);
 
 	LevelParser levelParser;
-	Level*  level = levelParser.ParseLevel(Config::SCENE1_LOCATION.c_str(), this);
+	Level* level = levelParser.ParseLevel(Config::SCENE0_LOCATION.c_str(), this);
 	addChild(level);
 
 	m_score = new Label("Score : ", "Consolas", 30, { 0, 255, 0, 255 }, glm::vec2(1000, 50.0f));
@@ -133,7 +122,7 @@ bool PlayScene1::onEnter()
 	return true;
 }
 
-SceneState PlayScene1::getState()
+SceneState TutorialScene::getState()
 {
 	return m_state;
 }

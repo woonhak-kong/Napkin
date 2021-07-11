@@ -13,6 +13,7 @@
 #include "SoundManager.h"
 #include "StartScene.h"
 #include "TextureManager.h"
+#include "TutorialScene.h"
 
 
 //Game* Game::s_pInstance = nullptr;
@@ -109,7 +110,7 @@ void Game::start()
 {
 	m_sceneStateMachine = new GameSceneStateMachine();
 	// in the first time, there is no scene. So, we need to push
-	pushSceneState(SceneState::START_SCENE);
+	pushSceneState(SceneState::TUTORIAL_SCENE);
 }
 
 bool Game::isRunning() const
@@ -154,6 +155,10 @@ void Game::changeSceneState(const SceneState new_state)
 				m_sceneStateMachine->changeState(new StartScene());
 				std::cout << "start scene activated" << std::endl;
 				break;
+			case SceneState::TUTORIAL_SCENE:
+				m_sceneStateMachine->changeState(new TutorialScene());
+				std::cout << "Tutorial scene activated" << std::endl;
+				break;
 			case SceneState::PLAY_SCENE1:
 				m_sceneStateMachine->changeState(new PlayScene1());
 				std::cout << "Play scene activated" << std::endl;
@@ -175,6 +180,10 @@ void Game::pushSceneState(SceneState newState)
 		case SceneState::START_SCENE:
 			m_sceneStateMachine->pushState(new StartScene());
 			std::cout << "start scene activated" << std::endl;
+			break;
+		case SceneState::TUTORIAL_SCENE:
+			m_sceneStateMachine->pushState(new TutorialScene());
+			std::cout << "Tutorial scene activated" << std::endl;
 			break;
 		case SceneState::PLAY_SCENE1:
 			m_sceneStateMachine->pushState(new PlayScene1());
