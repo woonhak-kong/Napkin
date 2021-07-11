@@ -28,5 +28,6 @@ private:
 	int m_jumpNum;
 
 	bool m_isJumpPushed;
+	int m_hitMotionNum;
 };
 

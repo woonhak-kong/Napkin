@@ -18,7 +18,8 @@ Napkin::Napkin(const LoaderParams& loader) :
 	m_gameOver(false),
 	m_gameClear(false),
 	m_jumpNum(0),
-	m_isJumpPushed(false)
+	m_isJumpPushed(false),
+	m_hitMotionNum(0)
 {
 
 	//todo / we should control load function XML
@@ -216,18 +217,35 @@ void Napkin::draw()
 	Character::draw();
 	/*TextureManager::Instance().draw("napkin", getTransform().getPosition().x - Camera::Instance().getPosition().x,
 		getTransform().getPosition().y - Camera::Instance().getPosition().y , getWidth(), getHeight(),  0, 255);*/
+	int alpha;
+	if (m_hitMotionNum > 0)
+	{
+		if (m_hitMotionNum % 2 == 0)
+		{
+			alpha = 20;
+		}
+		else
+		{
+			alpha = 255;
+		}
+		m_hitMotionNum--;
+	}
+	else
+	{
+		alpha = 255;
+	}
 	SDL_RendererFlip flip;
 	flip = isFlip() ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE;
 	switch (getCurrentState())
 	{
 		case CharacterState::IDLE:
 			TextureManager::Instance().playAnimation(getAnimation("idle"), getTransform().getPosition().x - Camera::Instance().getPosition().x,
-				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, 255, flip);
+				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, alpha, flip);
 
 			break;
 		case CharacterState::ATTACK:
 			TextureManager::Instance().playAnimation(getAnimation("attack2"), getTransform().getPosition().x - Camera::Instance().getPosition().x,
-				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), getAttackSpeed(), 0.0f, 255, flip, true, [&](CallbackType type) -> void
+				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), getAttackSpeed(), 0.0f, alpha, flip, true, [&](CallbackType type) -> void
 				{
 					switch (type)
 					{
@@ -244,19 +262,19 @@ void Napkin::draw()
 			break;
 		case CharacterState::RUN:
 			TextureManager::Instance().playAnimation(getAnimation("run"), getTransform().getPosition().x - Camera::Instance().getPosition().x,
-				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, 255, flip);
+				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, alpha, flip);
 			break;
 		case CharacterState::JUMP:
 			TextureManager::Instance().playAnimation(getAnimation("jump"), getTransform().getPosition().x - Camera::Instance().getPosition().x,
-				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, 255, flip );
+				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, alpha, flip );
 			break;
 		case CharacterState::FALL:
 			TextureManager::Instance().playAnimation(getAnimation("fall"), getTransform().getPosition().x - Camera::Instance().getPosition().x,
-				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, 255, flip);
+				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, alpha, flip);
 			break;
 		case CharacterState::DEAD:
 			TextureManager::Instance().playAnimation(getAnimation("die"), getTransform().getPosition().x - Camera::Instance().getPosition().x,
-				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, 255, flip, false, [&](CallbackType type) -> void
+				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, alpha, flip, false, [&](CallbackType type) -> void
 				{
 					switch (type)
 					{
@@ -296,6 +314,7 @@ void Napkin::clean()
 void Napkin::hit()
 {
 	m_energyBar->setEnergy(getPresentHp());
+	m_hitMotionNum = 20;
 }
 
 void Napkin::collision(DisplayObject* obj)
