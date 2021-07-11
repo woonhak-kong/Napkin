@@ -1,5 +1,10 @@
 <?xml version="1.0" ?>
 <STATES>
+    <STARTSCENE>
+        <SOUNDS>
+            <sound filename="assets/sounds/sfx/btn_hover.ogg" soundtype="sfx" ID="btn_hover"/>
+        </SOUNDS>
+    </STARTSCENE>
     <PLAYSCENE1>
         <TEXTURES>
             <texture filename="assets/characters/enemy/human1/Human1_64x48.png" ID="enemy_human"/>

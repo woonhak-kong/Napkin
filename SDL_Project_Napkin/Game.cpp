@@ -177,8 +177,12 @@ void Game::pushSceneState(SceneState newState)
 			std::cout << "start scene activated" << std::endl;
 			break;
 		case SceneState::PLAY_SCENE1:
-			m_sceneStateMachine->changeState(new PlayScene1());
+			m_sceneStateMachine->pushState(new PlayScene1());
 			std::cout << "Play scene activated" << std::endl;
+			break;
+		case SceneState::END_SCENE:
+			m_sceneStateMachine->pushState(new EndScene());
+			std::cout << "End scene activated" << std::endl;
 			break;
 		default:
 			std::cout << "default case activated" << std::endl;

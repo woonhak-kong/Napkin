@@ -1,6 +1,7 @@
 #pragma once
 #ifndef __END_SCENE__
 #define __END_SCENE__
+#include "Button.h"
 #include "Level.h"
 #include "Napkin.h"
 #include "Scene.h"
@@ -22,6 +23,8 @@ public:
 
 private:
 
+	Button* m_pMenuButton;
+	Button* m_pExitButton;
 	SceneState m_state;
 };
 

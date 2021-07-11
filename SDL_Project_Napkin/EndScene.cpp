@@ -50,21 +50,40 @@ bool EndScene::onEnter()
 	Label* gameOver = new Label("Game Over", "lazy", 200, { 255,0,0,255 }, glm::vec2(Config::SCREEN_WIDTH / 2, 120.0f));
 	addChild(gameOver);
 
-	Button* menuButton = new Button("assets/UI/MenuButton.png", "menubutton", GameObjectType::MENU_BUTTON,
+	m_pMenuButton = new Button("assets/UI/MenuButton.png", "menubutton", GameObjectType::MENU_BUTTON,
 		glm::vec2(Config::SCREEN_WIDTH / 2, Config::SCREEN_HEIGHT / 2), true);
-	menuButton->addEventListener(Event::CLICK, [&]() -> void
+	m_pMenuButton->addEventListener(Event::CLICK, [&]() -> void
 		{
 			TheGame::Instance().changeSceneState(SceneState::START_SCENE);
 		});
-	addChild(menuButton);
+	m_pMenuButton->addEventListener(Event::MOUSE_OVER, [&]() -> void
+		{
+			m_pMenuButton->setAlpha(150);
+		});
 
-	Button* exitButton = new Button("assets/UI/ExitButton.png", "exitbutton", GameObjectType::EXIT_BUTTON,
+	m_pMenuButton->addEventListener(Event::MOUSE_OUT, [&]() -> void
+		{
+			m_pMenuButton->setAlpha(255);
+		});
+
+	addChild(m_pMenuButton);
+
+	m_pExitButton = new Button("assets/UI/ExitButton.png", "exitbutton", GameObjectType::EXIT_BUTTON,
 		glm::vec2(Config::SCREEN_WIDTH / 2, Config::SCREEN_HEIGHT / 2 + 120), true);
-	exitButton->addEventListener(Event::CLICK, [&]() -> void
+	m_pExitButton->addEventListener(Event::CLICK, [&]() -> void
 		{
 			TheGame::Instance().quit();
 		});
-	addChild(exitButton);
+	m_pExitButton->addEventListener(Event::MOUSE_OVER, [&]() -> void
+		{
+			m_pExitButton->setAlpha(150);
+		});
+
+	m_pExitButton->addEventListener(Event::MOUSE_OUT, [&]() -> void
+		{
+			m_pExitButton->setAlpha(255);
+		});
+	addChild(m_pExitButton);
 
 	return true;
 }

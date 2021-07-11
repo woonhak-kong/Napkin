@@ -2,6 +2,7 @@
 #ifndef __START_SCENE__
 #define __START_SCENE__
 
+#include "Button.h"
 #include "Scene.h"
 #include "SDL.h"
 
@@ -27,6 +28,9 @@ public:
 	virtual SceneState getState() override;
 
 private:
+
+	Button* m_pSartButton;
+	Button* m_pExitButton;
 
 	SceneState m_state;
 

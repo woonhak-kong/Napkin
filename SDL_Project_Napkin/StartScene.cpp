@@ -62,24 +62,44 @@ bool StartScene::onEnter()
 	Label* name = new Label("Napkin", "Consolas", 200, {0, 255, 0, 255}, glm::vec2(Config::SCREEN_WIDTH /2, 120.0f));
 	addChild(name);
 
-	Button* startButton = new Button("assets/UI/PlayButton.png", "startbutton", GameObjectType::START_BUTTON,
+	m_pSartButton = new Button("assets/UI/PlayButton.png", "startbutton", GameObjectType::START_BUTTON,
 		glm::vec2(Config::SCREEN_WIDTH / 2, Config::SCREEN_HEIGHT / 2), true);
 
-	startButton->addEventListener(Event::CLICK, [&]()-> void
+	m_pSartButton->addEventListener(Event::CLICK, [&]()-> void
 		{
 			Game::Instance().changeSceneState(SceneState::PLAY_SCENE1);
 
 		});
 
-	addChild(startButton);
+	m_pSartButton->addEventListener(Event::MOUSE_OVER, [&]() -> void
+		{
+			m_pSartButton->setAlpha(150);
+		});
 
-	Button* exitButton = new Button("assets/UI/ExitButton.png", "exitbutton", GameObjectType::EXIT_BUTTON,
+	m_pSartButton->addEventListener(Event::MOUSE_OUT, [&]() -> void
+		{
+			m_pSartButton->setAlpha(255);
+		});
+
+	addChild(m_pSartButton);
+
+	m_pExitButton = new Button("assets/UI/ExitButton.png", "exitbutton", GameObjectType::EXIT_BUTTON,
 		glm::vec2(Config::SCREEN_WIDTH / 2, Config::SCREEN_HEIGHT / 2 + 120), true);
-	exitButton->addEventListener(Event::CLICK, [&]() -> void
+	m_pExitButton->addEventListener(Event::CLICK, [&]() -> void
 		{
 			TheGame::Instance().quit();
 		});
-	addChild(exitButton);
+	m_pExitButton->addEventListener(Event::MOUSE_OVER, [&]() -> void
+		{
+			m_pExitButton->setAlpha(150);
+		});
+
+	m_pExitButton->addEventListener(Event::MOUSE_OUT, [&]() -> void
+		{
+			m_pExitButton->setAlpha(255);
+		});
+
+	addChild(m_pExitButton);
 
 	return true;
 }
