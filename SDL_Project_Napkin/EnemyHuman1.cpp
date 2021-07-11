@@ -80,6 +80,21 @@ void EnemyHuman1::draw()
 				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.2f, 0.0f, 255, flip, true,  [&](CallbackType type) ->  void { this->setIsHit(false); });
 			break;
 		case CharacterState::DEAD:
+			TextureManager::Instance().playAnimation(getAnimation(TextureID::ENEMY_HUMAN_DEAD), getTransform().getPosition().x - Camera::Instance().getPosition().x,
+				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.4f, 0.0f, 255, flip, false, [&](CallbackType type) -> void
+				{
+					switch (type)
+					{
+						case CallbackType::ANIMATION_END:
+							std::cout << "die call back" << std::endl;
+							ScoreManager::addScore(10);
+							getParent()->addChildDuringUpdating(new Explosion(getTransform().getPosition().x, getTransform().getPosition().y, getWidth(), getHeight(), ExplosionType::EXPLOSION_BIG));
+							getParent()->addChildRemoving(this);
+							break;
+						default:
+							break;
+					}
+				});
 
 			break;
 	}
@@ -93,8 +108,7 @@ void EnemyHuman1::update()
 
 void EnemyHuman1::clean()
 {
-	ScoreManager::addScore(10);
-	getParent()->addChildDuringUpdating(new Explosion(getTransform().getPosition().x, getTransform().getPosition().y, getWidth(), getHeight(), ExplosionType::EXPLOSION_BIG));
+
 }
 
 void EnemyHuman1::collision(DisplayObject* obj)
@@ -113,4 +127,10 @@ void EnemyHuman1::hit()
 		SoundManager::Instance().playSound(SoundID::HIT);
 	}
 	Character::hit();
+}
+
+void EnemyHuman1::die()
+{
+
+	Character::die();
 }

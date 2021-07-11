@@ -81,6 +81,8 @@ void Boss1::draw()
 					switch (type)
 					{
 						case CallbackType::ANIMATION_END:
+							ScoreManager::addScore(100);
+							getParent()->addChildDuringUpdating(new Explosion(getTransform().getPosition().x, getTransform().getPosition().y, getWidth(), getHeight(), ExplosionType::EXPLOSION_BIG));
 							getParent()->getDoor()->setEnabled(true);
 							getParent()->addChildRemoving(this);
 							break;
@@ -100,8 +102,7 @@ void Boss1::update()
 
 void Boss1::clean()
 {
-	ScoreManager::addScore(100);
-	getParent()->addChildDuringUpdating(new Explosion(getTransform().getPosition().x, getTransform().getPosition().y, getWidth(), getHeight(), ExplosionType::EXPLOSION_BIG));
+
 }
 
 void Boss1::collision(DisplayObject* obj)
@@ -124,7 +125,5 @@ void Boss1::hit()
 
 void Boss1::die()
 {
-	setIsDead(true);
-	setCurrentState(CharacterState::DEAD);
-	//Character::die();
+	Character::die();
 }

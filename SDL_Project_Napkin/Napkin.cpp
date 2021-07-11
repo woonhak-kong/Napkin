@@ -314,8 +314,7 @@ void Napkin::collision(DisplayObject* obj)
 
 void Napkin::die()
 {
-	setIsDead(true);
-	setCurrentState(CharacterState::DEAD);
+	Character::die();
 }
 
 void Napkin::handleEvent()

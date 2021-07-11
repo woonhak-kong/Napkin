@@ -166,6 +166,21 @@ void StateParser::ParseTextures(TiXmlElement* pStateRoot)
             TextureManager::Instance().setAnimation(idAttribute, animation);
             animation.frames.clear();
 
+            animation.name = TextureID::ENEMY_HUMAN_DEAD;
+            startCul = 5;
+            startRow = 3;
+            for (int i = 0; i < 4; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = size.x * (startCul + i);
+                frame.y = size.y * startRow;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(idAttribute, animation);
+            animation.frames.clear();
+
             animation.name = TextureID::ENEMY_HUMAN_RUN;
             startCul = 0;
             startRow = 2;

@@ -362,7 +362,7 @@ void Character::die()
 {
 	m_curState = CharacterState::DEAD;
 	m_isDead = true;
-	getParent()->addChildRemoving(this);
+	//getParent()->addChildRemoving(this);
 }
 
 void Character::makingAttackCollisionBox()

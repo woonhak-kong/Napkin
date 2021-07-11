@@ -15,6 +15,7 @@ public:
 	void collision(DisplayObject* obj) override;
 
 	void hit() override;
+	void die() override;
 };
 
 #endif // __ENEMY_HUMAN1__
