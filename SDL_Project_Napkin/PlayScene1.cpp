@@ -106,7 +106,7 @@ bool PlayScene1::onEnter()
 	SoundManager::Instance().playMusic(SoundID::BGM);
 
 
-	Background* background = new Background();
+	Background* background = new Background(SceneState::PLAY_SCENE1);
 	addChild(background);
 
 	LevelParser levelParser;

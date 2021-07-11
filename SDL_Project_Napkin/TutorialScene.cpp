@@ -95,7 +95,7 @@ bool TutorialScene::onEnter()
 	StateParser stateParser;
 	stateParser.ParseState(Config::TEXTURE_LOCATION.c_str(), Config::TUTORIAL_SCENE);
 
-	Background* background = new Background();
+	Background* background = new Background(SceneState::TUTORIAL_SCENE);
 	addChild(background);
 
 	LevelParser levelParser;

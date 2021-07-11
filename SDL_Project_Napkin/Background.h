@@ -3,10 +3,12 @@
 #define __BACKGROUND__
 
 #include "DisplayObject.h"
+#include "SceneState.h"
+
 class Background : public DisplayObject
 {
 public:
-	Background();
+	Background(SceneState state);
 	~Background() = default;
 	void draw() override;
 	void update() override;
@@ -14,6 +16,7 @@ public:
 
 private:
 
+	SceneState m_sceneState;
 	// temporary
 
 };
