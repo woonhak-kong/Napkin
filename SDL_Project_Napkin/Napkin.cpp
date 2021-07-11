@@ -16,6 +16,7 @@ Napkin::Napkin(const LoaderParams& loader) :
 	Character(loader),
 	m_energyBar(nullptr),
 	m_gameOver(false),
+	m_gameClear(false),
 	m_jumpNum(0),
 	m_isJumpPushed(false)
 {
@@ -306,8 +307,8 @@ void Napkin::collision(DisplayObject* obj)
 	}
 	if (obj->getType() == GameObjectType::DOOR)
 	{
-		obj->setEnabled(false);
-		TheGame::Instance().changeSceneState(SceneState::PLAY_SCENE1);
+		//obj->setEnabled(false);
+		m_gameClear = true;
 	}
 }
 
@@ -375,4 +376,9 @@ void Napkin::handleEvent()
 bool Napkin::getGameOver() const
 {
 	return m_gameOver;
+}
+
+bool Napkin::getGameClear() const
+{
+	return m_gameClear;
 }

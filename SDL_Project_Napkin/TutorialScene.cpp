@@ -10,6 +10,7 @@
 #include "SoundManager.h"
 #include "StateParser.h"
 #include "LevelParser.h"
+#include "SoundID.h"
 
 TutorialScene::TutorialScene() :
 	m_state(SceneState::TUTORIAL_SCENE),
@@ -42,6 +43,10 @@ void TutorialScene::update()
 	if (dynamic_cast<Napkin*>(getPlayer())->getGameOver())
 	{
 		TheGame::Instance().changeSceneState(SceneState::END_SCENE);
+	}
+	if (dynamic_cast<Napkin*>(getPlayer())->getGameClear())
+	{
+		TheGame::Instance().changeSceneState(SceneState::PLAY_SCENE1);
 	}
 	// Checking all Collisions
 	auto displayList = getDisplayList();
@@ -101,6 +106,8 @@ bool TutorialScene::onEnter()
 	StateParser stateParser;
 	stateParser.ParseState(Config::TEXTURE_LOCATION.c_str(), Config::TUTORIAL_SCENE);
 
+	SoundManager::Instance().playMusic(SoundID::BGM);
+
 	Background* background = new Background(SceneState::TUTORIAL_SCENE);
 	addChild(background);
 
@@ -114,6 +121,14 @@ bool TutorialScene::onEnter()
 	Label* moveExplanation = new Label("You can move by clicking '<-'  '->' ", "Consolas", 20, { 255, 255, 0, 255 },
 		glm::vec2(80, 500.0f), 0, false, true);
 	addChild(moveExplanation);
+
+	Label* hpExplanation = new Label("-This is your HP-", "Consolas", 20, { 255, 255, 0, 255 },
+		glm::vec2(80, 60.0f), 0, false);
+	addChild(hpExplanation);
+
+	Label* scoreExplanation = new Label("You can get a score by killing enemies --> ", "Consolas", 20, { 255, 255, 0, 255 },
+		glm::vec2(450, 40.0f), 0, false);
+	addChild(scoreExplanation);
 
 	Label* doubleJumpExplanation = new Label("You can double jump by clicking 'Space' twice ", "Consolas", 20, { 255, 255, 0, 255 },
 		glm::vec2(400, 300.0f), 0, false, true);
@@ -144,7 +159,7 @@ bool TutorialScene::onEnter()
 
 	//setPlayer(player);
 	setLevel(level);
-
+	getDoor()->setEnabled(true);
 	return true;
 }
 

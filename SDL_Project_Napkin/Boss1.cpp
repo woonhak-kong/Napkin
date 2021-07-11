@@ -81,6 +81,7 @@ void Boss1::draw()
 					switch (type)
 					{
 						case CallbackType::ANIMATION_END:
+							getParent()->getDoor()->setEnabled(true);
 							getParent()->addChildRemoving(this);
 							break;
 						default:

@@ -19,10 +19,12 @@ public:
 	void handleEvent();
 
 	bool getGameOver() const;
+	bool getGameClear() const;
 
 private:
 	EnergyBar* m_energyBar;
 	bool m_gameOver;
+	bool m_gameClear;
 	int m_jumpNum;
 
 	bool m_isJumpPushed;

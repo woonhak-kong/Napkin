@@ -47,6 +47,11 @@ void PlayScene1::update()
 		TheGame::Instance().changeSceneState(SceneState::END_SCENE);
 	}
 
+	if (dynamic_cast<Napkin*>(getPlayer())->getGameClear())
+	{
+		TheGame::Instance().changeSceneState(SceneState::END_SCENE);
+	}
+
 	// Checking all Collisions
 	auto displayList = getDisplayList();
 	//std::cout << displayList.size() << std::endl;

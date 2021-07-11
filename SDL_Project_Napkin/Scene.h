@@ -37,8 +37,10 @@ public:
 	void drawDisplayList();
 
 	GameObject* getPlayer() const;
+	GameObject* getDoor() const;
 	Level* getLevel() const;
 	void setPlayer(GameObject* player);
+	void setDoor(GameObject* door);
 	void setLevel(Level* level);
 
 	std::vector<DisplayObject*>& getDisplayList();
@@ -50,6 +52,7 @@ private:
 	std::vector<DisplayObject*> m_removingListDuringUpdating;
 
 	GameObject* m_player;
+	GameObject* m_door;
 	Level* m_pLevel;
 
 	static bool sortObjects(DisplayObject* left, DisplayObject* right);

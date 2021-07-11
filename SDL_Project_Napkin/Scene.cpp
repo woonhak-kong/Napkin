@@ -150,6 +150,12 @@ GameObject* Scene::getPlayer() const
 	return m_player;
 }
 
+GameObject* Scene::getDoor() const
+{
+	std::cout << "getdoor" << std::endl;
+	return m_door;
+}
+
 Level* Scene::getLevel() const
 {
 	return m_pLevel;
@@ -158,6 +164,11 @@ Level* Scene::getLevel() const
 void Scene::setPlayer(GameObject* player)
 {
 	m_player = player;
+}
+
+void Scene::setDoor(GameObject* door)
+{
+	m_door = door;
 }
 
 void Scene::setLevel(Level* level)

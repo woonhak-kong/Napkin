@@ -2,6 +2,8 @@
 
 #include "Camera.h"
 #include "Config.h"
+#include "Game.h"
+#include "SceneState.h"
 #include "TextureID.h"
 #include "TextureManager.h"
 

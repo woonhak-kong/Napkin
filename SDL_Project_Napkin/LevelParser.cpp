@@ -200,7 +200,10 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, Scene* scene)
             }
             else if (ID == EnemyType::DOOR)
             {
-                scene->addChild(new Door(loader), 1);
+                Door* door = new Door(loader);
+                scene->addChild(door, 1);
+                scene->setDoor(door);
+                door->setEnabled(false);
             }
            // pGameObject->load(new LoaderParams(x, y, width, height, textureID, numFrames, callbackID, animSpeed));
            // pObjectLayer->getGameObjects()->push_back(pGameObject);

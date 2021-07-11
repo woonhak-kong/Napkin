@@ -9,7 +9,7 @@
             <texture filename="assets/objects/door.png" ID="door"/>
         </TEXTURES>
         <SOUNDS>
-            <sound filename="assets/sounds/bgm/scene1.mp3" soundtype="bgm" ID="bgm"/>
+            <sound filename="assets/sounds/bgm/scene0.mp3" soundtype="bgm" ID="bgm"/>
             <sound filename="assets/sounds/sfx/hit26.mp3" soundtype="sfx" ID="hit"/>
             <sound filename="assets/sounds/sfx/sword1.wav" soundtype="sfx" ID="attack"/>
             <sound filename="assets/sounds/sfx/enemy_explosion.wav" soundtype="sfx" ID="enemy_explosion"/>

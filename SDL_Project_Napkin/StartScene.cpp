@@ -72,7 +72,7 @@ bool StartScene::onEnter()
 	m_pSartButton->addEventListener(Event::CLICK, [&]()-> void
 		{
 			SoundManager::Instance().playSound(SoundID::BTN_CLICK);
-			Game::Instance().changeSceneState(SceneState::PLAY_SCENE1);
+			Game::Instance().changeSceneState(SceneState::TUTORIAL_SCENE);
 
 		});
 	m_pSartButton->addEventListener(Event::MOUSE_OVER, [&]() -> void
