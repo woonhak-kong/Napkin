@@ -356,23 +356,27 @@ void Napkin::handleEvent()
 		//jump();
 		if (!m_isJumpPushed)
 		{
+
 			if (getCurrentState() == CharacterState::FALL && m_jumpNum == 0)
 			{
 				setIsJumping(false);
 				m_jumpNum = 2;
 				jump();
+				SoundManager::Instance().playSound(SoundID::JUMP);
 
 			}
 			else if (m_jumpNum == 0)
 			{
 				m_jumpNum++;
 				jump();
+				SoundManager::Instance().playSound(SoundID::JUMP);
 			}
 			else if (m_jumpNum == 1)
 			{
 				setIsJumping(false);
 				m_jumpNum++;
 				jump();
+				SoundManager::Instance().playSound(SoundID::JUMP);
 			}
 		}
 		m_isJumpPushed = true;
