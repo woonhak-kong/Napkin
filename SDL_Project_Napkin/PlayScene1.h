@@ -4,6 +4,8 @@
 #include "Level.h"
 #include "Napkin.h"
 #include "Scene.h"
+class Label;
+
 class PlayScene1 : public Scene
 {
 public:
@@ -22,8 +24,7 @@ public:
 
 private:
 
-
-
+	Label* m_score;
 
 	SceneState m_state;
 };

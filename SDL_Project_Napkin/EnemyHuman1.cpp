@@ -6,6 +6,7 @@
 #include "EnemyHumanAI.h"
 #include "Explosion.h"
 #include "Scene.h"
+#include "ScoreManager.h"
 #include "SoundID.h"
 #include "SoundManager.h"
 #include "TextureID.h"
@@ -92,7 +93,7 @@ void EnemyHuman1::update()
 
 void EnemyHuman1::clean()
 {
-
+	ScoreManager::addScore(10);
 	getParent()->addChildDuringUpdating(new Explosion(getTransform().getPosition().x, getTransform().getPosition().y, getWidth(), getHeight(), ExplosionType::EXPLOSION_BIG));
 }
 

@@ -1,5 +1,6 @@
 #include "Boss1.h"
 
+#include "AttackBox.h"
 #include "Camera.h"
 #include "EnemyHumanAI.h"
 #include "SoundID.h"
@@ -88,6 +89,11 @@ void Boss1::clean()
 
 void Boss1::collision(DisplayObject* obj)
 {
+	if (obj->getType() == GameObjectType::PLAYER_ATTACK)
+	{
+		takeDamage(dynamic_cast<AttackBox*>(obj)->getAttackPower());
+		dynamic_cast<AttackBox*>(obj)->deleteAttackBox();
+	}
 }
 
 void Boss1::hit()

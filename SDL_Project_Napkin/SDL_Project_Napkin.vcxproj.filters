@@ -217,6 +217,9 @@
     <ClInclude Include="Boss1.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
+    <ClInclude Include="ScoreManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -347,6 +350,9 @@
     </ClCompile>
     <ClCompile Include="Boss1.cpp">
       <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreManager.cpp">
+      <Filter>Managers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

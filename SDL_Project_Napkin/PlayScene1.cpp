@@ -8,13 +8,16 @@
 #include "LevelParser.h"
 #include "EventManager.h"
 #include "Game.h"
+#include "Label.h"
+#include "ScoreManager.h"
 #include "SoundID.h"
 #include "SoundManager.h"
 #include "StateParser.h"
 #include "TextureManager.h"
 
 PlayScene1::PlayScene1() :
-	m_state(SceneState::PLAY_SCENE1)
+	m_state(SceneState::PLAY_SCENE1),
+	m_score(0)
 {
 }
 
@@ -65,6 +68,7 @@ void PlayScene1::update()
 		}
 	}
 
+	m_score->setText("Score : " + std::to_string(ScoreManager::getScore()));
 }
 
 void PlayScene1::clean()
@@ -105,8 +109,11 @@ bool PlayScene1::onEnter()
 	Level*  level = levelParser.ParseLevel("assets/maps/scene1.tmx", this);
 	addChild(level);
 
+	m_score = new Label("Score : ", "Consolas", 30, { 0, 255, 0, 255 }, glm::vec2(1000, 50.0f));
+	addChild(m_score);
 
-	Napkin* player = new Napkin(LoaderParams(100, 400, 80, 70, 40, 70, 50, 20, "napkin"));
+
+	Napkin* player = new Napkin(LoaderParams(100, 400, 80, 70, 40, 70, 500, 20, "napkin"));
 	addChild(player, 1);
 
 
