@@ -28,6 +28,7 @@ public:
 	inline static const std::string TEXTURE_LOCATION = "assets/state.xml";
 
 	inline static const std::string START_SCENE = "STARTSCENE";
+	inline static const std::string END_SCENE = "ENDSCENE";
 	inline static const std::string PLAY_SCENE1 = "PLAYSCENE1";
 	inline static const std::string PLAY_SCENE2 = "PLAYSCENE2";
 	inline static const std::string PLAY_SCENE3 = "PLAYSCENE3";

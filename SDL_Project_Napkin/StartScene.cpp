@@ -71,6 +71,7 @@ bool StartScene::onEnter()
 
 	m_pSartButton->addEventListener(Event::CLICK, [&]()-> void
 		{
+			SoundManager::Instance().playSound(SoundID::BTN_CLICK);
 			Game::Instance().changeSceneState(SceneState::PLAY_SCENE1);
 
 		});
@@ -91,6 +92,7 @@ bool StartScene::onEnter()
 		glm::vec2(Config::SCREEN_WIDTH / 2, Config::SCREEN_HEIGHT / 2 + 120), true);
 	m_pExitButton->addEventListener(Event::CLICK, [&]() -> void
 		{
+			SoundManager::Instance().playSound(SoundID::BTN_CLICK);
 			TheGame::Instance().quit();
 		});
 	m_pExitButton->addEventListener(Event::MOUSE_OVER, [&]() -> void

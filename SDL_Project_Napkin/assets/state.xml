@@ -3,8 +3,15 @@
     <STARTSCENE>
         <SOUNDS>
             <sound filename="assets/sounds/sfx/btn_hover.ogg" soundtype="sfx" ID="btn_hover"/>
+            <sound filename="assets/sounds/sfx/btn_click.wav" soundtype="sfx" ID="btn_click"/>
         </SOUNDS>
     </STARTSCENE>
+    <ENDSCENE>
+        <SOUNDS>
+            <sound filename="assets/sounds/sfx/btn_hover.ogg" soundtype="sfx" ID="btn_hover"/>
+            <sound filename="assets/sounds/sfx/btn_click.wav" soundtype="sfx" ID="btn_click"/>
+        </SOUNDS>
+    </ENDSCENE>
     <PLAYSCENE1>
         <TEXTURES>
             <texture filename="assets/characters/enemy/human1/Human1_64x48.png" ID="enemy_human"/>

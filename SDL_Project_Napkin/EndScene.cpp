@@ -6,6 +6,7 @@
 #include "Label.h"
 #include "SoundID.h"
 #include "SoundManager.h"
+#include "StateParser.h"
 
 EndScene::EndScene() :
 	m_state(SceneState::END_SCENE)
@@ -49,6 +50,10 @@ void EndScene::handleEvents()
 
 bool EndScene::onEnter()
 {
+
+	StateParser stateParser;
+	stateParser.ParseState(Config::TEXTURE_LOCATION.c_str(), Config::END_SCENE);
+
 	Label* gameOver = new Label("Game Over", "lazy", 200, { 255,0,0,255 }, glm::vec2(Config::SCREEN_WIDTH / 2, 120.0f));
 	addChild(gameOver);
 
@@ -56,6 +61,7 @@ bool EndScene::onEnter()
 		glm::vec2(Config::SCREEN_WIDTH / 2, Config::SCREEN_HEIGHT / 2), true);
 	m_pMenuButton->addEventListener(Event::CLICK, [&]() -> void
 		{
+			SoundManager::Instance().playSound(SoundID::BTN_CLICK);
 			TheGame::Instance().changeSceneState(SceneState::START_SCENE);
 		});
 	m_pMenuButton->addEventListener(Event::MOUSE_OVER, [&]() -> void
@@ -75,6 +81,7 @@ bool EndScene::onEnter()
 		glm::vec2(Config::SCREEN_WIDTH / 2, Config::SCREEN_HEIGHT / 2 + 120), true);
 	m_pExitButton->addEventListener(Event::CLICK, [&]() -> void
 		{
+			SoundManager::Instance().playSound(SoundID::BTN_CLICK);
 			TheGame::Instance().quit();
 		});
 	m_pExitButton->addEventListener(Event::MOUSE_OVER, [&]() -> void

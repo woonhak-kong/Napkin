@@ -14,6 +14,7 @@ public:
 	inline static const std::string ENEMY_MELEE_ATTACK = "enemy_melee_attack";
 
 	inline static const std::string BTN_HOVER = "btn_hover";
+	inline static const std::string BTN_CLICK = "btn_click";
 
 };
 

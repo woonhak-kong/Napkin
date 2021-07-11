@@ -38,10 +38,7 @@ void PlayScene1::update()
 	Scene::updateDisplayList();
 	//m_testPlayer->update();
 
-	if (dynamic_cast<Napkin*>(getPlayer())->getGameOver())
-	{
-		TheGame::Instance().changeSceneState(SceneState::END_SCENE);
-	}
+
 
 	// Checking all Collisions
 	auto displayList = getDisplayList();
@@ -67,8 +64,15 @@ void PlayScene1::update()
 			}
 		}
 	}
+	if (m_score != nullptr)
+	{
+		m_score->setText("Score : " + std::to_string(ScoreManager::getScore()));
+	}
 
-	m_score->setText("Score : " + std::to_string(ScoreManager::getScore()));
+	if (dynamic_cast<Napkin*>(getPlayer())->getGameOver())
+	{
+		TheGame::Instance().changeSceneState(SceneState::END_SCENE);
+	}
 }
 
 void PlayScene1::clean()
@@ -113,7 +117,7 @@ bool PlayScene1::onEnter()
 	addChild(m_score);
 
 
-	Napkin* player = new Napkin(LoaderParams(100, 400, 80, 70, 40, 70, 500, 20, "napkin"));
+	Napkin* player = new Napkin(LoaderParams(100, 400, 80, 70, 40, 70, 100, 20, "napkin"));
 	addChild(player, 1);
 
 
