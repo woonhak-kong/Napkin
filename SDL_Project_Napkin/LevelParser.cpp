@@ -13,6 +13,7 @@
 #include "EnemyKnight.h"
 #include "EnemyType.h"
 #include "GameObjectFactory.h"
+#include "Napkin.h"
 #include "ObjectLayer.h"
 #include "TextureID.h"
 
@@ -179,7 +180,13 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, Scene* scene)
 
         	// Todo implemeting characters.
             LoaderParams loader = LoaderParams(x, y, widthOfTexture, heightOfTexture, realWidth, realHeight, maxHP, power, ID);
-            if (ID == EnemyType::EnemyKnight)
+            if (ID == "napkin")
+            {
+                Napkin* player = new Napkin(loader);
+                scene->addChild(player, 1);
+                scene->setPlayer(player);
+            }
+            else if (ID == EnemyType::EnemyKnight)
             {
                 scene->addChild(new EnemyKnight(loader),1);
             }

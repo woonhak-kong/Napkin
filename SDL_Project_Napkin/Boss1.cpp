@@ -3,6 +3,10 @@
 #include "AttackBox.h"
 #include "Camera.h"
 #include "EnemyHumanAI.h"
+#include "Explosion.h"
+#include "ExplosionType.h"
+#include "Scene.h"
+#include "ScoreManager.h"
 #include "SoundID.h"
 #include "SoundManager.h"
 #include "TextureID.h"
@@ -68,11 +72,21 @@ void Boss1::draw()
 			break;
 		case CharacterState::HIT:
 			TextureManager::Instance().playAnimation(getAnimation(TextureID::BOSS1_HIT), getTransform().getPosition().x - Camera::Instance().getPosition().x,
-				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, 255, flip, true,  [&](CallbackType type) ->  void { this->setIsHit(false); });
+				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.1f, 0.0f, 255, flip, true,  [&](CallbackType type) ->  void { this->setIsHit(false); });
 			break;
 		case CharacterState::DEAD:
 			TextureManager::Instance().playAnimation(getAnimation(TextureID::BOSS1_DEAD), getTransform().getPosition().x - Camera::Instance().getPosition().x,
-				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, 255, flip);
+				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.4f, 0.0f, 255, flip, false, [&](CallbackType type) -> void
+				{
+					switch (type)
+					{
+						case CallbackType::ANIMATION_END:
+							getParent()->addChildRemoving(this);
+							break;
+						default:
+							break;
+					}
+				});
 			break;
 	}
 }
@@ -85,6 +99,8 @@ void Boss1::update()
 
 void Boss1::clean()
 {
+	ScoreManager::addScore(100);
+	getParent()->addChildDuringUpdating(new Explosion(getTransform().getPosition().x, getTransform().getPosition().y, getWidth(), getHeight(), ExplosionType::EXPLOSION_BIG));
 }
 
 void Boss1::collision(DisplayObject* obj)
@@ -98,8 +114,16 @@ void Boss1::collision(DisplayObject* obj)
 
 void Boss1::hit()
 {
+	if (!isHit())
+	{
+		SoundManager::Instance().playSound(SoundID::HIT);
+	}
+	Character::hit();
 }
 
 void Boss1::die()
 {
+	setIsDead(true);
+	setCurrentState(CharacterState::DEAD);
+	//Character::die();
 }

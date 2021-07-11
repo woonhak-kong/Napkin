@@ -118,8 +118,8 @@ bool PlayScene1::onEnter()
 	addChild(m_score);
 
 
-	Napkin* player = new Napkin(LoaderParams(100, 400, 80, 70, 40, 70, 100, 20, "napkin"));
-	addChild(player, 1);
+	/*Napkin* player = new Napkin(LoaderParams(100, 400, 80, 70, 40, 70, 100, 20, "napkin"));
+	addChild(player, 1);*/
 
 
 	//EnemyKnight* enemy = new EnemyKnight(glm::vec2(300, 0), 200, 10, level->getCollisionLayers());
@@ -128,7 +128,7 @@ bool PlayScene1::onEnter()
 
 	//addChild(new AttackBox(SDL_Rect{ 100,100,100,100 }, glm::vec2(10, 0), 100));
 
-	setPlayer(player);
+	//setPlayer(player);
 	setLevel(level);
 
 	return true;

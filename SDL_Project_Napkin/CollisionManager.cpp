@@ -548,9 +548,10 @@ bool CollisionManager::checkCollideTile(SDL_Rect rect, const std::vector<Layer*>
 		TileLayer* pTileLayer = static_cast<TileLayer*>(*it);
 		std::vector<std::vector<int>> tiles = pTileLayer->getTileIDs();
 		glm::vec2 layerPos = pTileLayer->getPosition();
-		int x, y, tileColumn, tileRow, tileid, realTileColumn, realTimeRow = 0;
-		x = layerPos.x / pTileLayer->getTileSize();
-		y = layerPos.y / pTileLayer->getTileSize();
+		int tileColumn, tileRow, tileid, realTileColumn, tileSize, realTimeRow = 0;
+		tileSize = pTileLayer->getTileSize();
+		int x = layerPos.x / tileSize;
+		int y = layerPos.y / tileSize;
 
 		glm::vec2 startPos(rect.x, rect.y);
 
@@ -567,8 +568,8 @@ bool CollisionManager::checkCollideTile(SDL_Rect rect, const std::vector<Layer*>
 		{
 			for (int j = startPos.y; j < endPos.y; j++)
 			{
-				tileColumn = i / pTileLayer->getTileSize();
-				tileRow = j / pTileLayer->getTileSize();
+				tileColumn = i / tileSize;
+				tileRow = j / tileSize;
 				realTileColumn = tileColumn + x;
 				realTimeRow = tileRow + y;
 				if (realTileColumn < 0 || realTimeRow < 0 || realTimeRow >= tiles.size() || realTileColumn >= tiles[realTimeRow].size())
