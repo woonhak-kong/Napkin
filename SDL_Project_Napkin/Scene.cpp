@@ -166,7 +166,7 @@ void Scene::setLevel(Level* level)
 }
 
 
-std::vector<DisplayObject*> Scene::getDisplayList() const
+std::vector<DisplayObject*>& Scene::getDisplayList()
 {
 	return m_displayList;
 }

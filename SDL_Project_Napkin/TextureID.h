@@ -27,6 +27,8 @@ public:
 	inline static const std::string BOSS1_JUMP= "boss1_jump";
 	inline static const std::string BOSS1_RUN= "boss1_run";
 	inline static const std::string BOSS1_HIT = "boss1_hit";
+
+	inline static const std::string DOOR = "door";
 };
 
 #endif //__TEXTURE_ID__

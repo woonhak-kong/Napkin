@@ -8,6 +8,7 @@
 
 #include "Boss1.h"
 #include "Config.h"
+#include "Door.h"
 #include "EnemyHuman1.h"
 #include "EnemyKnight.h"
 #include "EnemyType.h"
@@ -189,6 +190,10 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, Scene* scene)
             else if (ID == EnemyType::Boss1)
             {
                 scene->addChild(new Boss1(loader), 1);
+            }
+            else if (ID == EnemyType::DOOR)
+            {
+                scene->addChild(new Door(loader), 1);
             }
            // pGameObject->load(new LoaderParams(x, y, width, height, textureID, numFrames, callbackID, animSpeed));
            // pObjectLayer->getGameObjects()->push_back(pGameObject);

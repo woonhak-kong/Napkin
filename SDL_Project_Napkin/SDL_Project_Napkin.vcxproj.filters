@@ -223,6 +223,9 @@
     <ClInclude Include="TutorialScene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="Door.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -359,6 +362,9 @@
     </ClCompile>
     <ClCompile Include="TutorialScene.cpp">
       <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Door.cpp">
+      <Filter>GameObjects</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

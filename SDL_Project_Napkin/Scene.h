@@ -41,7 +41,7 @@ public:
 	void setPlayer(GameObject* player);
 	void setLevel(Level* level);
 
-	std::vector<DisplayObject*> getDisplayList() const;
+	std::vector<DisplayObject*>& getDisplayList();
 
 private:
 	uint32_t m_nextLayerIndex;

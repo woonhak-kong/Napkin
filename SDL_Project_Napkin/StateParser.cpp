@@ -398,6 +398,26 @@ void StateParser::ParseTextures(TiXmlElement* pStateRoot)
             TextureManager::Instance().setAnimation(TextureID::BOSS1, animation);
             animation.frames.clear();
         }
+        else if (idAttribute == TextureID::DOOR)
+        {
+            Animation animation = Animation();
+            Frame frame;
+            const glm::vec2 size(32, 32);
+
+            animation.name = TextureID::DOOR;
+
+            for (int i = 0; i < 5; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = size.x * i;
+                frame.y = 0;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(idAttribute, animation);
+            animation.frames.clear();
+        }
 
     }
 }

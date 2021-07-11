@@ -37,8 +37,15 @@ void PlayScene1::update()
 {
 	Scene::updateDisplayList();
 	//m_testPlayer->update();
+	if (m_score != nullptr)
+	{
+		m_score->setText("Score : " + std::to_string(ScoreManager::getScore()));
+	}
 
-
+	if (dynamic_cast<Napkin*>(getPlayer())->getGameOver())
+	{
+		TheGame::Instance().changeSceneState(SceneState::END_SCENE);
+	}
 
 	// Checking all Collisions
 	auto displayList = getDisplayList();
@@ -64,15 +71,8 @@ void PlayScene1::update()
 			}
 		}
 	}
-	if (m_score != nullptr)
-	{
-		m_score->setText("Score : " + std::to_string(ScoreManager::getScore()));
-	}
 
-	if (dynamic_cast<Napkin*>(getPlayer())->getGameOver())
-	{
-		TheGame::Instance().changeSceneState(SceneState::END_SCENE);
-	}
+
 }
 
 void PlayScene1::clean()
@@ -99,6 +99,7 @@ void PlayScene1::handleEvents()
 
 bool PlayScene1::onEnter()
 {
+	ScoreManager::resetScore();
 	// texture loading
 	StateParser stateParser;
 	stateParser.ParseState(Config::TEXTURE_LOCATION.c_str(), Config::PLAY_SCENE1);

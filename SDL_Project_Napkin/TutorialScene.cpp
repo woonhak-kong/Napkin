@@ -12,7 +12,7 @@
 #include "LevelParser.h"
 
 TutorialScene::TutorialScene() :
-	m_state(SceneState::PLAY_SCENE1),
+	m_state(SceneState::TUTORIAL_SCENE),
 	m_score(0)
 {
 }
@@ -34,7 +34,15 @@ void TutorialScene::clean()
 void TutorialScene::update()
 {
 	Scene::updateDisplayList();
+	if (m_score != nullptr)
+	{
+		m_score->setText("Score : " + std::to_string(ScoreManager::getScore()));
+	}
 
+	if (dynamic_cast<Napkin*>(getPlayer())->getGameOver())
+	{
+		TheGame::Instance().changeSceneState(SceneState::END_SCENE);
+	}
 	// Checking all Collisions
 	auto displayList = getDisplayList();
 	//std::cout << displayList.size() << std::endl;
@@ -46,32 +54,30 @@ void TutorialScene::update()
 		{
 
 			DisplayObject* objB = *iterB;
+
 			if (objA->getType() != GameObjectType::NONE && objB->getType() != GameObjectType::NONE)
 			{
-				if (objA->getType() != objB->getType())
+				if (objA->isEnabled() && objB->isEnabled())
 				{
-					if (CollisionManager::AABBCheckByRealCollisionBox(objA, objB))
+					if (objA->getType() != objB->getType())
 					{
-						objA->collision(objB);
-						objB->collision(objA);
+						if (CollisionManager::AABBCheckByRealCollisionBox(objA, objB))
+						{
+							objA->collision(objB);
+							objB->collision(objA);
+						}
 					}
 				}
 			}
 		}
 	}
-	if (m_score != nullptr)
-	{
-		m_score->setText("Score : " + std::to_string(ScoreManager::getScore()));
-	}
 
-	if (dynamic_cast<Napkin*>(getPlayer())->getGameOver())
-	{
-		TheGame::Instance().changeSceneState(SceneState::END_SCENE);
-	}
+
 }
 
 bool TutorialScene::onExit()
 {
+	std::cout << "Tutorial Scene on exit" << std::endl;
 	Scene::removeAllChildren();
 	SoundManager::Instance().clear();
 	return true;
@@ -121,7 +127,7 @@ bool TutorialScene::onEnter()
 		glm::vec2(1100, 400.0f), 0, false, true);
 	addChild(hitExplanation);
 
-	Label* gateExplanation = new Label("The gate send you next level", "Consolas", 20, { 255, 180, 0, 255 },
+	Label* gateExplanation = new Label("The gate sends you to next level", "Consolas", 20, { 255, 180, 0, 255 },
 		glm::vec2(2000, 200.0f), 0, false, true);
 	addChild(gateExplanation);
 

@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="150" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="15" nextobjectid="134">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="150" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="16" nextobjectid="136">
  <properties>
   <property name="Player" value="player.png"/>
  </properties>
  <tileset firstgid="1" name="level2_build1" tilewidth="16" tileheight="16" tilecount="7056" columns="84">
   <image source="PixelPlatformerSet2v/main_lev_buildA.png" width="1344" height="1344"/>
  </tileset>
+ <objectgroup id="15" name="door">
+  <properties>
+   <property name="heightOfTexture" type="int" value="64"/>
+   <property name="id" value="door"/>
+   <property name="maxHp" type="int" value="0"/>
+   <property name="power" type="int" value="0"/>
+   <property name="realHeight" type="int" value="64"/>
+   <property name="realWidth" type="int" value="64"/>
+   <property name="widthOfTexture" type="int" value="64"/>
+  </properties>
+  <object id="134" x="2289.33" y="271.333" width="64" height="64"/>
+ </objectgroup>
  <objectgroup id="10" name="enemy_human1">
   <properties>
    <property name="heightOfTexture" type="int" value="96"/>

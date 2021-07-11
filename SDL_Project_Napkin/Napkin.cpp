@@ -304,6 +304,11 @@ void Napkin::collision(DisplayObject* obj)
 		takeDamage(dynamic_cast<AttackBox*>(obj)->getAttackPower());
 		dynamic_cast<AttackBox*>(obj)->deleteAttackBox();
 	}
+	if (obj->getType() == GameObjectType::DOOR)
+	{
+		obj->setEnabled(false);
+		TheGame::Instance().changeSceneState(SceneState::PLAY_SCENE1);
+	}
 }
 
 void Napkin::die()
