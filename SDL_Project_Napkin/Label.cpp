@@ -1,9 +1,11 @@
 #include "Label.h"
+
+#include "Camera.h"
 #include "TextureManager.h"
 
 
-Label::Label(const std::string& text, const std::string& font_name, const int font_size, const SDL_Color colour, const glm::vec2 position, const int font_style, const bool is_centered) :
-	m_fontColour(colour), m_fontName(font_name), m_text(text), m_isCentered(is_centered), m_fontSize(font_size), m_fontStyle(font_style)
+Label::Label(const std::string& text, const std::string& font_name, const int font_size, const SDL_Color colour, const glm::vec2 position, const int font_style, const bool is_centered, bool fixed/* = false */) :
+	m_fontColour(colour), m_fontName(font_name), m_text(text), m_isCentered(is_centered), m_fontSize(font_size), m_fontStyle(font_style), m_isFixed(fixed)
 {
 	m_fontPath = "assets/fonts/" + font_name + ".ttf";
 
@@ -27,7 +29,14 @@ void Label::draw()
 	const auto y = getTransform().getPosition().y;
 
 	// draw the label
-	TextureManager::Instance().drawText(m_fontID, x, y, 0, 255, m_isCentered);
+	if (m_isFixed)
+	{
+		TextureManager::Instance().drawText(m_fontID, x - Camera::Instance().getPosition().x , y - Camera::Instance().getPosition().y, 0, 255, m_isCentered);
+	}
+	else
+	{
+		TextureManager::Instance().drawText(m_fontID, x, y, 0, 255, m_isCentered);
+	}
 }
 
 void Label::update()

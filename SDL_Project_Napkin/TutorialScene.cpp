@@ -105,6 +105,26 @@ bool TutorialScene::onEnter()
 	m_score = new Label("Score : ", "Consolas", 30, { 0, 255, 0, 255 }, glm::vec2(1000, 50.0f));
 	addChild(m_score);
 
+	Label* moveExplanation = new Label("You can move by clicking '<-'  '->' ", "Consolas", 20, { 255, 255, 0, 255 },
+		glm::vec2(80, 500.0f), 0, false, true);
+	addChild(moveExplanation);
+
+	Label* doubleJumpExplanation = new Label("You can double jump by clicking 'Space' twice ", "Consolas", 20, { 255, 255, 0, 255 },
+		glm::vec2(400, 300.0f), 0, false, true);
+	addChild(doubleJumpExplanation);
+
+	Label* attackExplanation = new Label("You can attack by clicking 'F'", "Consolas", 20, { 255, 255, 0, 255 },
+		glm::vec2(900, 500.0f), 0, false, true);
+	addChild(attackExplanation);
+
+	Label* hitExplanation = new Label("If you're hit by enemies, HP will be reduced.", "Consolas", 20, { 255, 55, 0, 255 },
+		glm::vec2(1100, 400.0f), 0, false, true);
+	addChild(hitExplanation);
+
+	Label* gateExplanation = new Label("The gate send you next level", "Consolas", 20, { 255, 180, 0, 255 },
+		glm::vec2(2000, 200.0f), 0, false, true);
+	addChild(gateExplanation);
+
 
 	Napkin* player = new Napkin(LoaderParams(100, 400, 80, 70, 40, 70, 100, 20, "napkin"));
 	addChild(player, 1);
