@@ -44,6 +44,10 @@ bool FontManager::textToTexture(const std::string& text, const std::string& font
 		SDL_FreeSurface(textSurface);
 
 		//Create texture from surface pixels
+		//if(TextureManager::Instance().getTexture(texture_id) != nullptr)
+		//{
+			TextureManager::Instance().removeTexture(texture_id);
+		//}
 		TextureManager::Instance().addTexture(texture_id, pTexture);
 		if (TextureManager::Instance().getTexture(texture_id) == nullptr)
 		{

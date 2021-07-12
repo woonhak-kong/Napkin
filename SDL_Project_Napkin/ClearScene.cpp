@@ -99,6 +99,7 @@ bool ClearScene::onEnter()
 			m_pExitButton->setAlpha(255);
 		});
 	addChild(m_pExitButton);
+	return true;
 }
 
 SceneState ClearScene::getState()
