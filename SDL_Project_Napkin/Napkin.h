@@ -1,6 +1,7 @@
 #pragma once
 #include "Character.h"
 #include "EnergyBar.h"
+#include "Sword.h"
 
 class Napkin : public Character
 {
@@ -18,6 +19,9 @@ public:
 	void die() override;
 	void handleEvent();
 
+	void changeSwordRight();
+	void changeSwordLeft();
+
 	bool getGameOver() const;
 	bool getGameClear() const;
 
@@ -29,5 +33,8 @@ private:
 
 	bool m_isJumpPushed;
 	int m_hitMotionNum;
+
+	std::vector<Sword*> m_swordVector;
+	int m_swordIdx;
 };
 

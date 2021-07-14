@@ -5,6 +5,7 @@
 #include "AttackBox.h"
 #include "Camera.h"
 #include "CollisionManager.h"
+#include "Config.h"
 #include "EventManager.h"
 #include "Game.h"
 #include "Scene.h"
@@ -19,7 +20,8 @@ Napkin::Napkin(const LoaderParams& loader) :
 	m_gameClear(false),
 	m_jumpNum(0),
 	m_isJumpPushed(false),
-	m_hitMotionNum(0)
+	m_hitMotionNum(0),
+	m_swordIdx(0)
 {
 
 	//todo / we should control load function XML
@@ -195,8 +197,14 @@ Napkin::Napkin(const LoaderParams& loader) :
 	setAttackType(GameObjectType::PLAYER_ATTACK);
 	/////////////////////////////////////////////////
 
-	setAttackSpeed(2);
-	setAttackReach(100);
+
+	m_swordVector.push_back(new Sword(Config::SCREEN_WIDTH * 0.5 - 30, 50, SwordType::LASER_SWORD));
+	setAttackSpeed(m_swordVector[m_swordIdx]->getAttackSpeed());
+	setAttackReach(m_swordVector[m_swordIdx]->getReach());
+	setAttackPower(m_swordVector[m_swordIdx]->getPower());
+
+	//setAttackSpeed(2);
+	//setAttackReach(100);
 	/*std::cout << getAnimation("attack2").frames.size()<< std::endl;
 	setAttackSpeed(getAnimation("attack2").frames.size()* round(getAnimation("attack2").frames.size() / 2 / 0.5f));*/
 
@@ -393,6 +401,30 @@ void Napkin::handleEvent()
 		}
 		attack();
 	}
+}
+
+void Napkin::changeSwordRight()
+{
+	m_swordIdx++;
+	if (m_swordIdx >= m_swordVector.size())
+	{
+		m_swordIdx = 0;
+	}
+	setAttackSpeed(m_swordVector[m_swordIdx]->getAttackSpeed());
+	setAttackReach(m_swordVector[m_swordIdx]->getReach());
+	setAttackPower(m_swordVector[m_swordIdx]->getPower());
+}
+
+void Napkin::changeSwordLeft()
+{
+	m_swordIdx--;
+	if (m_swordIdx < 0)
+	{
+		m_swordIdx = m_swordVector.size() - 1;
+	}
+	setAttackSpeed(m_swordVector[m_swordIdx]->getAttackSpeed());
+	setAttackReach(m_swordVector[m_swordIdx]->getReach());
+	setAttackPower(m_swordVector[m_swordIdx]->getPower());
 }
 
 bool Napkin::getGameOver() const

@@ -31,6 +31,7 @@ public:
 	void setAttackSpeed(float speed);
 	void setCurrentState(CharacterState state);
 	void setAttackReach(int reach);
+	void setAttackPower(int power);
 	void setAttackType(GameObjectType attackType);
 	void setIsJumping(bool jumping);
 	void setIsAttacking(bool attacking);

@@ -14,6 +14,7 @@ public:
 	virtual void clean();
 	void collision(DisplayObject* obj) override;
 
+	float getAttackSpeed() const;
 	int getPower() const;
 	int getReach() const;
 	int getDurability() const;
@@ -24,6 +25,7 @@ public:
 
 private:
 
+	float m_attackSpeed;
 	int m_attackPower;
 	int m_reach;
 	int m_durability;

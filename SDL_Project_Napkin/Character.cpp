@@ -210,6 +210,11 @@ void Character::setAttackReach(int reach)
 	m_attackReach = reach;
 }
 
+void Character::setAttackPower(int power)
+{
+	m_attackPower = power;
+}
+
 void Character::setAttackType(GameObjectType attackType)
 {
 	m_attackType = attackType;
