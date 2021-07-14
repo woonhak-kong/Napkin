@@ -7,6 +7,10 @@
             <texture filename="assets/particles/explosion/explosion2.png" ID="explosion2"/>
             <texture filename="assets/UI/energy_background.png" ID="energy_background"/>
             <texture filename="assets/objects/door.png" ID="door"/>
+            <texture filename="assets/objects/basic_sword.png" ID="basic_sword"/>
+            <texture filename="assets/objects/dark_sword.png" ID="dark_sword"/>
+            <texture filename="assets/objects/fire_sword.png" ID="fire_sword"/>
+            <texture filename="assets/objects/laser_sword.png" ID="laser_sword"/>
         </TEXTURES>
         <SOUNDS>
             <sound filename="assets/sounds/bgm/scene0.mp3" soundtype="bgm" ID="bgm"/>
@@ -44,6 +48,10 @@
             <texture filename="assets/characters/boss1/Run.png" ID="boss1_run"/>
             <texture filename="assets/characters/boss1/Take_hit.png" ID="boss1_hit"/>
             <texture filename="assets/objects/door.png" ID="door"/>
+            <texture filename="assets/objects/basic_sword.png" ID="basic_sword"/>
+            <texture filename="assets/objects/dark_sword.png" ID="dark_sword"/>
+            <texture filename="assets/objects/fire_sword.png" ID="fire_sword"/>
+            <texture filename="assets/objects/laser_sword.png" ID="laser_sword"/>
         </TEXTURES>
         <SOUNDS>
             <sound filename="assets/sounds/bgm/scene1.mp3" soundtype="bgm" ID="bgm"/>
@@ -61,6 +69,10 @@
             <texture filename="assets/particles/explosion/explosion2.png" ID="explosion2"/>
             <texture filename="assets/UI/energy_background.png" ID="energy_background"/>
             <texture filename="assets/objects/door.png" ID="door"/>
+            <texture filename="assets/objects/basic_sword.png" ID="basic_sword"/>
+            <texture filename="assets/objects/dark_sword.png" ID="dark_sword"/>
+            <texture filename="assets/objects/fire_sword.png" ID="fire_sword"/>
+            <texture filename="assets/objects/laser_sword.png" ID="laser_sword"/>
         </TEXTURES>
         <SOUNDS>
             <sound filename="assets/sounds/bgm/scene2.mp3" soundtype="bgm" ID="bgm"/>
@@ -78,6 +90,10 @@
             <texture filename="assets/particles/explosion/explosion2.png" ID="explosion2"/>
             <texture filename="assets/UI/energy_background.png" ID="energy_background"/>
             <texture filename="assets/objects/door.png" ID="door"/>
+            <texture filename="assets/objects/basic_sword.png" ID="basic_sword"/>
+            <texture filename="assets/objects/dark_sword.png" ID="dark_sword"/>
+            <texture filename="assets/objects/fire_sword.png" ID="fire_sword"/>
+            <texture filename="assets/objects/laser_sword.png" ID="laser_sword"/>
         </TEXTURES>
         <SOUNDS>
             <sound filename="assets/sounds/bgm/scene3.mp3" soundtype="bgm" ID="bgm"/>

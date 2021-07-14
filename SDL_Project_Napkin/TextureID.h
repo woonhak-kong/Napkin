@@ -30,6 +30,10 @@ public:
 	inline static const std::string BOSS1_HIT = "boss1_hit";
 
 	inline static const std::string DOOR = "door";
+	inline static const std::string BASIC_SWORD = "basic_sword";
+	inline static const std::string FIRE_SWORD = "fire_sword";
+	inline static const std::string DARK_SWORD = "dark_sword";
+	inline static const std::string LASER_SWORD = "laser_sword";
 };
 
 #endif //__TEXTURE_ID__

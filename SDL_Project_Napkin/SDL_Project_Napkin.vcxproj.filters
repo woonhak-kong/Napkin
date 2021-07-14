@@ -400,6 +400,8 @@
     <ClCompile Include="LaserSword.cpp">
       <Filter>GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="DarkSword.cpp" />
+    <ClCompile Include="DarkSword.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
