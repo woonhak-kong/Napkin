@@ -25,3 +25,27 @@ void Sword::clean()
 void Sword::collision(DisplayObject* obj)
 {
 }
+
+int Sword::getPower() const
+{
+	return m_attackPower;
+}
+
+int Sword::getReach() const
+{
+	return m_reach;
+}
+
+int Sword::getDurability() const
+{
+	return m_durability;
+}
+
+void Sword::setDurability(int value)
+{
+	if( value > m_maxDurability)
+	{
+		m_durability = m_maxDurability;
+	}
+	m_durability = value;
+}

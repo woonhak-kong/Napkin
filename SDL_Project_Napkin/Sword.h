@@ -10,6 +10,12 @@ public:
 	virtual void clean();
 	void collision(DisplayObject* obj) override;
 
+	int getPower() const;
+	int getReach() const;
+	int getDurability() const;
+
+	void setDurability(int value);
+
 
 private:
 
