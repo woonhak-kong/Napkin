@@ -1,10 +1,11 @@
 #include "Sword.h"
 
-Sword::Sword(int power, int reach, int maxDurability) :
+Sword::Sword(int power, int reach, int maxDurability, SwordType type) :
 	m_attackPower(power),
 	m_reach(reach),
 	m_durability(maxDurability),
-	m_maxDurability(maxDurability)
+	m_maxDurability(maxDurability),
+	m_swordType(type)
 {
 }
 
@@ -39,6 +40,11 @@ int Sword::getReach() const
 int Sword::getDurability() const
 {
 	return m_durability;
+}
+
+SwordType Sword::getSwordType() const
+{
+	return m_swordType;
 }
 
 void Sword::setDurability(int value)

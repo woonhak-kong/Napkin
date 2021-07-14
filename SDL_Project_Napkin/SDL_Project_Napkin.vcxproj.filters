@@ -232,6 +232,19 @@
     <ClInclude Include="Sword.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
+    <ClInclude Include="BasicSword.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="SwordType.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="FireSword.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="LaserSword.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="DarkSword.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -378,5 +391,15 @@
     <ClCompile Include="Sword.cpp">
       <Filter>GameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="BasicSword.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="FireSword.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="LaserSword.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="DarkSword.cpp" />
   </ItemGroup>
 </Project>
