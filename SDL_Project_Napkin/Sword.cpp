@@ -8,6 +8,20 @@ Sword::Sword(int power, int reach, int maxDurability) :
 {
 }
 
+void Sword::draw()
+{
+	PhysicsObject::draw();
+}
+
+void Sword::update()
+{
+	PhysicsObject::update();
+}
+
+void Sword::clean()
+{
+}
+
 void Sword::collision(DisplayObject* obj)
 {
 }

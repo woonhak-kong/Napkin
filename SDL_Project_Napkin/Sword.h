@@ -5,9 +5,9 @@ class Sword : public PhysicsObject
 public:
 	Sword(int power, int reach, int maxDurability);
 	virtual ~Sword() = default;
-	virtual void draw() = 0;
-	virtual void update() = 0;
-	virtual void clean() = 0;
+	virtual void draw();
+	virtual void update();
+	virtual void clean();
 	void collision(DisplayObject* obj) override;
 
 
