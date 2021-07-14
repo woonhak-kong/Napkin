@@ -13,7 +13,6 @@ PhysicsObject::PhysicsObject() :
 	m_isGroundCollision(false),
 	m_fallingRate(100.0f)
 {
-
 }
 
 void PhysicsObject::draw()

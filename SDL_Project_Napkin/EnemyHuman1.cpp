@@ -9,6 +9,7 @@
 #include "ScoreManager.h"
 #include "SoundID.h"
 #include "SoundManager.h"
+#include "Sword.h"
 #include "TextureID.h"
 #include "TextureManager.h"
 
@@ -88,7 +89,8 @@ void EnemyHuman1::draw()
 						case CallbackType::ANIMATION_END:
 							std::cout << "die call back" << std::endl;
 							ScoreManager::addScore(10);
-							getParent()->addChildDuringUpdating(new Explosion(getTransform().getPosition().x, getTransform().getPosition().y, getWidth(), getHeight(), ExplosionType::EXPLOSION_BIG));
+							getParent()->addChildDuringUpdating(new Explosion(getTransform().getPosition().x, getTransform().getPosition().y, getWidth(), getWidth(), ExplosionType::EXPLOSION_BIG));
+							getParent()->addChildDuringUpdating(new Sword(getRealCollisionRect().x, getRealCollisionRect().y, static_cast<SwordType>(rand() % 3 + 1)));
 							getParent()->addChildRemoving(this);
 							break;
 						default:

@@ -1,17 +1,40 @@
 #include "Sword.h"
 
-Sword::Sword(int power, int reach, int maxDurability, SwordType type) :
-	m_attackPower(power),
-	m_reach(reach),
-	m_durability(maxDurability),
-	m_maxDurability(maxDurability),
+#include "Camera.h"
+#include "TextureID.h"
+#include "TextureManager.h"
+
+Sword::Sword(int x, int y, SwordType type) :
 	m_swordType(type)
 {
+	getTransform().getPosition().x = x;
+	getTransform().getPosition().y = y;
+	setWidth(50);
+	setHeight(50);
+	setRealCollisionRect(50, 50);
+	getRigidBody().setMass(5);
+	getRigidBody().getVelocity().y = -(getRigidBody().getMass() * getFallingRate());
 }
 
 void Sword::draw()
 {
 	PhysicsObject::draw();
+	switch (m_swordType)
+	{
+		case SwordType::BASIC_SWORD:
+			TextureManager::Instance().draw(TextureID::BASIC_SWORD, getTransform().getPosition().x - Camera::Instance().getPosition().x, getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight());
+			break;
+		case SwordType::FIRE_SWORD:
+			TextureManager::Instance().draw(TextureID::FIRE_SWORD, getTransform().getPosition().x - Camera::Instance().getPosition().x, getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight());
+			break;
+		case SwordType::LASER_SWORD:
+			TextureManager::Instance().draw(TextureID::LASER_SWORD, getTransform().getPosition().x - Camera::Instance().getPosition().x, getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight());
+			break;
+		case SwordType::DARK_SWORD:
+			TextureManager::Instance().draw(TextureID::DARK_SWORD, getTransform().getPosition().x - Camera::Instance().getPosition().x, getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight());
+			break;
+
+	}
 }
 
 void Sword::update()

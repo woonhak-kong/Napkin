@@ -7,7 +7,7 @@
 class Sword : public PhysicsObject
 {
 public:
-	Sword(int power, int reach, int maxDurability, SwordType type);
+	Sword(int x, int y, SwordType type);
 	virtual ~Sword() = default;
 	virtual void draw();
 	virtual void update();
