@@ -29,6 +29,7 @@ public:
 	void addChildDuringUpdating(DisplayObject* child);
 	void addChildRemoving(DisplayObject* child);
 	void removeChild(DisplayObject* child);
+	void removeFromListExceptDeleting(DisplayObject* child);
 
 	void removeAllChildren();
 	int numberOfChildren() const;

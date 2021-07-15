@@ -37,9 +37,15 @@ private:
 	int m_jumpNum;
 
 	bool m_isJumpPushed;
+	bool m_isQEPushed;
 	int m_hitMotionNum;
 
 	std::vector<Sword*> m_swordVector;
 	int m_swordIdx;
+
+private:
+
+	void m_setSwordUI();
+	void m_removeZeroDurabilitySword();
 };
 

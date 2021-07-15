@@ -22,6 +22,7 @@ Napkin::Napkin(const LoaderParams& loader) :
 	m_gameClear(false),
 	m_jumpNum(0),
 	m_isJumpPushed(false),
+	m_isQEPushed(false),
 	m_hitMotionNum(0),
 	m_swordIdx(0)
 {
@@ -200,7 +201,7 @@ Napkin::Napkin(const LoaderParams& loader) :
 	/////////////////////////////////////////////////
 
 
-	m_swordVector.push_back(new Sword(Config::SCREEN_WIDTH * 0.5 - 30, 30, SwordType::LASER_SWORD));
+	m_swordVector.push_back(new Sword(Config::SCREEN_WIDTH * 0.5 - 30, 30, SwordType::BASIC_SWORD));
 	setAttackSpeed(m_swordVector[m_swordIdx]->getAttackSpeed());
 	setAttackReach(m_swordVector[m_swordIdx]->getReach());
 	setAttackPower(m_swordVector[m_swordIdx]->getPower());
@@ -324,7 +325,15 @@ void Napkin::update()
 			m_jumpNum = 0;
 		}
 	}
-	m_swordDurability->setText(std::to_string(m_swordVector[m_swordIdx]->getDurability()) + "/" + std::to_string(m_swordVector[m_swordIdx]->getMaxDrability()));
+	if (m_swordVector[m_swordIdx]->getSwordType() == SwordType::BASIC_SWORD)
+	{
+		m_swordDurability->setText("Infinity");
+	}
+	else
+	{
+		m_swordDurability->setText(std::to_string(m_swordVector[m_swordIdx]->getDurability()) + "/" + std::to_string(m_swordVector[m_swordIdx]->getMaxDrability()));
+	}
+
 }
 
 void Napkin::clean()
@@ -350,6 +359,28 @@ void Napkin::collision(DisplayObject* obj)
 		//obj->setEnabled(false);
 		m_gameClear = true;
 	}
+	if (obj->getType() == GameObjectType::SWORD)
+	{
+		bool sameSword = false;
+		for (auto& sword : m_swordVector)
+		{
+			if (dynamic_cast<Sword*>(obj)->getSwordType() == sword->getSwordType())
+			{
+				sword->setDurability(sword->getMaxDrability());
+				getParent()->addChildRemoving(obj);
+				sameSword = true;
+				break;
+			}
+		}
+		if (!sameSword)
+		{
+			m_swordVector.push_back(dynamic_cast<Sword*>(obj));
+			getParent()->removeFromListExceptDeleting(obj);
+			m_setSwordUI();
+			changeSwordRight();
+		}
+	}
+
 }
 
 void Napkin::die()
@@ -410,10 +441,41 @@ void Napkin::handleEvent()
 	{
 		if (!isDead() && !isAttacking())
 		{
+			int durability = m_swordVector[m_swordIdx]->getDurability();
+			m_swordVector[m_swordIdx]->setDurability(--durability);
 			SoundManager::Instance().playSound(SoundID::ATTACK);
+			attack();
+			if (m_swordVector[m_swordIdx]->getSwordType() != SwordType::BASIC_SWORD && m_swordVector[m_swordIdx]->getDurability() <= 0)
+			{
+				m_removeZeroDurabilitySword();
+			}
 		}
-		attack();
+
 	}
+	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_Q))
+	{
+		//jump();
+		if (!m_isQEPushed)
+		{
+			changeSwordLeft();
+		}
+		m_isQEPushed = true;
+    }
+	else if (EventManager::Instance().isKeyDown(SDL_SCANCODE_E))
+	{
+		//jump();
+		if (!m_isQEPushed)
+		{
+			changeSwordRight();
+		}
+
+		m_isQEPushed = true;
+	}
+	else
+	{
+		m_isQEPushed = false;
+	}
+
 }
 
 void Napkin::changeSwordRight()
@@ -458,4 +520,22 @@ void Napkin::cleanSword()
 		sword = nullptr;
 	}
 	m_swordVector.clear();
+}
+
+void Napkin::m_setSwordUI()
+{
+	m_swordVector.back()->getTransform().getPosition() = { Config::SCREEN_WIDTH * 0.5 - 30, 30 };
+	setAttackSpeed(m_swordVector.back()->getAttackSpeed());
+	setAttackReach(m_swordVector.back()->getReach());
+	setAttackPower(m_swordVector.back()->getPower());
+	m_swordVector.back()->setWidth(60);
+	m_swordVector.back()->setHeight(60);
+}
+
+void Napkin::m_removeZeroDurabilitySword()
+{
+	delete m_swordVector[m_swordIdx];
+	m_swordVector[m_swordIdx] = nullptr;
+	m_swordVector.erase(std::remove(m_swordVector.begin(), m_swordVector.end(), m_swordVector[m_swordIdx]), m_swordVector.end());
+	changeSwordLeft();
 }

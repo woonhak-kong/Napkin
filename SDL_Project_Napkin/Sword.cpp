@@ -7,6 +7,7 @@
 Sword::Sword(int x, int y, SwordType type) :
 	m_swordType(type)
 {
+	setType(GameObjectType::SWORD);
 	getTransform().getPosition().x = x;
 	getTransform().getPosition().y = y;
 	setWidth(50);

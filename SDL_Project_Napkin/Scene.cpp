@@ -55,6 +55,11 @@ void Scene::removeChild(DisplayObject* child)
 	m_displayList.erase(std::remove(m_displayList.begin(), m_displayList.end(), child), m_displayList.end());
 }
 
+void Scene::removeFromListExceptDeleting(DisplayObject* child)
+{
+	m_displayList.erase(std::remove(m_displayList.begin(), m_displayList.end(), child), m_displayList.end());
+}
+
 void Scene::removeAllChildren()
 {
 	for (auto& count : m_displayList)

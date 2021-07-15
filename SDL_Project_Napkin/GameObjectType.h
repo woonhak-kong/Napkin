@@ -12,6 +12,7 @@ enum class GameObjectType
 	EXIT_BUTTON,
 	MENU_BUTTON,
 	DOOR,
+	SWORD,
 	NUM_OF_TYPES
 };
 #endif // !__GAME_OBJECT_TYPE__
