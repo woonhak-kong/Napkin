@@ -309,6 +309,51 @@ void Napkin::draw()
 	//UI
 	m_energyBar->draw();
 	TextureManager::Instance().draw(TextureID::BOX, Config::SCREEN_WIDTH * 0.5 - 60, 5, 120, 120);
+	TextureManager::Instance().draw(TextureID::BOX, Config::SCREEN_WIDTH * 0.5 - 120, 125 - 50, 50, 50);
+	TextureManager::Instance().draw(TextureID::BOX, Config::SCREEN_WIDTH * 0.5 + 70, 125 - 50, 50, 50);
+	if (m_swordVector.size() > 1)
+	{
+		int left = m_swordIdx - 1;
+		if (left < 0)
+		{
+			left = m_swordVector.size() - 1;
+		}
+		int right = m_swordIdx + 1;
+		if (right >= m_swordVector.size())
+		{
+			right = 0;
+		}
+		switch (m_swordVector[left]->getSwordType())
+		{
+			case SwordType::BASIC_SWORD:
+				TextureManager::Instance().draw(TextureID::BASIC_SWORD, Config::SCREEN_WIDTH * 0.5 - 110, 125 - 40, 30, 30);
+				break;
+			case SwordType::FIRE_SWORD:
+				TextureManager::Instance().draw(TextureID::FIRE_SWORD, Config::SCREEN_WIDTH * 0.5 - 110, 125 - 40, 30, 30);
+				break;
+			case SwordType::LASER_SWORD:
+				TextureManager::Instance().draw(TextureID::LASER_SWORD, Config::SCREEN_WIDTH * 0.5 - 110, 125 - 40, 30, 30);
+				break;
+			case SwordType::DARK_SWORD:
+				TextureManager::Instance().draw(TextureID::DARK_SWORD, Config::SCREEN_WIDTH * 0.5 - 110, 125 - 40, 30, 30);
+				break;
+		}
+		switch (m_swordVector[right]->getSwordType())
+		{
+			case SwordType::BASIC_SWORD:
+				TextureManager::Instance().draw(TextureID::BASIC_SWORD, Config::SCREEN_WIDTH * 0.5 + 80, 125 - 40, 30, 30);
+				break;
+			case SwordType::FIRE_SWORD:
+				TextureManager::Instance().draw(TextureID::FIRE_SWORD, Config::SCREEN_WIDTH * 0.5 + 80, 125 - 40, 30, 30);
+				break;
+			case SwordType::LASER_SWORD:
+				TextureManager::Instance().draw(TextureID::LASER_SWORD, Config::SCREEN_WIDTH * 0.5 + 80, 125 - 40, 30, 30);
+				break;
+			case SwordType::DARK_SWORD:
+				TextureManager::Instance().draw(TextureID::DARK_SWORD, Config::SCREEN_WIDTH * 0.5 + 80, 125 - 40, 30, 30);
+				break;
+		}
+	}
 	m_swordDurability->draw();
 
 
