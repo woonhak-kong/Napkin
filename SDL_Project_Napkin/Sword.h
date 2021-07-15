@@ -10,6 +10,7 @@ public:
 	Sword(int x, int y, SwordType type);
 	virtual ~Sword() = default;
 	virtual void draw();
+	void drawUi();
 	virtual void update();
 	virtual void clean();
 	void collision(DisplayObject* obj) override;

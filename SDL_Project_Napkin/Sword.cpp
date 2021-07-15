@@ -61,6 +61,27 @@ void Sword::draw()
 	}
 }
 
+void Sword::drawUi()
+{
+	//PhysicsObject::draw();
+	switch (m_swordType)
+	{
+		case SwordType::BASIC_SWORD:
+			TextureManager::Instance().draw(TextureID::BASIC_SWORD, getTransform().getPosition().x, getTransform().getPosition().y, getWidth(), getHeight());
+			break;
+		case SwordType::FIRE_SWORD:
+			TextureManager::Instance().draw(TextureID::FIRE_SWORD, getTransform().getPosition().x , getTransform().getPosition().y , getWidth(), getHeight());
+			break;
+		case SwordType::LASER_SWORD:
+			TextureManager::Instance().draw(TextureID::LASER_SWORD, getTransform().getPosition().x , getTransform().getPosition().y , getWidth(), getHeight());
+			break;
+		case SwordType::DARK_SWORD:
+			TextureManager::Instance().draw(TextureID::DARK_SWORD, getTransform().getPosition().x , getTransform().getPosition().y , getWidth(), getHeight());
+			break;
+
+	}
+}
+
 void Sword::update()
 {
 	PhysicsObject::update();

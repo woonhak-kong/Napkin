@@ -25,6 +25,8 @@ public:
 	bool getGameOver() const;
 	bool getGameClear() const;
 
+	void cleanSword();
+
 private:
 	EnergyBar* m_energyBar;
 	bool m_gameOver;

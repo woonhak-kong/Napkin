@@ -11,6 +11,7 @@
 #include "Scene.h"
 #include "SoundID.h"
 #include "SoundManager.h"
+#include "TextureID.h"
 #include "TextureManager.h"
 
 Napkin::Napkin(const LoaderParams& loader) :
@@ -198,11 +199,12 @@ Napkin::Napkin(const LoaderParams& loader) :
 	/////////////////////////////////////////////////
 
 
-	m_swordVector.push_back(new Sword(Config::SCREEN_WIDTH * 0.5 - 30, 50, SwordType::LASER_SWORD));
+	m_swordVector.push_back(new Sword(Config::SCREEN_WIDTH * 0.5 - 30, 30, SwordType::LASER_SWORD));
 	setAttackSpeed(m_swordVector[m_swordIdx]->getAttackSpeed());
 	setAttackReach(m_swordVector[m_swordIdx]->getReach());
 	setAttackPower(m_swordVector[m_swordIdx]->getPower());
-
+	m_swordVector[m_swordIdx]->setWidth(60);
+	m_swordVector[m_swordIdx]->setHeight(60);
 	//setAttackSpeed(2);
 	//setAttackReach(100);
 	/*std::cout << getAnimation("attack2").frames.size()<< std::endl;
@@ -213,6 +215,7 @@ Napkin::Napkin(const LoaderParams& loader) :
 
 	//UI
 	m_energyBar = new EnergyBar(loader.m_maxHp);
+
 }
 
 Napkin::~Napkin()
@@ -296,8 +299,12 @@ void Napkin::draw()
 			break;
 	}
 
+	//Sword
+	m_swordVector[m_swordIdx]->drawUi();
+
 	//UI
 	m_energyBar->draw();
+	TextureManager::Instance().draw(TextureID::BOX, Config::SCREEN_WIDTH * 0.5 - 60, 5, 120, 120);
 }
 
 void Napkin::update()
@@ -435,4 +442,14 @@ bool Napkin::getGameOver() const
 bool Napkin::getGameClear() const
 {
 	return m_gameClear;
+}
+
+void Napkin::cleanSword()
+{
+	for (auto& sword : m_swordVector)
+	{
+		delete sword;
+		sword = nullptr;
+	}
+	m_swordVector.clear();
 }

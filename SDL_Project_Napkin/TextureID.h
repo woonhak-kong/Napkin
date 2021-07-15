@@ -34,6 +34,8 @@ public:
 	inline static const std::string FIRE_SWORD = "fire_sword";
 	inline static const std::string DARK_SWORD = "dark_sword";
 	inline static const std::string LASER_SWORD = "laser_sword";
+
+	inline static const std::string BOX = "box";
 };
 
 #endif //__TEXTURE_ID__

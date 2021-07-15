@@ -11,6 +11,7 @@
             <texture filename="assets/objects/dark_sword.png" ID="dark_sword"/>
             <texture filename="assets/objects/fire_sword.png" ID="fire_sword"/>
             <texture filename="assets/objects/laser_sword.png" ID="laser_sword"/>
+            <texture filename="assets/UI/box.png" ID="box"/>
         </TEXTURES>
         <SOUNDS>
             <sound filename="assets/sounds/bgm/scene0.mp3" soundtype="bgm" ID="bgm"/>
@@ -52,6 +53,7 @@
             <texture filename="assets/objects/dark_sword.png" ID="dark_sword"/>
             <texture filename="assets/objects/fire_sword.png" ID="fire_sword"/>
             <texture filename="assets/objects/laser_sword.png" ID="laser_sword"/>
+            <texture filename="assets/UI/box.png" ID="box"/>
         </TEXTURES>
         <SOUNDS>
             <sound filename="assets/sounds/bgm/scene1.mp3" soundtype="bgm" ID="bgm"/>
@@ -73,6 +75,7 @@
             <texture filename="assets/objects/dark_sword.png" ID="dark_sword"/>
             <texture filename="assets/objects/fire_sword.png" ID="fire_sword"/>
             <texture filename="assets/objects/laser_sword.png" ID="laser_sword"/>
+            <texture filename="assets/UI/box.png" ID="box"/>
         </TEXTURES>
         <SOUNDS>
             <sound filename="assets/sounds/bgm/scene2.mp3" soundtype="bgm" ID="bgm"/>
@@ -94,6 +97,7 @@
             <texture filename="assets/objects/dark_sword.png" ID="dark_sword"/>
             <texture filename="assets/objects/fire_sword.png" ID="fire_sword"/>
             <texture filename="assets/objects/laser_sword.png" ID="laser_sword"/>
+            <texture filename="assets/UI/box.png" ID="box"/>
         </TEXTURES>
         <SOUNDS>
             <sound filename="assets/sounds/bgm/scene3.mp3" soundtype="bgm" ID="bgm"/>
