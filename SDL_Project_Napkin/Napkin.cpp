@@ -17,6 +17,7 @@
 Napkin::Napkin(const LoaderParams& loader) :
 	Character(loader),
 	m_energyBar(nullptr),
+	m_swordDurability(nullptr),
 	m_gameOver(false),
 	m_gameClear(false),
 	m_jumpNum(0),
@@ -215,6 +216,8 @@ Napkin::Napkin(const LoaderParams& loader) :
 
 	//UI
 	m_energyBar = new EnergyBar(loader.m_maxHp);
+	m_swordDurability = new Label("[00/00]", "Consolas", 13, { 0, 255, 0, 255 },
+		glm::vec2(Config::SCREEN_WIDTH * 0.5 - 5, 85), 0, false);
 
 }
 
@@ -305,6 +308,9 @@ void Napkin::draw()
 	//UI
 	m_energyBar->draw();
 	TextureManager::Instance().draw(TextureID::BOX, Config::SCREEN_WIDTH * 0.5 - 60, 5, 120, 120);
+	m_swordDurability->draw();
+
+
 }
 
 void Napkin::update()
@@ -317,8 +323,8 @@ void Napkin::update()
 		{
 			m_jumpNum = 0;
 		}
-
 	}
+	m_swordDurability->setText(std::to_string(m_swordVector[m_swordIdx]->getDurability()) + "/" + std::to_string(m_swordVector[m_swordIdx]->getMaxDrability()));
 }
 
 void Napkin::clean()

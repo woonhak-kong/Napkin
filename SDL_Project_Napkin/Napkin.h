@@ -1,6 +1,7 @@
 #pragma once
 #include "Character.h"
 #include "EnergyBar.h"
+#include "Label.h"
 #include "Sword.h"
 
 class Napkin : public Character
@@ -29,6 +30,8 @@ public:
 
 private:
 	EnergyBar* m_energyBar;
+	Label* m_swordDurability;
+
 	bool m_gameOver;
 	bool m_gameClear;
 	int m_jumpNum;

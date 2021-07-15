@@ -19,6 +19,7 @@ public:
 	int getPower() const;
 	int getReach() const;
 	int getDurability() const;
+	int getMaxDrability() const;
 	SwordType getSwordType() const;
 
 	void setDurability(int value);
