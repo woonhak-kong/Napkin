@@ -4,6 +4,8 @@
 #include "Layer.h"
 #include "LoaderParams.h"
 #include "PhysicsObject.h"
+#include "SwordType.h"
+
 class Character : public PhysicsObject
 {
 public:
@@ -48,8 +50,8 @@ public:
 	void attack();
 	virtual void hit();
 	virtual void die();
-	void makingAttackCollisionBox();
-
+	void makingAttackCollisionBox(SwordType type = SwordType::NONE);
+	void setAttackRectSize(int w, int h);
 
 
 
@@ -82,7 +84,7 @@ private:
 
 
 
-	void m_setAttackRectSize(int w, int h);
+
 };
 
 

@@ -106,10 +106,8 @@ void Character::update()
 	if (m_isFlip)
 	{
 		// Left Direction
-		m_attackCollisionRect.x = getRealCollisionRect().x - getRealCollisionRect().w / 2;
-		m_attackCollisionRect.y = getRealCollisionRect().y;
-		m_attackCollisionRect.w = getRealCollisionRect().w;
-		m_attackCollisionRect.h = getRealCollisionRect().h;
+		m_attackCollisionRect.x = getRealCollisionRect().x - m_attackReach + getRealCollisionRect().w / 2;
+		m_attackCollisionRect.y = getRealCollisionRect().y;;
 
 	}
 	else
@@ -117,8 +115,6 @@ void Character::update()
 		// Right Direction
 		m_attackCollisionRect.x = getRealCollisionRect().x + getRealCollisionRect().w / 2;
 		m_attackCollisionRect.y = getRealCollisionRect().y;
-		m_attackCollisionRect.w = getRealCollisionRect().w;
-		m_attackCollisionRect.h = getRealCollisionRect().h;
 	}
 
 
@@ -225,7 +221,7 @@ void Character::setIsJumping(bool jumping)
 	m_isJumping = jumping;
 }
 
-void Character::m_setAttackRectSize(int w, int h)
+void Character::setAttackRectSize(int w, int h)
 {
 	m_attackCollisionRect.w = w;
 	if (h == 0)
@@ -370,7 +366,7 @@ void Character::die()
 	//getParent()->addChildRemoving(this);
 }
 
-void Character::makingAttackCollisionBox()
+void Character::makingAttackCollisionBox(SwordType type /* = SwordType::NONE */)
 {
-	getParent()->addChildDuringUpdating(new AttackBox(m_attackCollisionRect, glm::vec2(m_isFlip ? getAttackSpeed() * -10 : getAttackSpeed() * 10, 0), m_attackReach, m_attackType, m_attackPower));
+	getParent()->addChildDuringUpdating(new AttackBox(m_attackCollisionRect, glm::vec2(m_isFlip ? getAttackSpeed() * -10 : getAttackSpeed() * 10, 0), m_attackReach, m_attackType, m_attackPower, m_isFlip ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE, type));
 }

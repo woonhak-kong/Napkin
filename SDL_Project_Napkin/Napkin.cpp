@@ -202,9 +202,7 @@ Napkin::Napkin(const LoaderParams& loader) :
 
 
 	m_swordVector.push_back(new Sword(Config::SCREEN_WIDTH * 0.5 - 30, 30, SwordType::BASIC_SWORD));
-	setAttackSpeed(m_swordVector[m_swordIdx]->getAttackSpeed());
-	setAttackReach(m_swordVector[m_swordIdx]->getReach());
-	setAttackPower(m_swordVector[m_swordIdx]->getPower());
+	m_setSwordProperty();
 	m_swordVector[m_swordIdx]->setWidth(60);
 	m_swordVector[m_swordIdx]->setHeight(60);
 	//setAttackSpeed(2);
@@ -265,7 +263,7 @@ void Napkin::draw()
 					switch (type)
 					{
 						case CallbackType::ATTACK_BOX:
-							this->makingAttackCollisionBox();
+							this->makingAttackCollisionBox(m_swordVector[m_swordIdx]->getSwordType());
 							break;
 						case CallbackType::ANIMATION_END:
 							this->setIsAttacking(false);
@@ -530,9 +528,7 @@ void Napkin::changeSwordRight()
 	{
 		m_swordIdx = 0;
 	}
-	setAttackSpeed(m_swordVector[m_swordIdx]->getAttackSpeed());
-	setAttackReach(m_swordVector[m_swordIdx]->getReach());
-	setAttackPower(m_swordVector[m_swordIdx]->getPower());
+	m_setSwordProperty();
 }
 
 void Napkin::changeSwordLeft()
@@ -542,9 +538,7 @@ void Napkin::changeSwordLeft()
 	{
 		m_swordIdx = m_swordVector.size() - 1;
 	}
-	setAttackSpeed(m_swordVector[m_swordIdx]->getAttackSpeed());
-	setAttackReach(m_swordVector[m_swordIdx]->getReach());
-	setAttackPower(m_swordVector[m_swordIdx]->getPower());
+	m_setSwordProperty();
 }
 
 bool Napkin::getGameOver() const
@@ -583,4 +577,12 @@ void Napkin::m_removeZeroDurabilitySword()
 	m_swordVector[m_swordIdx] = nullptr;
 	m_swordVector.erase(std::remove(m_swordVector.begin(), m_swordVector.end(), m_swordVector[m_swordIdx]), m_swordVector.end());
 	changeSwordLeft();
+}
+
+void Napkin::m_setSwordProperty()
+{
+	setAttackSpeed(m_swordVector[m_swordIdx]->getAttackSpeed());
+	setAttackReach(m_swordVector[m_swordIdx]->getReach());
+	setAttackPower(m_swordVector[m_swordIdx]->getPower());
+	setAttackRectSize(m_swordVector[m_swordIdx]->getReach(), 0);
 }

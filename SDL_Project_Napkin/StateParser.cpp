@@ -435,6 +435,7 @@ void StateParser::ParseTextures(TiXmlElement* pStateRoot)
         }
         else if (idAttribute == TextureID::SLASH_DARK)
         {
+        std::cout << "aaaa" << std::endl;
             Animation animation = Animation();
             Frame frame;
             const glm::vec2 size(106, 32);
@@ -450,7 +451,7 @@ void StateParser::ParseTextures(TiXmlElement* pStateRoot)
                 frame.h = size.y;
                 animation.frames.push_back(frame);
             }
-            TextureManager::Instance().setAnimation(idAttribute, animation);
+            TextureManager::Instance().setAnimation(TextureID::ATTACK_BOX, animation);
             animation.frames.clear();
         }
         else if (idAttribute == TextureID::SLASH_FIRE)
@@ -470,7 +471,7 @@ void StateParser::ParseTextures(TiXmlElement* pStateRoot)
                 frame.h = size.y;
                 animation.frames.push_back(frame);
             }
-            TextureManager::Instance().setAnimation(idAttribute, animation);
+            TextureManager::Instance().setAnimation(TextureID::ATTACK_BOX, animation);
             animation.frames.clear();
         }
         else if (idAttribute == TextureID::SLASH_LASER)
@@ -490,7 +491,27 @@ void StateParser::ParseTextures(TiXmlElement* pStateRoot)
                 frame.h = size.y;
                 animation.frames.push_back(frame);
             }
-            TextureManager::Instance().setAnimation(idAttribute, animation);
+            TextureManager::Instance().setAnimation(TextureID::ATTACK_BOX, animation);
+            animation.frames.clear();
+        }
+        else if (idAttribute == TextureID::SLASH_BASIC)
+        {
+            Animation animation = Animation();
+            Frame frame;
+            const glm::vec2 size(512, 432);
+
+            animation.name = TextureID::SLASH_BASIC;
+
+            for (int i = 0; i < 4; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = size.x * i;
+                frame.y = 0;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(TextureID::ATTACK_BOX, animation);
             animation.frames.clear();
         }
         else if (idAttribute == TextureID::HIT_PARTICLE)

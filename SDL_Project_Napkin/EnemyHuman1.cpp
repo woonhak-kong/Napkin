@@ -25,7 +25,8 @@ EnemyHuman1::EnemyHuman1(const LoaderParams& loader) :
 	//////////////////////////////////////
 	///
 	setAttackSpeed(2);
-	setAttackReach(100);
+	setAttackReach(50);
+	setAttackRectSize(50, 0);
 }
 
 EnemyHuman1::~EnemyHuman1()
@@ -115,10 +116,11 @@ void EnemyHuman1::clean()
 
 void EnemyHuman1::collision(DisplayObject* obj)
 {
-	if (obj->getType() == GameObjectType::PLAYER_ATTACK)
+	if (obj->getType() == GameObjectType::PLAYER_ATTACK && !isHit())
 	{
 		takeDamage(dynamic_cast<AttackBox*>(obj)->getAttackPower());
-		dynamic_cast<AttackBox*>(obj)->deleteAttackBox();
+		//dynamic_cast<AttackBox*>(obj)->deleteAttackBox();
+		std::cout << " aaa" << std::endl;
 	}
 }
 

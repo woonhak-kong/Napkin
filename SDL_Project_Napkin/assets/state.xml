@@ -15,6 +15,7 @@
             <texture filename="assets/particles/sword/slash_dark.png" ID="slash_dark"/>
             <texture filename="assets/particles/sword/slash_fire.png" ID="slash_fire"/>
             <texture filename="assets/particles/sword/slash_laser.png" ID="slash_laser"/>
+            <texture filename="assets/particles/sword/slash_basic.png" ID="slash_basic"/>
             <texture filename="assets/particles/hit_particle.png" ID="hit_particle"/>
             <texture filename="assets/particles/trinkle.png" ID="trinkle"/>
         </TEXTURES>
@@ -62,6 +63,7 @@
             <texture filename="assets/particles/sword/slash_dark.png" ID="slash_dark"/>
             <texture filename="assets/particles/sword/slash_fire.png" ID="slash_fire"/>
             <texture filename="assets/particles/sword/slash_laser.png" ID="slash_laser"/>
+            <texture filename="assets/particles/sword/slash_basic.png" ID="slash_basic"/>
             <texture filename="assets/particles/hit_particle.png" ID="hit_particle"/>
             <texture filename="assets/particles/trinkle.png" ID="trinkle"/>
         </TEXTURES>
@@ -89,6 +91,7 @@
             <texture filename="assets/particles/sword/slash_dark.png" ID="slash_dark"/>
             <texture filename="assets/particles/sword/slash_fire.png" ID="slash_fire"/>
             <texture filename="assets/particles/sword/slash_laser.png" ID="slash_laser"/>
+            <texture filename="assets/particles/sword/slash_basic.png" ID="slash_basic"/>
             <texture filename="assets/particles/hit_particle.png" ID="hit_particle"/>
             <texture filename="assets/particles/trinkle.png" ID="trinkle"/>
         </TEXTURES>
@@ -116,6 +119,7 @@
             <texture filename="assets/particles/sword/slash_dark.png" ID="slash_dark"/>
             <texture filename="assets/particles/sword/slash_fire.png" ID="slash_fire"/>
             <texture filename="assets/particles/sword/slash_laser.png" ID="slash_laser"/>
+            <texture filename="assets/particles/sword/slash_basic.png" ID="slash_basic"/>
             <texture filename="assets/particles/hit_particle.png" ID="hit_particle"/>
             <texture filename="assets/particles/trinkle.png" ID="trinkle"/>
         </TEXTURES>

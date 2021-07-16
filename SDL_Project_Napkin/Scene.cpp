@@ -123,7 +123,7 @@ void Scene::updateDisplayList()
 		//m_displayList.insert(m_displayList.end(), m_addingListDuringUpdating.begin(), m_addingListDuringUpdating.end());
 		for (auto& element : m_addingListDuringUpdating)
 		{
-			addChild(element);
+			addChild(element,2);
 		}
 		m_addingListDuringUpdating.clear();
 	}

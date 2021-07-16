@@ -18,28 +18,28 @@ Sword::Sword(int x, int y, SwordType type) :
 	switch (m_swordType)
 	{
 		case SwordType::BASIC_SWORD:
-			m_reach = 10;
+			m_reach = 40;
 			m_attackSpeed = 0.5;
 			m_attackPower = 30;
 			m_maxDurability = -1;
 			m_durability = -1;
 			break;
 		case SwordType::FIRE_SWORD:
-			m_reach = 30;
+			m_reach = 100;
 			m_attackSpeed = 1;
 			m_attackPower = 100;
 			m_maxDurability = 50;
 			m_durability = 50;
 			break;
 		case SwordType::LASER_SWORD:
-			m_reach = 200;
+			m_reach = 250;
 			m_attackSpeed = 2;
-			m_attackPower = 50;
+			m_attackPower = 40;
 			m_maxDurability = 90;
 			m_durability = 90;
 			break;
 		case SwordType::DARK_SWORD:
-			m_reach = 100;
+			m_reach = 150;
 			m_attackSpeed = 1.5;
 			m_attackPower = 80;
 			m_maxDurability = 80;
@@ -118,6 +118,7 @@ int Sword::getReach() const
 {
 	return m_reach;
 }
+
 
 int Sword::getDurability() const
 {

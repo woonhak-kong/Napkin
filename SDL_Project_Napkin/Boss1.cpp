@@ -25,6 +25,7 @@ Boss1::Boss1(const LoaderParams& loader):
 	///
 	setAttackSpeed(2);
 	setAttackReach(100);
+	setAttackRectSize(100, 0);
 }
 
 void Boss1::draw()
@@ -110,7 +111,7 @@ void Boss1::collision(DisplayObject* obj)
 	if (obj->getType() == GameObjectType::PLAYER_ATTACK)
 	{
 		takeDamage(dynamic_cast<AttackBox*>(obj)->getAttackPower());
-		dynamic_cast<AttackBox*>(obj)->deleteAttackBox();
+		//dynamic_cast<AttackBox*>(obj)->deleteAttackBox();
 	}
 }
 

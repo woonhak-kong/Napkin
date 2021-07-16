@@ -47,5 +47,6 @@ private:
 
 	void m_setSwordUI();
 	void m_removeZeroDurabilitySword();
+	void m_setSwordProperty();
 };
 

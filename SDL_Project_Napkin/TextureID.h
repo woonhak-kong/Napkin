@@ -37,9 +37,11 @@ public:
 
 	inline static const std::string BOX = "box";
 
+	inline static const std::string ATTACK_BOX = "attack_box";
 	inline static const std::string SLASH_DARK = "slash_dark";
 	inline static const std::string SLASH_FIRE = "slash_fire";
 	inline static const std::string SLASH_LASER = "slash_laser";
+	inline static const std::string SLASH_BASIC = "slash_basic";
 
 	inline static const std::string HIT_PARTICLE = "hit_particle";
 	inline static const std::string TRINKLE = "trinkle";
