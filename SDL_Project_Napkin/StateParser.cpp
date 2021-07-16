@@ -433,6 +433,106 @@ void StateParser::ParseTextures(TiXmlElement* pStateRoot)
             TextureManager::Instance().setAnimation(idAttribute, animation);
             animation.frames.clear();
         }
+        else if (idAttribute == TextureID::SLASH_DARK)
+        {
+            Animation animation = Animation();
+            Frame frame;
+            const glm::vec2 size(106, 32);
+
+            animation.name = TextureID::SLASH_DARK;
+
+            for (int i = 0; i < 3; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = size.x * i;
+                frame.y = 0;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(idAttribute, animation);
+            animation.frames.clear();
+        }
+        else if (idAttribute == TextureID::SLASH_FIRE)
+        {
+            Animation animation = Animation();
+            Frame frame;
+            const glm::vec2 size(64, 24);
+
+            animation.name = TextureID::SLASH_FIRE;
+
+            for (int i = 0; i < 10; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = size.x * i;
+                frame.y = 0;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(idAttribute, animation);
+            animation.frames.clear();
+        }
+        else if (idAttribute == TextureID::SLASH_LASER)
+        {
+            Animation animation = Animation();
+            Frame frame;
+            const glm::vec2 size(256, 256);
+
+            animation.name = TextureID::SLASH_LASER;
+
+            for (int i = 0; i < 7; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = size.x * i;
+                frame.y = 0;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(idAttribute, animation);
+            animation.frames.clear();
+        }
+        else if (idAttribute == TextureID::HIT_PARTICLE)
+        {
+            Animation animation = Animation();
+            Frame frame;
+            const glm::vec2 size(32, 32);
+
+            animation.name = TextureID::HIT_PARTICLE;
+
+            for (int i = 0; i < 3; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = size.x * i;
+                frame.y = 0;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(idAttribute, animation);
+            animation.frames.clear();
+        }
+        else if (idAttribute == TextureID::TRINKLE)
+        {
+            Animation animation = Animation();
+            Frame frame;
+            const glm::vec2 size(32, 32);
+
+            animation.name = TextureID::TRINKLE;
+
+            for (int i = 0; i < 4; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = size.x * i;
+                frame.y = 0;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(idAttribute, animation);
+            animation.frames.clear();
+        }
 
     }
 }
