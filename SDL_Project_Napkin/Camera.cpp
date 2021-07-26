@@ -18,7 +18,7 @@ void Camera::setPosition(const glm::vec2& position)
 	m_position = position;
 }
 
-const glm::vec2 Camera::getPosition() const
+const glm::vec2 Camera::getPosition()
 {
 	if (m_pTarget != nullptr)
 	{

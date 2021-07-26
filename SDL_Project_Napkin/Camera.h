@@ -23,7 +23,7 @@ public:
 	void update(glm::vec2 velocity);
 	void setTarget(glm::vec2* target);
 	void setPosition(const glm::vec2& position);
-	const glm::vec2 getPosition() const;
+	const glm::vec2 getPosition();
 
 private:
 	Camera();

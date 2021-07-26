@@ -19,6 +19,13 @@ private:
 	SceneState m_sceneState;
 	// temporary
 
+	int m_speed[6];
+
+	int m_backgroudX1[6];
+	int m_backgroudX2[6];
+
+	float m_prevCameraX;
+
 };
 
 #endif // __BACKGROUND__
