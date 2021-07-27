@@ -15,6 +15,15 @@ public:
 	inline static const std::string ENEMY_HUMAN_FALL = "enemy_human_fall";
 	inline static const std::string ENEMY_HUMAN_JUMP = "enemy_human_jump";
 	inline static const std::string ENEMY_HUMAN_DEAD = "enemy_human_dead";
+
+	inline static const std::string ENEMY_RANGE = "enemy_range";
+	inline static const std::string ENEMY_RANGE_IDLE = "range_idle";
+	inline static const std::string ENEMY_RANGE_ATTACK = "range_attack";
+	inline static const std::string ENEMY_RANGE_RUN = "range_move";
+	inline static const std::string ENEMY_RANGE_HIT = "range_hit";
+	inline static const std::string ENEMY_RANGE_DEAD = "range_dead";
+	inline static const std::string ENEMY_RANGE_SHOT = "range_shot";
+
 	inline static const std::string EXPLOSION1 = "explosion1";
 	inline static const std::string EXPLOSION2 = "explosion2";
 	inline static const std::string ENERGY_BACKGROUND = "energy_background";

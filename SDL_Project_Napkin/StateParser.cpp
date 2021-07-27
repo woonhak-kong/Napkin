@@ -554,6 +554,126 @@ void StateParser::ParseTextures(TiXmlElement* pStateRoot)
             TextureManager::Instance().setAnimation(idAttribute, animation);
             animation.frames.clear();
         }
+        else if (idAttribute == TextureID::ENEMY_RANGE_ATTACK)
+        {
+            Animation animation = Animation();
+            Frame frame;
+            const glm::vec2 size(26, 26);
+
+            animation.name = TextureID::ENEMY_RANGE_ATTACK;
+
+            for (int i = 0; i < 4; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = 0;
+                frame.y = size.y * i;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(TextureID::ENEMY_RANGE, animation);
+            animation.frames.clear();
+        }
+        else if (idAttribute == TextureID::ENEMY_RANGE_DEAD)
+        {
+            Animation animation = Animation();
+            Frame frame;
+            const glm::vec2 size(26, 26);
+
+            animation.name = TextureID::ENEMY_RANGE_DEAD;
+
+            for (int i = 0; i < 6; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = 0;
+                frame.y = size.y * i;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(TextureID::ENEMY_RANGE, animation);
+            animation.frames.clear();
+        }
+        else if (idAttribute == TextureID::ENEMY_RANGE_IDLE)
+        {
+            Animation animation = Animation();
+            Frame frame;
+            const glm::vec2 size(26, 26);
+
+            animation.name = TextureID::ENEMY_RANGE_IDLE;
+
+            for (int i = 0; i < 8; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = 0;
+                frame.y = size.y * i;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(TextureID::ENEMY_RANGE, animation);
+            animation.frames.clear();
+        }
+        else if (idAttribute == TextureID::ENEMY_RANGE_RUN)
+        {
+            Animation animation = Animation();
+            Frame frame;
+            const glm::vec2 size(26, 26);
+
+            animation.name = TextureID::ENEMY_RANGE_RUN;
+
+            for (int i = 0; i < 8; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = 0;
+                frame.y = size.y * i;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(TextureID::ENEMY_RANGE, animation);
+            animation.frames.clear();
+        }
+        else if (idAttribute == TextureID::ENEMY_RANGE_HIT)
+        {
+            Animation animation = Animation();
+            Frame frame;
+            const glm::vec2 size(26, 26);
+
+            animation.name = TextureID::ENEMY_RANGE_HIT;
+
+            for (int i = 0; i < 4; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = 0;
+                frame.y = size.y * i;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(TextureID::ENEMY_RANGE, animation);
+            animation.frames.clear();
+        }
+        else if (idAttribute == TextureID::ENEMY_RANGE_SHOT)
+        {
+            Animation animation = Animation();
+            Frame frame;
+            const glm::vec2 size(18, 26);
+
+            animation.name = TextureID::ENEMY_RANGE_SHOT;
+
+            for (int i = 0; i < 4; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = 0;
+                frame.y = size.y * i;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(TextureID::ENEMY_RANGE_SHOT, animation);
+            animation.frames.clear();
+        }
 
     }
 }
