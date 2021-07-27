@@ -190,6 +190,11 @@ int Character::getPresentHp() const
 	return m_presentHp;
 }
 
+int Character::getMaxHp() const
+{
+	return m_maxHp;
+}
+
 
 void Character::setMoveSpeed(float speed)
 {

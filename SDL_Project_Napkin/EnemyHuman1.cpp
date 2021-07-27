@@ -27,6 +27,7 @@ EnemyHuman1::EnemyHuman1(const LoaderParams& loader) :
 	setAttackSpeed(2);
 	setAttackReach(50);
 	setAttackRectSize(50, 0);
+	setMoveSpeed(100);
 }
 
 EnemyHuman1::~EnemyHuman1()

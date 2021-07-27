@@ -35,30 +35,53 @@ void EnemyHumanAI::update()
 		else
 		{
 			direction = playerPosition.x - selfPosition.x;
-			if (distance > 50)
+			if ((static_cast<float>(m_self->getPresentHp()) / static_cast<float>(m_self->getMaxHp())) > 0.2f )
 			{
+				if (distance > 50)
+				{
 
-				if (m_previousPostion.x == selfPosition.x && m_self->getCurrentState() == CharacterState::RUN)
-				{
-					m_self->jump();
+					if (m_previousPostion.x == selfPosition.x && m_self->getCurrentState() == CharacterState::RUN)
+					{
+						m_self->jump();
+					}
+					if (direction < 0)
+					{
+						m_self->moveToLeft();
+					}
+					else if (direction > 0)
+					{
+						m_self->moveToRight();
+					}
+					m_previousPostion = selfPosition;
 				}
-				if (direction < 0)
+				else
 				{
-					m_self->moveToLeft();
+
+					m_self->attack();
+
 				}
-				else if (direction > 0)
-				{
-					m_self->moveToRight();
-				}
-				m_previousPostion = selfPosition;
 			}
 			else
 			{
+				if (distance < 100)
+				{
 
-				m_self->attack();
+					/*if (m_previousPostion.x == selfPosition.x && m_self->getCurrentState() == CharacterState::RUN)
+					{
+						m_self->jump();
+					}*/
+					if (direction < 0)
+					{
+						m_self->moveToRight();
+					}
+					else if (direction > 0)
+					{
+						m_self->moveToLeft();
+					}
+					m_previousPostion = selfPosition;
+				}
 
 			}
-
 		}
 	}
 	else
