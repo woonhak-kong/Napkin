@@ -235,6 +235,9 @@
     <ClInclude Include="SwordType.h">
       <Filter>Enums</Filter>
     </ClInclude>
+    <ClInclude Include="EnemyRange.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -379,6 +382,9 @@
       <Filter>Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Sword.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyRange.cpp">
       <Filter>GameObjects</Filter>
     </ClCompile>
   </ItemGroup>

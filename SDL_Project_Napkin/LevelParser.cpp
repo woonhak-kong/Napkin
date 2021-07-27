@@ -11,6 +11,7 @@
 #include "Door.h"
 #include "EnemyHuman1.h"
 #include "EnemyKnight.h"
+#include "EnemyRange.h"
 #include "EnemyType.h"
 #include "GameObjectFactory.h"
 #include "Napkin.h"
@@ -193,6 +194,10 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, Scene* scene)
             else if (ID == EnemyType::EnemyHuman1)
             {
                 scene->addChild(new EnemyHuman1(loader),1 );
+            }
+            else if (ID == EnemyType::EnemyRange)
+            {
+                scene->addChild(new EnemyRange(loader), 1);
             }
             else if (ID == EnemyType::Boss1)
             {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="400" height="100" tilewidth="16" tileheight="16" infinite="0" nextlayerid="16" nextobjectid="158">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="400" height="100" tilewidth="16" tileheight="16" infinite="0" nextlayerid="17" nextobjectid="159">
  <properties>
   <property name="Player" value="player.png"/>
  </properties>
@@ -27,6 +27,18 @@
     <property name="widthOfTexture" type="int" value="64"/>
    </properties>
   </object>
+ </objectgroup>
+ <objectgroup id="16" name="range_enemy">
+  <properties>
+   <property name="heightOfTexture" type="int" value="60"/>
+   <property name="id" value="enemy_range"/>
+   <property name="maxHp" type="int" value="300"/>
+   <property name="power" type="int" value="10"/>
+   <property name="realHeight" type="int" value="60"/>
+   <property name="realWidth" type="int" value="40"/>
+   <property name="widthOfTexture" type="int" value="60"/>
+  </properties>
+  <object id="158" x="778.667" y="457.333"/>
  </objectgroup>
  <objectgroup id="15" name="door">
   <properties>
