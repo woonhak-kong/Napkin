@@ -10,7 +10,7 @@ MagicBall::MagicBall(glm::vec2 point, glm::vec2 velocity, GameObjectType attackT
 	AttackBox({ (int)point.x,(int)point.y,0,0 }, velocity, 0, attackType, power, SDL_FLIP_NONE),
 	m_type(type),
 	m_pTarget(target),
-	m_pTargetPositionAtStart({ target->getTransform().getPosition().x, target->getTransform().getPosition().y })
+	m_pTargetPositionAtStart({ target->getCenterPosition().x, getCenterPosition().y })
 {
 	switch (m_type)
 	{
@@ -84,6 +84,16 @@ void MagicBall::draw()
 
 void MagicBall::update()
 {
+
+
+	// seeking
+	/*glm::vec2 desired_velocity = normalize(m_pTargetPositionAtStart - getTransform().getPosition()) * 100.f;
+
+	glm::vec2 steering = (desired_velocity - getRigidBody().getVelocity())/100.0f;
+
+	getRigidBody().getVelocity() += steering;*/
+
+	getRigidBody().getVelocity().y += Config::GRAVITY/2;
 	getTransform().getPosition() = getTransform().getPosition() + getRigidBody().getVelocity() * Game::Instance().getDeltaTime();
 }
 
@@ -93,4 +103,18 @@ void MagicBall::clean()
 
 void MagicBall::collision(DisplayObject* obj)
 {
+}
+
+glm::vec2 MagicBall::normalize(glm::vec2 vec)
+{
+	glm::vec2 dest;
+	auto x = vec.x;
+	auto y = vec.y;
+	auto length = (x * x) + (y * y);
+	if (length > 0) {
+		length = 1.0 / sqrt(length);
+		dest.x = vec.x * length;
+		dest.y = vec.y * length;
+	}
+	return dest;
 }

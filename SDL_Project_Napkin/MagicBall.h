@@ -12,6 +12,8 @@ public:
 	void clean() override;
 	void collision(DisplayObject* obj) override;
 
+	glm::vec2 normalize(glm::vec2 vec);
+
 
 private:
 	MagicBallType m_type;
