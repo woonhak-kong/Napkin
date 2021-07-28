@@ -674,6 +674,210 @@ void StateParser::ParseTextures(TiXmlElement* pStateRoot)
             TextureManager::Instance().setAnimation(TextureID::ATTACK_BOX, animation);
             animation.frames.clear();
         }
+        if (idAttribute == TextureID::FIRE_BALL)
+        {
+            Animation animation = Animation();
+            Frame frame;
+            const glm::vec2 size(16, 16);
+            int startCul = 0;
+            int startRow = 0;
+
+            animation.name = TextureID::FIRE_BALL1;
+            startCul = 0;
+            startRow = 1;
+            for (int i = 0; i < 4; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = size.x * i;
+                frame.y = size.y * startRow;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(idAttribute, animation);
+            animation.frames.clear();
+
+            animation.name = TextureID::FIRE_BALL2;
+            startCul = 0;
+            startRow = 3;
+            for (int i = 0; i < 4; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = size.x * i;
+                frame.y = size.y * startRow;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(idAttribute, animation);
+            animation.frames.clear();
+
+            animation.name = TextureID::FIRE_BALL3;
+            startCul = 0;
+            startRow = 5;
+            for (int i = 0; i < 4; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = size.x * i;
+                frame.y = size.y * startRow;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(idAttribute, animation);
+            animation.frames.clear();
+
+            animation.name = TextureID::FIRE_BALL4;
+            startCul = 0;
+            startRow = 8;
+            for (int i = 0; i < 4; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = size.x * i;
+                frame.y = size.y * startRow;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(idAttribute, animation);
+            animation.frames.clear();
+
+            animation.name = TextureID::FIRE_BALL5;
+            startCul = 0;
+            startRow = 9;
+            for (int i = 0; i < 4; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = size.x * i;
+                frame.y = size.y * startRow;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(idAttribute, animation);
+            animation.frames.clear();
+
+            animation.name = TextureID::FIRE_BALL6;
+            startCul = 0;
+            startRow = 11;
+            for (int i = 0; i < 4; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = size.x * i;
+                frame.y = size.y * startRow;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(idAttribute, animation);
+            animation.frames.clear();
+
+            animation.name = TextureID::FIRE_BALL7;
+            startCul = 0;
+            startRow = 12;
+            for (int i = 0; i < 4; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = size.x * i;
+                frame.y = size.y * startRow;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(idAttribute, animation);
+            animation.frames.clear();
+
+            animation.name = TextureID::FIRE_BALL8;
+            startCul = 0;
+            startRow = 13;
+            for (int i = 0; i < 4; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = size.x * i;
+                frame.y = size.y * startRow;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(idAttribute, animation);
+            animation.frames.clear();
+
+            animation.name = TextureID::FIRE_BALL9;
+            startCul = 0;
+            startRow = 14;
+            for (int i = 0; i < 4; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = size.x * i;
+                frame.y = size.y * startRow;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(idAttribute, animation);
+            animation.frames.clear();
+
+            animation.name = TextureID::FIRE_BALL10;
+            startCul = 0;
+            startRow = 15;
+            for (int i = 0; i < 4; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = size.x * i;
+                frame.y = size.y * startRow;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(idAttribute, animation);
+            animation.frames.clear();
+
+            animation.name = TextureID::FIRE_BALL11;
+            startCul = 0;
+            startRow = 16;
+            for (int i = 0; i < 4; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = size.x * i;
+                frame.y = size.y * startRow;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(idAttribute, animation);
+            animation.frames.clear();
+
+            animation.name = TextureID::FIRE_BALL12;
+            startCul = 0;
+            startRow = 17;
+            for (int i = 0; i < 4; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = size.x * i;
+                frame.y = size.y * startRow;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(idAttribute, animation);
+            animation.frames.clear();
+
+            animation.name = TextureID::FIRE_BALL13;
+            startCul = 0;
+            startRow = 18;
+            for (int i = 0; i < 4; ++i)
+            {
+                frame.name = idAttribute;
+                frame.x = size.x * i;
+                frame.y = size.y * startRow;
+                frame.w = size.x;
+                frame.h = size.y;
+                animation.frames.push_back(frame);
+            }
+            TextureManager::Instance().setAnimation(idAttribute, animation);
+            animation.frames.clear();
+
+        }
 
     }
 }

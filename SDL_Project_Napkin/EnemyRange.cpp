@@ -5,6 +5,7 @@
 #include "Camera.h"
 #include "EnemyRangeAI.h"
 #include "Explosion.h"
+#include "MagicBall.h"
 #include "Scene.h"
 #include "ScoreManager.h"
 #include "SoundID.h"
@@ -72,6 +73,9 @@ void EnemyRange::draw()
 							}
 							getParent()->addChildDuringUpdating(new AttackBox(tmpR, glm::vec2(0, 0),
 								0, GameObjectType::NONE, 0, isFlip() ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE, SwordType::SHOT));
+
+							getParent()->addChildDuringUpdating(new MagicBall({ getTransform().getPosition().x,getTransform().getPosition().y }, { -50,0 },
+								GameObjectType::ENEMY_ATTACK, 10, MagicBallType::BALL1, getParent()->getPlayer()));
 							SoundManager::Instance().playSound(SoundID::ENEMY_MELEE_ATTACK);
 						}
 							break;

@@ -78,6 +78,7 @@
             <texture filename="assets/particles/sword/slash_basic.png" ID="slash_basic"/>
             <texture filename="assets/particles/hit_particle.png" ID="hit_particle"/>
             <texture filename="assets/particles/trinkle.png" ID="trinkle"/>
+            <texture filename="assets/particles/fireball.png" ID="fireball"/>
         </TEXTURES>
         <SOUNDS>
             <sound filename="assets/sounds/bgm/scene1.mp3" soundtype="bgm" ID="bgm"/>

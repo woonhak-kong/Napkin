@@ -125,7 +125,7 @@ void AttackBox::draw()
 			break;
 		case SwordType::SHOT:
 			TextureManager::Instance().playAnimation(getAnimation(TextureID::ENEMY_RANGE_SHOT), getTransform().getPosition().x - Camera::Instance().getPosition().x,
-				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.2f, 0.0f, 255, m_flip, true, [&](CallbackType type) -> void
+				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, 255, m_flip, true, [&](CallbackType type) -> void
 				{
 					switch (type)
 					{

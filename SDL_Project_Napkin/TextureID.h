@@ -52,6 +52,22 @@ public:
 	inline static const std::string SLASH_LASER = "slash_laser";
 	inline static const std::string SLASH_BASIC = "slash_basic";
 
+	inline static const std::string FIRE_BALL = "fireball";
+	inline static const std::string FIRE_BALL1 = "fireball1";
+	inline static const std::string FIRE_BALL2 = "fireball2";
+	inline static const std::string FIRE_BALL3 = "fireball3";
+	inline static const std::string FIRE_BALL4 = "fireball4";
+	inline static const std::string FIRE_BALL5 = "fireball5";
+	inline static const std::string FIRE_BALL6 = "fireball6";
+	inline static const std::string FIRE_BALL7 = "fireball7";
+	inline static const std::string FIRE_BALL8 = "fireball8";
+	inline static const std::string FIRE_BALL9 = "fireball9";
+	inline static const std::string FIRE_BALL10 = "fireball10";
+	inline static const std::string FIRE_BALL11 = "fireball11";
+	inline static const std::string FIRE_BALL12 = "fireball12";
+	inline static const std::string FIRE_BALL13 = "fireball13";
+
+
 	inline static const std::string HIT_PARTICLE = "hit_particle";
 	inline static const std::string TRINKLE = "trinkle";
 

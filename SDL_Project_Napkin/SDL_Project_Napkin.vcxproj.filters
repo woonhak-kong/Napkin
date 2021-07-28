@@ -241,6 +241,12 @@
     <ClInclude Include="EnemyRangeAI.h">
       <Filter>AI</Filter>
     </ClInclude>
+    <ClInclude Include="MagicBall.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="MagicBallType.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -392,6 +398,9 @@
     </ClCompile>
     <ClCompile Include="EnemyRangeAI.cpp">
       <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="MagicBall.cpp">
+      <Filter>GameObjects</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
