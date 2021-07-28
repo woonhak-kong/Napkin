@@ -6,6 +6,8 @@
 #include "EnemyRangeAI.h"
 #include "Explosion.h"
 #include "MagicBall.h"
+#include "Particle.h"
+#include "ParticleType.h"
 #include "Scene.h"
 #include "ScoreManager.h"
 #include "SoundID.h"
@@ -146,6 +148,7 @@ void EnemyRange::hit()
 {
 	if (!isHit())
 	{
+		getParent()->addChildDuringUpdating(new Particle(getRealCollisionRect().x, getRealCollisionRect().y, getRealCollisionRect().w, getRealCollisionRect().h, ParticleType::HIT));
 		SoundManager::Instance().playSound(SoundID::HIT);
 	}
 	Character::hit();

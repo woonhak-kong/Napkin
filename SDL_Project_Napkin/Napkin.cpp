@@ -8,6 +8,8 @@
 #include "Config.h"
 #include "EventManager.h"
 #include "Game.h"
+#include "Particle.h"
+#include "ParticleType.h"
 #include "Scene.h"
 #include "SoundID.h"
 #include "SoundManager.h"
@@ -386,6 +388,7 @@ void Napkin::clean()
 
 void Napkin::hit()
 {
+	getParent()->addChildDuringUpdating(new Particle(getTransform().getPosition().x, getTransform().getPosition().y, getWidth(), getWidth(), ParticleType::HIT));
 	m_energyBar->setEnergy(getPresentHp());
 	m_hitMotionNum = 20;
 }
@@ -500,7 +503,10 @@ void Napkin::handleEvent()
 		//jump();
 		if (!m_isQEPushed)
 		{
-			changeSwordLeft();
+			if (m_swordVector.size() > 1)
+			{
+				changeSwordLeft();
+			}
 		}
 		m_isQEPushed = true;
     }
@@ -509,7 +515,10 @@ void Napkin::handleEvent()
 		//jump();
 		if (!m_isQEPushed)
 		{
-			changeSwordRight();
+			if (m_swordVector.size() > 1)
+			{
+				changeSwordRight();
+			}
 		}
 
 		m_isQEPushed = true;
@@ -585,4 +594,6 @@ void Napkin::m_setSwordProperty()
 	setAttackReach(m_swordVector[m_swordIdx]->getReach());
 	setAttackPower(m_swordVector[m_swordIdx]->getPower());
 	setAttackRectSize(m_swordVector[m_swordIdx]->getReach(), 0);
+	if(getParent() != nullptr)
+	getParent()->addChildDuringUpdating(new Particle(m_swordVector[m_swordIdx]->getTransform().getPosition().x + 10, m_swordVector[m_swordIdx]->getTransform().getPosition().y - 10, m_swordVector[m_swordIdx]->getWidth(), m_swordVector[m_swordIdx]->getHeight(), ParticleType::TRINKLE));
 }

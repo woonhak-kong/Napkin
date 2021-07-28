@@ -5,6 +5,7 @@
 #include "Camera.h"
 #include "EnemyHumanAI.h"
 #include "Explosion.h"
+#include "Particle.h"
 #include "Scene.h"
 #include "ScoreManager.h"
 #include "SoundID.h"
@@ -130,6 +131,7 @@ void EnemyHuman1::hit()
 	if (!isHit())
 	{
 		SoundManager::Instance().playSound(SoundID::HIT);
+		getParent()->addChildDuringUpdating(new Particle(getRealCollisionRect().x, getRealCollisionRect().y, getRealCollisionRect().w, getRealCollisionRect().h, ParticleType::HIT));
 	}
 	Character::hit();
 }
