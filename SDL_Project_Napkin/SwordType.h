@@ -8,6 +8,7 @@ enum class SwordType
 	FIRE_SWORD,
 	LASER_SWORD,
 	DARK_SWORD,
+	SHOT,
 	NONE,
 };
 #endif // __SWORD_TYPE__

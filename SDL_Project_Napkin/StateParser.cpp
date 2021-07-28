@@ -671,7 +671,7 @@ void StateParser::ParseTextures(TiXmlElement* pStateRoot)
                 frame.h = size.y;
                 animation.frames.push_back(frame);
             }
-            TextureManager::Instance().setAnimation(TextureID::ENEMY_RANGE_SHOT, animation);
+            TextureManager::Instance().setAnimation(TextureID::ATTACK_BOX, animation);
             animation.frames.clear();
         }
 

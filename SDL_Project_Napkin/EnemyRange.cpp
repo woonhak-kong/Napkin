@@ -3,7 +3,7 @@
 #include "AttackBox.h"
 #include "CallbackType.h"
 #include "Camera.h"
-#include "EnemyHumanAI.h"
+#include "EnemyRangeAI.h"
 #include "Explosion.h"
 #include "Scene.h"
 #include "ScoreManager.h"
@@ -21,7 +21,7 @@ EnemyRange::EnemyRange(const LoaderParams& loader) :
 	// todo make it automatic
 	setType(GameObjectType::ENEMY);
 	setAttackType(GameObjectType::ENEMY_ATTACK);
-	setGameAI(new EnemyHumanAI(this));
+	setGameAI(new EnemyRangeAI(this));
 	//////////////////////////////////////
 	///
 	setAttackSpeed(2);
@@ -49,13 +49,31 @@ void EnemyRange::draw()
 			break;
 		case CharacterState::ATTACK:
 			TextureManager::Instance().playAnimation(getAnimation(TextureID::ENEMY_RANGE_ATTACK), getTransform().getPosition().x - Camera::Instance().getPosition().x,
-				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, 255, flip, true, [&](CallbackType type) -> void
+				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.2f, 0.0f, 255, flip, true, [&](CallbackType type) -> void
 				{
 					switch (type)
 					{
 						case CallbackType::ATTACK_BOX:
-							this->makingAttackCollisionBox();
+						{
+							SDL_Rect tmpR{ 0,0,42,60 };
+
+							if (isFlip())
+							{
+								// Left Direction
+								tmpR.x = getRealCollisionRect().x - tmpR.w;
+								tmpR.y = getRealCollisionRect().y;
+
+							}
+							else
+							{
+								// Right Direction
+								tmpR.x = getRealCollisionRect().x + getRealCollisionRect().w;
+								tmpR.y = getRealCollisionRect().y;
+							}
+							getParent()->addChildDuringUpdating(new AttackBox(tmpR, glm::vec2(0, 0),
+								0, GameObjectType::NONE, 0, isFlip() ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE, SwordType::SHOT));
 							SoundManager::Instance().playSound(SoundID::ENEMY_MELEE_ATTACK);
+						}
 							break;
 						case CallbackType::ANIMATION_END:
 							this->setIsAttacking(false);
@@ -64,7 +82,7 @@ void EnemyRange::draw()
 							break;
 					}
 
-				}, 2);
+				}, 1);
 			break;
 		case CharacterState::RUN:
 			TextureManager::Instance().playAnimation(getAnimation(TextureID::ENEMY_RANGE_RUN), getTransform().getPosition().x - Camera::Instance().getPosition().x,

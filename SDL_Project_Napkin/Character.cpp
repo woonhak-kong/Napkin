@@ -260,6 +260,11 @@ void Character::setGameAI(GameAI* ai)
 	m_ai = ai;
 }
 
+void Character::setIsFlip(bool flip)
+{
+	m_isFlip = flip;
+}
+
 void Character::takeDamage(int damage)
 {
 	if (!m_isDead)

@@ -22,7 +22,7 @@ public:
 	inline static const std::string ENEMY_RANGE_RUN = "range_move";
 	inline static const std::string ENEMY_RANGE_HIT = "range_hit";
 	inline static const std::string ENEMY_RANGE_DEAD = "range_dead";
-	inline static const std::string ENEMY_RANGE_SHOT = "range_shot";
+	inline static const std::string ENEMY_RANGE_SHOT = "range_shot_fx";
 
 	inline static const std::string EXPLOSION1 = "explosion1";
 	inline static const std::string EXPLOSION2 = "explosion2";

@@ -41,6 +41,7 @@ public:
 	void setIsDead(bool dead);
 	void setIsHit(bool hit);
 	void setGameAI(GameAI* ai);
+	void setIsFlip(bool flip);
 
 	void takeDamage(int damage);
 
