@@ -109,7 +109,7 @@ void Boss1::clean()
 
 void Boss1::collision(DisplayObject* obj)
 {
-	if (obj->getType() == GameObjectType::PLAYER_ATTACK)
+	if (obj->getType() == GameObjectType::PLAYER_ATTACK && !isHit())
 	{
 		takeDamage(dynamic_cast<AttackBox*>(obj)->getAttackPower());
 		//dynamic_cast<AttackBox*>(obj)->deleteAttackBox();
