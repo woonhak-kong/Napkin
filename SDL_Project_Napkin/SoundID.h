@@ -17,6 +17,8 @@ public:
 	inline static const std::string BTN_HOVER = "btn_hover";
 	inline static const std::string BTN_CLICK = "btn_click";
 
+	inline static const std::string EXTRACT_SWORD = "extract_sword";
+
 };
 
 #endif //__SOUND_ID__

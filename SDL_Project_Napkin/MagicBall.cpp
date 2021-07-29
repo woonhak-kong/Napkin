@@ -41,7 +41,7 @@ MagicBall::MagicBall(glm::vec2 point, glm::vec2 velocity, GameObjectType attackT
 
 MagicBall::~MagicBall()
 {
-	std::cout << " ccc" << std::endl;
+	//std::cout << " ccc" << std::endl;
 }
 
 void MagicBall::draw()
