@@ -1,10 +1,11 @@
 #include "Boss1.h"
 
 #include "AttackBox.h"
+#include "Boss1AI.h"
 #include "Camera.h"
-#include "EnemyHumanAI.h"
 #include "Explosion.h"
 #include "ExplosionType.h"
+#include "MagicBall.h"
 #include "Scene.h"
 #include "ScoreManager.h"
 #include "SoundID.h"
@@ -20,7 +21,7 @@ Boss1::Boss1(const LoaderParams& loader):
 	// todo make it automatic
 	setType(GameObjectType::ENEMY);
 	setAttackType(GameObjectType::ENEMY_ATTACK);
-	setGameAI(new EnemyHumanAI(this));
+	setGameAI(new Boss1AI(this));
 	//////////////////////////////////////
 	///
 	setAttackSpeed(2);
@@ -48,7 +49,7 @@ void Boss1::draw()
 					switch (type)
 					{
 						case CallbackType::ATTACK_BOX:
-							this->makingAttackCollisionBox();
+							magicAttack1();
 							break;
 						case CallbackType::ANIMATION_END:
 							this->setIsAttacking(false);
@@ -127,4 +128,32 @@ void Boss1::hit()
 void Boss1::die()
 {
 	Character::die();
+}
+
+void Boss1::magicAttack1()
+{
+	glm::vec2 ball[8];
+	ball[0] = glm::vec2(0, 1);
+	ball[1] = glm::vec2(1, 0);
+	ball[2] = glm::vec2(0, -1);
+	ball[3] = glm::vec2(-1, 0);
+	ball[4] = glm::vec2(0.5, 0.5);
+	ball[5] = glm::vec2(0.5, -0.5);
+	ball[6] = glm::vec2(-0.5, 0.5);
+	ball[7] = glm::vec2(-0.5, -0.5);
+
+	for (auto& vec2 : ball)
+	{
+		vec2 *= 100;
+		vec2 = getCenterPosition() + vec2;
+		//std::cout << getParent()->getPlayer()->getCenterPosition().x << ", " << getParent()->getPlayer()->getCenterPosition().y << std::endl;
+		getParent()->addChildDuringUpdating(new MagicBall({ vec2.x, vec2.y}, { 0,0 },
+			GameObjectType::ENEMY_ATTACK, 10, MagicBallType::BALL4, getParent()->getPlayer()));
+	}
+
+
+}
+
+void Boss1::magicAttack2()
+{
 }

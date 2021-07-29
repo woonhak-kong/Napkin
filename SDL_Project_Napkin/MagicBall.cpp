@@ -10,7 +10,7 @@ MagicBall::MagicBall(glm::vec2 point, glm::vec2 velocity, GameObjectType attackT
 	AttackBox({ (int)point.x,(int)point.y,0,0 }, velocity, 0, attackType, power, SDL_FLIP_NONE),
 	m_type(type),
 	m_pTarget(target),
-	m_pTargetPositionAtStart({ target->getCenterPosition().x, getCenterPosition().y })
+	m_pTargetPositionAtStart({ target->getCenterPosition().x, target->getCenterPosition().y })
 {
 	switch (m_type)
 	{
@@ -26,13 +26,16 @@ MagicBall::MagicBall(glm::vec2 point, glm::vec2 velocity, GameObjectType attackT
 
 		break;
 		case MagicBallType::BALL4:
-
+			setWidth(30);
+			setHeight(30);
+			setRealCollisionRect(30, 30);
+			getRigidBody().getVelocity() = normalize(m_pTargetPositionAtStart - getTransform().getPosition()) * 200.f;
 		break;
 
 		default:
 			break;
 	}
-
+	//std::cout << m_pTargetPositionAtStart.x << ", " << m_pTargetPositionAtStart.y << std::endl;
 	setAnimation(TextureManager::Instance().getAnimation(TextureID::FIRE_BALL));
 }
 
@@ -74,7 +77,20 @@ void MagicBall::draw()
 
 		break;
 		case MagicBallType::BALL4:
-
+			TextureManager::Instance().playAnimation(getAnimation(TextureID::FIRE_BALL4), getTransform().getPosition().x - Camera::Instance().getPosition().x,
+				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, 255, SDL_FLIP_NONE, true, [&](CallbackType type) -> void
+				{
+					switch (type)
+					{
+						case CallbackType::ATTACK_BOX:
+							break;
+						case CallbackType::ANIMATION_END:
+							//this->deleteAttackBox();
+							break;
+						default:
+							break;
+					}
+				});
 		break;
 
 		default:
@@ -84,17 +100,32 @@ void MagicBall::draw()
 
 void MagicBall::update()
 {
-
-
-	// seeking
+	switch (m_type)
+	{
+		case MagicBallType::BALL1:
+			// seeking
 	/*glm::vec2 desired_velocity = normalize(m_pTargetPositionAtStart - getTransform().getPosition()) * 100.f;
 
 	glm::vec2 steering = (desired_velocity - getRigidBody().getVelocity())/100.0f;
 
 	getRigidBody().getVelocity() += steering;*/
 
-	getRigidBody().getVelocity().y += Config::GRAVITY/2;
-	getTransform().getPosition() = getTransform().getPosition() + getRigidBody().getVelocity() * Game::Instance().getDeltaTime();
+			getRigidBody().getVelocity().y += Config::GRAVITY / 2;
+			getTransform().getPosition() = getTransform().getPosition() + getRigidBody().getVelocity() * Game::Instance().getDeltaTime();
+			break;
+
+		case MagicBallType::BALL4:
+
+			//std::cout << m_pTargetPositionAtStart.x << ", " << m_pTargetPositionAtStart.y << std::endl;
+			//std::cout << getTransform().getPosition().x << ", " << getTransform().getPosition().y << std::endl;
+			getTransform().getPosition() = getTransform().getPosition() + getRigidBody().getVelocity() * Game::Instance().getDeltaTime();
+			break;
+
+		default:
+			break;
+	}
+
+
 }
 
 void MagicBall::clean()

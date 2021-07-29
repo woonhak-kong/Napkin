@@ -17,6 +17,9 @@ public:
 	void die() override;
 
 
+	void magicAttack1();
+	void magicAttack2();
+
 };
 
 #endif //__BOSS1__

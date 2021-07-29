@@ -253,6 +253,9 @@
     <ClInclude Include="ParticleType.h">
       <Filter>Enums</Filter>
     </ClInclude>
+    <ClInclude Include="Boss1AI.h">
+      <Filter>AI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -410,6 +413,9 @@
     </ClCompile>
     <ClCompile Include="Particle.cpp">
       <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss1AI.cpp">
+      <Filter>AI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
