@@ -41,6 +41,7 @@ MagicBall::MagicBall(glm::vec2 point, glm::vec2 velocity, GameObjectType attackT
 
 MagicBall::~MagicBall()
 {
+	std::cout << " ccc" << std::endl;
 }
 
 void MagicBall::draw()
@@ -124,7 +125,15 @@ void MagicBall::update()
 		default:
 			break;
 	}
+	//std::cout << Camera::Instance().getPosition().x << std::endl;
 
+	if (getTransform().getPosition().x > Camera::Instance().getPosition().x + Config::SCREEN_WIDTH ||
+		getTransform().getPosition().x < Camera::Instance().getPosition().x ||
+		getTransform().getPosition().y > Camera::Instance().getPosition().y + Config::SCREEN_HEIGHT ||
+		getTransform().getPosition().y < Camera::Instance().getPosition().y)
+	{
+		getParent()->addChildRemoving(this);
+	}
 
 }
 

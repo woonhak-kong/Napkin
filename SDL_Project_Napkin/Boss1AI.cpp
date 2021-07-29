@@ -29,7 +29,7 @@ void Boss1AI::update()
 	int direction;
 	//std::cout << "distance : " << distance << std::endl;
 	m_attackDelay += Game::Instance().getDeltaTime();
-	std::cout << m_attackDelay << std::endl;
+	//std::cout << m_attackDelay << std::endl;
 	if (playerPosition.y > selfPosition.y - 100 && playerPosition.y < selfPosition.y + 100)
 	{
 
