@@ -590,11 +590,14 @@ void Napkin::m_removeZeroDurabilitySword()
 
 void Napkin::m_setSwordProperty()
 {
-	SoundManager::Instance().playSound(SoundID::EXTRACT_SWORD);
+
 	setAttackSpeed(m_swordVector[m_swordIdx]->getAttackSpeed());
 	setAttackReach(m_swordVector[m_swordIdx]->getReach());
 	setAttackPower(m_swordVector[m_swordIdx]->getPower());
 	setAttackRectSize(m_swordVector[m_swordIdx]->getReach(), 0);
-	if(getParent() != nullptr)
-	getParent()->addChildDuringUpdating(new Particle(m_swordVector[m_swordIdx]->getTransform().getPosition().x + 10, m_swordVector[m_swordIdx]->getTransform().getPosition().y - 10, m_swordVector[m_swordIdx]->getWidth(), m_swordVector[m_swordIdx]->getHeight(), ParticleType::TRINKLE));
+	if (getParent() != nullptr)
+	{
+		SoundManager::Instance().playSound(SoundID::EXTRACT_SWORD);
+		getParent()->addChildDuringUpdating(new Particle(m_swordVector[m_swordIdx]->getTransform().getPosition().x + 10, m_swordVector[m_swordIdx]->getTransform().getPosition().y - 10, m_swordVector[m_swordIdx]->getWidth(), m_swordVector[m_swordIdx]->getHeight(), ParticleType::TRINKLE));
+	}
 }

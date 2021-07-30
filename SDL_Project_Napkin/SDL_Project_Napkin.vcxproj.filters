@@ -256,6 +256,10 @@
     <ClInclude Include="Boss1AI.h">
       <Filter>AI</Filter>
     </ClInclude>
+    <ClInclude Include="PlayScene2.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Food.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -417,5 +421,9 @@
     <ClCompile Include="Boss1AI.cpp">
       <Filter>AI</Filter>
     </ClCompile>
+    <ClCompile Include="PlayScene2.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Food.cpp" />
   </ItemGroup>
 </Project>

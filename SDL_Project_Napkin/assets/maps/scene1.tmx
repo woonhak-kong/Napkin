@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="400" height="100" tilewidth="16" tileheight="16" infinite="0" nextlayerid="17" nextobjectid="159">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="400" height="100" tilewidth="16" tileheight="16" infinite="0" nextlayerid="17" nextobjectid="175">
  <properties>
   <property name="Player" value="player.png"/>
  </properties>
@@ -16,7 +16,7 @@
    <property name="realWidth" type="int" value="40"/>
    <property name="widthOfTexture" type="int" value="80"/>
   </properties>
-  <object id="134" x="136.667" y="413.333" width="70" height="80">
+  <object id="134" x="124.667" y="509.333" width="70" height="80">
    <properties>
     <property name="heightOfTexture" type="int" value="64"/>
     <property name="id" value="door"/>
@@ -38,7 +38,23 @@
    <property name="realWidth" type="int" value="40"/>
    <property name="widthOfTexture" type="int" value="60"/>
   </properties>
-  <object id="158" x="778.667" y="457.333"/>
+  <object id="158" x="794" y="491.333" width="128" height="96"/>
+  <object id="159" x="1380" y="456" width="128" height="96"/>
+  <object id="160" x="1911.33" y="685.333" width="128" height="96"/>
+  <object id="161" x="1320" y="832" width="128" height="96"/>
+  <object id="162" x="831.333" y="940.667" width="128" height="96"/>
+  <object id="163" x="408.667" y="941.333" width="128" height="96"/>
+  <object id="164" x="525.333" y="1245.33" width="128" height="96"/>
+  <object id="165" x="942.667" y="1244.67" width="128" height="96"/>
+  <object id="166" x="1470" y="1389.33" width="128" height="96"/>
+  <object id="167" x="2930.67" y="1228.67" width="128" height="96"/>
+  <object id="168" x="3024.67" y="78" width="128" height="96"/>
+  <object id="169" x="3660" y="78.6667" width="128" height="96"/>
+  <object id="170" x="3969.33" y="284" width="128" height="96"/>
+  <object id="171" x="4526.67" y="476.667" width="128" height="96"/>
+  <object id="172" x="4387.33" y="844.667" width="128" height="96"/>
+  <object id="173" x="4702" y="1051.33" width="128" height="96"/>
+  <object id="174" x="4972.67" y="1212" width="128" height="96"/>
  </objectgroup>
  <objectgroup id="15" name="door">
   <properties>

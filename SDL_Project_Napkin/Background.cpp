@@ -14,11 +14,10 @@ Background::Background(SceneState state):
 	switch (state)
 	{
 		case SceneState::TUTORIAL_SCENE:
-			TextureManager::Instance().load("assets/maps/PixelPlatformerSet2v/Background/scene0/plx-1.png", "background1");
-			TextureManager::Instance().load("assets/maps/PixelPlatformerSet2v/Background/scene0/plx-2.png", "background2");
-			TextureManager::Instance().load("assets/maps/PixelPlatformerSet2v/Background/scene0/plx-3.png", "background3");
-			TextureManager::Instance().load("assets/maps/PixelPlatformerSet2v/Background/scene0/plx-4.png", "background4");
-			TextureManager::Instance().load("assets/maps/PixelPlatformerSet2v/Background/scene0/plx-5.png", "background5");
+			TextureManager::Instance().load("assets/maps/PixelPlatformerSet2v/Background/scene2/background1.png", "background1");
+			TextureManager::Instance().load("assets/maps/PixelPlatformerSet2v/Background/scene2/background2.png", "background2");
+			TextureManager::Instance().load("assets/maps/PixelPlatformerSet2v/Background/scene2/background3.png", "background3");
+			TextureManager::Instance().load("assets/maps/PixelPlatformerSet2v/Background/scene2/background4.png", "background4");
 			break;
 		case SceneState::PLAY_SCENE1:
 			TextureManager::Instance().load("assets/maps/PixelPlatformerSet2v/Background/scene1/background1.png", "background1");
@@ -29,10 +28,11 @@ Background::Background(SceneState state):
 			TextureManager::Instance().load("assets/maps/PixelPlatformerSet2v/Background/scene1/background6.png", "background6");
 			break;
 		case SceneState::PLAY_SCENE2:
-			TextureManager::Instance().load("assets/maps/PixelPlatformerSet2v/Background/scene2/background1.png", "background1");
-			TextureManager::Instance().load("assets/maps/PixelPlatformerSet2v/Background/scene2/background2.png", "background2");
-			TextureManager::Instance().load("assets/maps/PixelPlatformerSet2v/Background/scene2/background3.png", "background3");
-			TextureManager::Instance().load("assets/maps/PixelPlatformerSet2v/Background/scene2/background4.png", "background4");
+			TextureManager::Instance().load("assets/maps/PixelPlatformerSet2v/Background/scene0/plx-1.png", "background1");
+			TextureManager::Instance().load("assets/maps/PixelPlatformerSet2v/Background/scene0/plx-2.png", "background2");
+			TextureManager::Instance().load("assets/maps/PixelPlatformerSet2v/Background/scene0/plx-3.png", "background3");
+			TextureManager::Instance().load("assets/maps/PixelPlatformerSet2v/Background/scene0/plx-4.png", "background4");
+			TextureManager::Instance().load("assets/maps/PixelPlatformerSet2v/Background/scene0/plx-5.png", "background5");
 
 			break;
 	}
@@ -67,13 +67,6 @@ void Background::draw()
 			TextureManager::Instance().draw("background3", m_backgroudX2[2], 0, Config::SCREEN_WIDTH, Config::SCREEN_HEIGHT);
 			TextureManager::Instance().draw("background4", m_backgroudX1[3], 0, Config::SCREEN_WIDTH, Config::SCREEN_HEIGHT);
 			TextureManager::Instance().draw("background4", m_backgroudX2[3], 0, Config::SCREEN_WIDTH, Config::SCREEN_HEIGHT);
-			TextureManager::Instance().draw("background5", m_backgroudX1[4], 0, Config::SCREEN_WIDTH, Config::SCREEN_HEIGHT);
-			TextureManager::Instance().draw("background5", m_backgroudX2[4], 0, Config::SCREEN_WIDTH, Config::SCREEN_HEIGHT);
-
-
-
-
-
 			break;
 		case SceneState::PLAY_SCENE1:
 			TextureManager::Instance().draw("background1", m_backgroudX1[0], 0, Config::SCREEN_WIDTH, Config::SCREEN_HEIGHT);
@@ -89,7 +82,6 @@ void Background::draw()
 			TextureManager::Instance().draw("background6", m_backgroudX1[5], 0, Config::SCREEN_WIDTH, Config::SCREEN_HEIGHT);
 			TextureManager::Instance().draw("background6", m_backgroudX2[5], 0, Config::SCREEN_WIDTH, Config::SCREEN_HEIGHT);
 			break;
-
 		case SceneState::PLAY_SCENE2:
 			TextureManager::Instance().draw("background1", m_backgroudX1[0], 0, Config::SCREEN_WIDTH, Config::SCREEN_HEIGHT);
 			TextureManager::Instance().draw("background1", m_backgroudX2[0], 0, Config::SCREEN_WIDTH, Config::SCREEN_HEIGHT);
@@ -99,6 +91,8 @@ void Background::draw()
 			TextureManager::Instance().draw("background3", m_backgroudX2[2], 0, Config::SCREEN_WIDTH, Config::SCREEN_HEIGHT);
 			TextureManager::Instance().draw("background4", m_backgroudX1[3], 0, Config::SCREEN_WIDTH, Config::SCREEN_HEIGHT);
 			TextureManager::Instance().draw("background4", m_backgroudX2[3], 0, Config::SCREEN_WIDTH, Config::SCREEN_HEIGHT);
+			TextureManager::Instance().draw("background5", m_backgroudX1[4], 0, Config::SCREEN_WIDTH, Config::SCREEN_HEIGHT);
+			TextureManager::Instance().draw("background5", m_backgroudX2[4], 0, Config::SCREEN_WIDTH, Config::SCREEN_HEIGHT);
 			break;
 		default:
 			break;

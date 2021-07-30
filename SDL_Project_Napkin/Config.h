@@ -29,6 +29,7 @@ public:
 
 	inline static const std::string SCENE0_LOCATION = "assets/maps/scene0.tmx";
 	inline static const std::string SCENE1_LOCATION = "assets/maps/scene1.tmx";
+	inline static const std::string SCENE2_LOCATION = "assets/maps/scene2.tmx";
 
 	inline static const std::string TUTORIAL_SCENE = "TUTORIALSCENE";
 	inline static const std::string START_SCENE = "STARTSCENE";

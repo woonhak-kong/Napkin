@@ -11,6 +11,7 @@
 #include "SceneState.h"
 #include "FontManager.h"
 #include "PlayScene1.h"
+#include "PlayScene2.h"
 #include "SoundManager.h"
 #include "StartScene.h"
 #include "TextureManager.h"
@@ -111,7 +112,7 @@ void Game::start()
 {
 	m_sceneStateMachine = new GameSceneStateMachine();
 	// in the first time, there is no scene. So, we need to push
-	pushSceneState(SceneState::PLAY_SCENE1);
+	pushSceneState(SceneState::PLAY_SCENE2);
 }
 
 bool Game::isRunning() const
@@ -162,7 +163,11 @@ void Game::changeSceneState(const SceneState new_state)
 				break;
 			case SceneState::PLAY_SCENE1:
 				m_sceneStateMachine->changeState(new PlayScene1());
-				std::cout << "Play scene activated" << std::endl;
+				std::cout << "Play scene1 activated" << std::endl;
+				break;
+			case SceneState::PLAY_SCENE2:
+				m_sceneStateMachine->changeState(new PlayScene2());
+				std::cout << "Play scene2 activated" << std::endl;
 				break;
 			case SceneState::END_SCENE:
 				m_sceneStateMachine->changeState(new EndScene());
@@ -192,7 +197,11 @@ void Game::pushSceneState(SceneState newState)
 			break;
 		case SceneState::PLAY_SCENE1:
 			m_sceneStateMachine->pushState(new PlayScene1());
-			std::cout << "Play scene activated" << std::endl;
+			std::cout << "Play scene1 activated" << std::endl;
+			break;
+		case SceneState::PLAY_SCENE2:
+			m_sceneStateMachine->pushState(new PlayScene2());
+			std::cout << "Play scene2 activated" << std::endl;
 			break;
 		case SceneState::END_SCENE:
 			m_sceneStateMachine->pushState(new EndScene());
