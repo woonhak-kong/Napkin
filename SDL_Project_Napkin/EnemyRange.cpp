@@ -79,7 +79,7 @@ void EnemyRange::draw()
 
 							getParent()->addChildDuringUpdating(new MagicBall({ tmpR.x + 15, tmpR.y + 20 }, { isFlip() ? -150 : 150,-100 },
 								GameObjectType::ENEMY_ATTACK, 10, MagicBallType::BALL1, getParent()->getPlayer()));
-							SoundManager::Instance().playSound(SoundID::ENEMY_MELEE_ATTACK);
+							SoundManager::Instance().playSound(SoundID::SHOT);
 						}
 							break;
 						case CallbackType::ANIMATION_END:

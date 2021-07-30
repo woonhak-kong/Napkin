@@ -19,6 +19,7 @@ public:
 
 	inline static const std::string EXTRACT_SWORD = "extract_sword";
 	inline static const std::string COLLECTING_ITEM = "collecting_item";
+	inline static const std::string SHOT = "shot";
 
 };
 
