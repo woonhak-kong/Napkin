@@ -13,6 +13,7 @@ enum class GameObjectType
 	MENU_BUTTON,
 	DOOR,
 	SWORD,
+	FOOD,
 	NUM_OF_TYPES
 };
 #endif // !__GAME_OBJECT_TYPE__

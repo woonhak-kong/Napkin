@@ -405,6 +405,13 @@ void Napkin::collision(DisplayObject* obj)
 		//obj->setEnabled(false);
 		m_gameClear = true;
 	}
+	if (obj->getType() == GameObjectType::FOOD && obj->isEnabled())
+	{
+		gainHP(4);
+		SoundManager::Instance().playSound(SoundID::COLLECTING_ITEM);
+		m_energyBar->setEnergy(getPresentHp());
+		getParent()->addChildRemoving(obj);
+	}
 	if (obj->getType() == GameObjectType::SWORD)
 	{
 		bool sameSword = false;

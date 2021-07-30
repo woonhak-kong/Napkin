@@ -44,6 +44,7 @@ public:
 	void setIsFlip(bool flip);
 
 	void takeDamage(int damage);
+	void gainHP(int hp);
 
 	void jump();
 	void moveToRight();

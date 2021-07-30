@@ -259,7 +259,9 @@
     <ClInclude Include="PlayScene2.h">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="Food.h" />
+    <ClInclude Include="Food.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -424,6 +426,8 @@
     <ClCompile Include="PlayScene2.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="Food.cpp" />
+    <ClCompile Include="Food.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

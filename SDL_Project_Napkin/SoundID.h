@@ -18,6 +18,7 @@ public:
 	inline static const std::string BTN_CLICK = "btn_click";
 
 	inline static const std::string EXTRACT_SWORD = "extract_sword";
+	inline static const std::string COLLECTING_ITEM = "collecting_item";
 
 };
 

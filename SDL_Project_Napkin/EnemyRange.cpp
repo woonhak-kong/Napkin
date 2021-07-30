@@ -5,6 +5,7 @@
 #include "Camera.h"
 #include "EnemyRangeAI.h"
 #include "Explosion.h"
+#include "Food.h"
 #include "MagicBall.h"
 #include "Particle.h"
 #include "ParticleType.h"
@@ -113,6 +114,10 @@ void EnemyRange::draw()
 							ScoreManager::addScore(10);
 							getParent()->addChildDuringUpdating(new Explosion(getTransform().getPosition().x, getTransform().getPosition().y, getWidth(), getWidth(), ExplosionType::EXPLOSION_BIG));
 							getParent()->addChildDuringUpdating(new Sword(getRealCollisionRect().x, getRealCollisionRect().y, static_cast<SwordType>(rand() % 3 + 1)));
+							for (int i = 0; i < 10; ++i)
+							{
+								getParent()->addChildDuringUpdating(new Food(getRealCollisionRect().x, getRealCollisionRect().y));
+							}
 							getParent()->addChildRemoving(this);
 							break;
 						default:

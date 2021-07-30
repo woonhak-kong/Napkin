@@ -33,6 +33,7 @@
             <sound filename="assets/sounds/sfx/enemy_attack.wav" soundtype="sfx" ID="enemy_melee_attack"/>
             <sound filename="assets/sounds/sfx/jump.wav" soundtype="sfx" ID="jump"/>
             <sound filename="assets/sounds/sfx/extracting_knife.mp3" soundtype="sfx" ID="extract_sword"/>
+            <sound filename="assets/sounds/sfx/collecting_item.wav" soundtype="sfx" ID="collecting_item"/>
         </SOUNDS>
     </TUTORIALSCENE>
     <STARTSCENE>
@@ -89,6 +90,7 @@
             <sound filename="assets/sounds/sfx/enemy_attack.wav" soundtype="sfx" ID="enemy_melee_attack"/>
             <sound filename="assets/sounds/sfx/jump.wav" soundtype="sfx" ID="jump"/>
             <sound filename="assets/sounds/sfx/extracting_knife.mp3" soundtype="sfx" ID="extract_sword"/>
+            <sound filename="assets/sounds/sfx/collecting_item.wav" soundtype="sfx" ID="collecting_item"/>
         </SOUNDS>
     </PLAYSCENE1>
     <PLAYSCENE2>
@@ -118,6 +120,7 @@
             <sound filename="assets/sounds/sfx/enemy_attack.wav" soundtype="sfx" ID="enemy_melee_attack"/>
             <sound filename="assets/sounds/sfx/jump.wav" soundtype="sfx" ID="jump"/>
             <sound filename="assets/sounds/sfx/extracting_knife.mp3" soundtype="sfx" ID="extract_sword"/>
+            <sound filename="assets/sounds/sfx/collecting_item.wav" soundtype="sfx" ID="collecting_item"/>
         </SOUNDS>
     </PLAYSCENE2>
     <PLAYSCENE3>
@@ -147,6 +150,7 @@
             <sound filename="assets/sounds/sfx/enemy_attack.wav" soundtype="sfx" ID="enemy_melee_attack"/>
             <sound filename="assets/sounds/sfx/jump.wav" soundtype="sfx" ID="jump"/>
             <sound filename="assets/sounds/sfx/extracting_knife.mp3" soundtype="sfx" ID="extract_sword"/>
+            <sound filename="assets/sounds/sfx/collecting_item.wav" soundtype="sfx" ID="collecting_item"/>
         </SOUNDS>
     </PLAYSCENE3>
    

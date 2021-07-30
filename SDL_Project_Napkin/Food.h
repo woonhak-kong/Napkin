@@ -11,6 +11,11 @@ public:
 	void update() override;
 	void clean() override;
 	void collision(DisplayObject* obj) override;
+
+private:
+
+	std::vector<SDL_Rect> m_foodTexturePosition;
+	SDL_Rect m_currentPosition;
 };
 
 #endif // __FOOD__

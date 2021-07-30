@@ -278,6 +278,18 @@ void Character::takeDamage(int damage)
 	}
 }
 
+void Character::gainHP(int hp)
+{
+	if (!m_isDead)
+	{
+		m_presentHp = m_presentHp + hp;
+		if (m_presentHp > m_maxHp)
+		{
+			m_presentHp = m_maxHp;
+		}
+	}
+}
+
 
 void Character::jump()
 {
