@@ -49,7 +49,7 @@ void PlayScene1::update()
 
 	if (getGameClear())
 	{
-		TheGame::Instance().changeSceneState(SceneState::PLAY_SCENE2);
+		TheGame::Instance().changeSceneState(SceneState::CLEAR_SCENE);
 	}
 
 	// Checking all Collisions
@@ -105,7 +105,7 @@ void PlayScene1::handleEvents()
 
 bool PlayScene1::onEnter()
 {
-	ScoreManager::resetScore();
+	//ScoreManager::resetScore();
 	// texture loading
 	StateParser stateParser;
 	stateParser.ParseState(Config::TEXTURE_LOCATION.c_str(), Config::PLAY_SCENE1);
@@ -136,7 +136,6 @@ bool PlayScene1::onEnter()
 
 	//setPlayer(player);
 	setLevel(level);
-
 	return true;
 }
 

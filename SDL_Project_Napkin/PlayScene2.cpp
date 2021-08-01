@@ -49,7 +49,7 @@ void PlayScene2::update()
 
 	if (getGameClear())
 	{
-		TheGame::Instance().changeSceneState(SceneState::CLEAR_SCENE);
+		TheGame::Instance().changeSceneState(SceneState::PLAY_SCENE1);
 	}
 
 	// Checking all Collisions
@@ -105,7 +105,7 @@ void PlayScene2::handleEvents()
 
 bool PlayScene2::onEnter()
 {
-	ScoreManager::resetScore();
+	//ScoreManager::resetScore();
 	// texture loading
 	StateParser stateParser;
 	stateParser.ParseState(Config::TEXTURE_LOCATION.c_str(), Config::PLAY_SCENE2);

@@ -190,6 +190,7 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, Scene* scene)
                     Game::Instance().getPlayer()->reloadTexture();
                     Game::Instance().getPlayer()->getTransform().getPosition().x = loader.m_x;
                     Game::Instance().getPlayer()->getTransform().getPosition().y = loader.m_y;
+                    Game::Instance().getPlayer()->getRigidBody().getVelocity() = { 0,0 };
             	}
                 else
                 {

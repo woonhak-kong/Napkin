@@ -46,7 +46,7 @@ void TutorialScene::update()
 	}
 	if (getGameClear())
 	{
-		TheGame::Instance().changeSceneState(SceneState::PLAY_SCENE1);
+		TheGame::Instance().changeSceneState(SceneState::PLAY_SCENE2);
 	}
 	// Checking all Collisions
 	auto displayList = getDisplayList();

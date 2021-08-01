@@ -113,7 +113,7 @@ void Game::start()
 {
 	m_sceneStateMachine = new GameSceneStateMachine();
 	// in the first time, there is no scene. So, we need to push
-	pushSceneState(SceneState::PLAY_SCENE2);
+	pushSceneState(SceneState::START_SCENE);
 }
 
 bool Game::isRunning() const
