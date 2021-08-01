@@ -24,6 +24,7 @@ Napkin::Napkin(const LoaderParams& loader) :
 	m_jumpNum(0),
 	m_isJumpPushed(false),
 	m_isQEPushed(false),
+	m_isHPushed(false),
 	m_hitMotionNum(0),
 	m_swordIdx(0)
 {
@@ -540,7 +541,19 @@ void Napkin::handleEvent()
 	{
 		m_isQEPushed = false;
 	}
-
+	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_H))
+	{
+		//jump();
+		if (!m_isHPushed)
+		{
+			Config::SHOWING_DEBUG = !Config::SHOWING_DEBUG;
+		}
+		m_isHPushed = true;
+	}
+	else
+	{
+		m_isHPushed = false;
+	}
 }
 
 void Napkin::changeSwordRight()

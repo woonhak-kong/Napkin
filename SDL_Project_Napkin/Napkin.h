@@ -38,6 +38,7 @@ private:
 
 	bool m_isJumpPushed;
 	bool m_isQEPushed;
+	bool m_isHPushed;
 	int m_hitMotionNum;
 
 	std::vector<Sword*> m_swordVector;

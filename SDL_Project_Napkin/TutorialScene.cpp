@@ -128,10 +128,10 @@ bool TutorialScene::onEnter()
 	addChild(hpExplanation);
 
 	Label* qKey = new Label("Q", "Consolas", 20, { 255, 0, 0, 255 },
-		glm::vec2(540, 65.0f), 0, false);
+		glm::vec2(540, 62.0f), 0, false);
 	addChild(qKey);
 	Label* eKey = new Label("E", "Consolas", 20, { 255, 0, 0, 255 },
-		glm::vec2(730, 65.0f), 0, false);
+		glm::vec2(730, 62.0f), 0, false);
 	addChild(eKey);
 
 	Label* scoreExplanation = new Label("You can get a score by killing enemies", "Consolas", 20, { 255, 100, 0, 255 },
