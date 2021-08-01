@@ -20,6 +20,8 @@ public:
 	void magicAttack1();
 	void magicAttack2();
 
+private:
+	int m_hitMotionNum;
 };
 
 #endif //__BOSS1__

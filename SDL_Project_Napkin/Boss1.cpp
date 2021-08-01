@@ -14,7 +14,8 @@
 #include "TextureManager.h"
 
 Boss1::Boss1(const LoaderParams& loader):
-	Character(loader)
+	Character(loader),
+	m_hitMotionNum(0)
 {
 	setAnimation(TextureManager::Instance().getAnimation(TextureID::BOSS1));
 
@@ -32,6 +33,23 @@ Boss1::Boss1(const LoaderParams& loader):
 void Boss1::draw()
 {
 	Character::draw();
+	int alpha;
+	if (m_hitMotionNum > 0)
+	{
+		if (m_hitMotionNum % 2 == 0)
+		{
+			alpha = 20;
+		}
+		else
+		{
+			alpha = 255;
+		}
+		m_hitMotionNum--;
+	}
+	else
+	{
+		alpha = 255;
+	}
 	/*TextureManager::Instance().draw("napkin", getTransform().getPosition().x - Camera::Instance().getPosition().x,
 		getTransform().getPosition().y - Camera::Instance().getPosition().y , getWidth(), getHeight(),  0, 255);*/
 	SDL_RendererFlip flip;
@@ -40,11 +58,11 @@ void Boss1::draw()
 	{
 		case CharacterState::IDLE:
 			TextureManager::Instance().playAnimation(getAnimation(TextureID::BOSS1_IDLE), getTransform().getPosition().x - Camera::Instance().getPosition().x,
-				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, 255, flip, true);
+				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, alpha, flip, true);
 			break;
 		case CharacterState::ATTACK:
 			TextureManager::Instance().playAnimation(getAnimation(TextureID::BOSS1_ATTACK1), getTransform().getPosition().x - Camera::Instance().getPosition().x,
-				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, 255, flip, true,  [&](CallbackType type) -> void
+				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, alpha, flip, true,  [&](CallbackType type) -> void
 				{
 					switch (type)
 					{
@@ -62,23 +80,23 @@ void Boss1::draw()
 			break;
 		case CharacterState::RUN:
 			TextureManager::Instance().playAnimation(getAnimation(TextureID::BOSS1_RUN), getTransform().getPosition().x - Camera::Instance().getPosition().x,
-				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, 255, flip);
+				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, alpha, flip);
 			break;
 		case CharacterState::JUMP:
 			TextureManager::Instance().playAnimation(getAnimation(TextureID::BOSS1_JUMP), getTransform().getPosition().x - Camera::Instance().getPosition().x,
-				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, 255, flip);
+				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, alpha, flip);
 			break;
 		case CharacterState::FALL:
 			TextureManager::Instance().playAnimation(getAnimation(TextureID::BOSS1_FALL), getTransform().getPosition().x - Camera::Instance().getPosition().x,
-				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, 255, flip);
+				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, alpha, flip);
 			break;
 		case CharacterState::HIT:
 			TextureManager::Instance().playAnimation(getAnimation(TextureID::BOSS1_HIT), getTransform().getPosition().x - Camera::Instance().getPosition().x,
-				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.1f, 0.0f, 255, flip, true,  [&](CallbackType type) ->  void { this->setIsHit(false); });
+				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.1f, 0.0f, alpha, flip, true,  [&](CallbackType type) ->  void { this->setIsHit(false); });
 			break;
 		case CharacterState::DEAD:
 			TextureManager::Instance().playAnimation(getAnimation(TextureID::BOSS1_DEAD), getTransform().getPosition().x - Camera::Instance().getPosition().x,
-				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.4f, 0.0f, 255, flip, false, [&](CallbackType type) -> void
+				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.4f, 0.0f, alpha, flip, false, [&](CallbackType type) -> void
 				{
 					switch (type)
 					{
@@ -109,7 +127,7 @@ void Boss1::clean()
 
 void Boss1::collision(DisplayObject* obj)
 {
-	if (obj->getType() == GameObjectType::PLAYER_ATTACK && !isHit())
+	if (obj->getType() == GameObjectType::PLAYER_ATTACK && m_hitMotionNum == 0)
 	{
 		takeDamage(dynamic_cast<AttackBox*>(obj)->getAttackPower());
 		//dynamic_cast<AttackBox*>(obj)->deleteAttackBox();
@@ -122,7 +140,8 @@ void Boss1::hit()
 	{
 		SoundManager::Instance().playSound(SoundID::HIT);
 	}
-	Character::hit();
+	m_hitMotionNum = 20;
+	//Character::hit();
 }
 
 void Boss1::die()

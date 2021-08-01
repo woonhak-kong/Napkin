@@ -72,7 +72,7 @@ void Boss1AI::update()
 						m_self->setIsFlip(false);
 					}
 
-					if (m_attackDelay > 4)
+					if (m_attackDelay > 3)
 					{
 						std::cout << "==========================" << std::endl;
 						m_self->attack();
