@@ -3,9 +3,11 @@
 #include <iostream>
 
 #include "Camera.h"
+#include "Game.h"
 #include "TextureManager.h"
 
-Food::Food(int x, int y)
+Food::Food(int x, int y) :
+	m_time(0)
 {
 	getTransform().getPosition().x = x;
 	getTransform().getPosition().y = y;
@@ -45,10 +47,16 @@ void Food::draw()
 
 void Food::update()
 {
+	m_time += Game::Instance().getDeltaTime();
 	PhysicsObject::update();
 	if(isOnGround())
 	{
 		getRigidBody().getVelocity() = { 0,0 };
+	}
+
+	if (m_time > 10)
+	{
+		getParent()->addChildRemoving(this);
 	}
 }
 
