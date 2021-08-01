@@ -36,7 +36,7 @@ Sword::Sword(int x, int y, SwordType type) :
 			m_attackSpeed = 2;
 			m_attackPower = 40;
 			m_maxDurability = 90;
-			m_durability = 90;
+			m_durability = 150;
 			break;
 		case SwordType::DARK_SWORD:
 			m_reach = 150;
