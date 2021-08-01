@@ -91,7 +91,7 @@ void EnemyHuman1::draw()
 					switch (type)
 					{
 						case CallbackType::ANIMATION_END:
-							std::cout << "die call back" << std::endl;
+							//std::cout << "die call back" << std::endl;
 							ScoreManager::addScore(10);
 							getParent()->addChildDuringUpdating(new Explosion(getTransform().getPosition().x, getTransform().getPosition().y, getWidth(), getWidth(), ExplosionType::EXPLOSION_BIG));
 							getParent()->addChildDuringUpdating(new Sword(getRealCollisionRect().x, getRealCollisionRect().y, static_cast<SwordType>(rand() % 3 + 1)));

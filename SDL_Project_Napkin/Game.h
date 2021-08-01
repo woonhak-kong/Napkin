@@ -14,6 +14,8 @@
 
 #include <glm/vec2.hpp>
 
+#include "Napkin.h"
+
 class Game
 {
 public:
@@ -49,6 +51,8 @@ public:
 	void pushSceneState(SceneState newState);
 	void popSceneState();
 
+	void setPlayer(Napkin* player);
+	Napkin* getPlayer();
 
 
 private:
@@ -65,6 +69,8 @@ private:
 	SDL_Window* m_pWindow;
 
 	GameSceneStateMachine* m_sceneStateMachine;
+
+	Napkin* m_pPlayer;
 };
 
 typedef Game TheGame;

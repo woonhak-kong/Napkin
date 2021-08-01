@@ -183,9 +183,21 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, Scene* scene)
             LoaderParams loader = LoaderParams(x, y, widthOfTexture, heightOfTexture, realWidth, realHeight, maxHP, power, ID);
             if (ID == "napkin")
             {
-                Napkin* player = new Napkin(loader);
-                scene->addChild(player, 1);
-                scene->setPlayer(player);
+            	if (Game::Instance().getPlayer() != nullptr)
+            	{
+                    scene->addChild(Game::Instance().getPlayer(), 1);
+                    scene->setPlayer(Game::Instance().getPlayer());
+                    Game::Instance().getPlayer()->reloadTexture();
+                    Game::Instance().getPlayer()->getTransform().getPosition().x = loader.m_x;
+                    Game::Instance().getPlayer()->getTransform().getPosition().y = loader.m_y;
+            	}
+                else
+                {
+                    Napkin* player = new Napkin(loader);
+                    scene->addChild(player, 1);
+                    scene->setPlayer(player);
+                    Game::Instance().setPlayer(player);
+                }
             }
             else if (ID == EnemyType::EnemyKnight)
             {

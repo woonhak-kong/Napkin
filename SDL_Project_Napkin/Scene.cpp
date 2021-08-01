@@ -8,7 +8,8 @@
 
 Scene::Scene() :
 	m_nextLayerIndex(0),
-	m_player(nullptr)
+	m_player(nullptr),
+	m_isGameClear(false)
 {
 }
 
@@ -52,6 +53,11 @@ void Scene::removeChild(DisplayObject* child)
 {
 	child->clean();
 	delete child;
+	m_displayList.erase(std::remove(m_displayList.begin(), m_displayList.end(), child), m_displayList.end());
+}
+
+void Scene::removeOnlyInList(DisplayObject* child)
+{
 	m_displayList.erase(std::remove(m_displayList.begin(), m_displayList.end(), child), m_displayList.end());
 }
 
@@ -166,6 +172,11 @@ Level* Scene::getLevel() const
 	return m_pLevel;
 }
 
+bool Scene::getGameClear() const
+{
+	return m_isGameClear;
+}
+
 void Scene::setPlayer(GameObject* player)
 {
 	m_player = player;
@@ -179,6 +190,11 @@ void Scene::setDoor(GameObject* door)
 void Scene::setLevel(Level* level)
 {
 	m_pLevel = level;
+}
+
+void Scene::setGaemClear(bool state)
+{
+	m_isGameClear = state;
 }
 
 

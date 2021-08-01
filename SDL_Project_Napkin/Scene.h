@@ -29,6 +29,7 @@ public:
 	void addChildDuringUpdating(DisplayObject* child);
 	void addChildRemoving(DisplayObject* child);
 	void removeChild(DisplayObject* child);
+	void removeOnlyInList(DisplayObject* child);
 	void removeFromListExceptDeleting(DisplayObject* child);
 
 	void removeAllChildren();
@@ -40,9 +41,11 @@ public:
 	GameObject* getPlayer() const;
 	GameObject* getDoor() const;
 	Level* getLevel() const;
+	bool getGameClear() const;
 	void setPlayer(GameObject* player);
 	void setDoor(GameObject* door);
 	void setLevel(Level* level);
+	void setGaemClear(bool state);
 
 	std::vector<DisplayObject*>& getDisplayList();
 
@@ -57,6 +60,8 @@ private:
 	Level* m_pLevel;
 
 	static bool sortObjects(DisplayObject* left, DisplayObject* right);
+
+	bool m_isGameClear;
 };
 
 

@@ -21,7 +21,6 @@ Napkin::Napkin(const LoaderParams& loader) :
 	m_energyBar(nullptr),
 	m_swordDurability(nullptr),
 	m_gameOver(false),
-	m_gameClear(false),
 	m_jumpNum(0),
 	m_isJumpPushed(false),
 	m_isQEPushed(false),
@@ -384,6 +383,13 @@ void Napkin::update()
 void Napkin::clean()
 {
 	delete m_energyBar;
+	delete m_swordDurability;
+	for (auto& mSwordVector : m_swordVector)
+	{
+		delete mSwordVector;
+		mSwordVector = nullptr;
+	}
+	m_swordVector.clear();
 }
 
 void Napkin::hit()
@@ -403,11 +409,11 @@ void Napkin::collision(DisplayObject* obj)
 	if (obj->getType() == GameObjectType::DOOR && obj->isEnabled())
 	{
 		//obj->setEnabled(false);
-		m_gameClear = true;
+		getParent()->setGaemClear(true);
 	}
 	if (obj->getType() == GameObjectType::FOOD && obj->isEnabled())
 	{
-		gainHP(4);
+		gainHP(1);
 		SoundManager::Instance().playSound(SoundID::COLLECTING_ITEM);
 		m_energyBar->setEnergy(getPresentHp());
 		getParent()->addChildRemoving(obj);
@@ -562,11 +568,6 @@ bool Napkin::getGameOver() const
 	return m_gameOver;
 }
 
-bool Napkin::getGameClear() const
-{
-	return m_gameClear;
-}
-
 void Napkin::cleanSword()
 {
 	for (auto& sword : m_swordVector)
@@ -575,6 +576,60 @@ void Napkin::cleanSword()
 		sword = nullptr;
 	}
 	m_swordVector.clear();
+}
+
+void Napkin::reloadTexture()
+{
+	TextureManager::Instance().load("assets/characters/player/idle/adventurer-idle-2-00.png", "idle0");
+	TextureManager::Instance().load("assets/characters/player/idle/adventurer-idle-2-01.png", "idle1");
+	TextureManager::Instance().load("assets/characters/player/idle/adventurer-idle-2-02.png", "idle2");
+	TextureManager::Instance().load("assets/characters/player/idle/adventurer-idle-2-03.png", "idle3");
+
+	TextureManager::Instance().load("assets/characters/player/attack/adventurer-attack1-00-1.3.png", "attack1_0");
+	TextureManager::Instance().load("assets/characters/player/attack/adventurer-attack1-01-1.3.png", "attack1_1");
+	TextureManager::Instance().load("assets/characters/player/attack/adventurer-attack1-02-1.3.png", "attack1_2");
+	TextureManager::Instance().load("assets/characters/player/attack/adventurer-attack1-03-1.3.png", "attack1_3");
+	TextureManager::Instance().load("assets/characters/player/attack/adventurer-attack1-04-1.3.png", "attack1_4");
+
+
+	TextureManager::Instance().load("assets/characters/player/attack/adventurer-attack2-00-1.3.png", "attack2_0");
+	TextureManager::Instance().load("assets/characters/player/attack/adventurer-attack2-01-1.3.png", "attack2_1");
+	TextureManager::Instance().load("assets/characters/player/attack/adventurer-attack2-02-1.3.png", "attack2_2");
+	TextureManager::Instance().load("assets/characters/player/attack/adventurer-attack2-03-1.3.png", "attack2_3");
+	TextureManager::Instance().load("assets/characters/player/attack/adventurer-attack2-04-1.3.png", "attack2_4");
+	TextureManager::Instance().load("assets/characters/player/attack/adventurer-attack2-05-1.3.png", "attack2_5");
+
+	TextureManager::Instance().load("assets/characters/player/attack/adventurer-attack3-00-1.3.png", "attack3_0");
+	TextureManager::Instance().load("assets/characters/player/attack/adventurer-attack3-01-1.3.png", "attack3_1");
+	TextureManager::Instance().load("assets/characters/player/attack/adventurer-attack3-02-1.3.png", "attack3_2");
+	TextureManager::Instance().load("assets/characters/player/attack/adventurer-attack3-03-1.3.png", "attack3_3");
+	TextureManager::Instance().load("assets/characters/player/attack/adventurer-attack3-04-1.3.png", "attack3_4");
+	TextureManager::Instance().load("assets/characters/player/attack/adventurer-attack3-05-1.3.png", "attack3_5");
+
+	TextureManager::Instance().load("assets/characters/player/run/adventurer-run3-00.png", "run0");
+	TextureManager::Instance().load("assets/characters/player/run/adventurer-run3-01.png", "run1");
+	TextureManager::Instance().load("assets/characters/player/run/adventurer-run3-02.png", "run2");
+	TextureManager::Instance().load("assets/characters/player/run/adventurer-run3-03.png", "run3");
+	TextureManager::Instance().load("assets/characters/player/run/adventurer-run3-04.png", "run4");
+	TextureManager::Instance().load("assets/characters/player/run/adventurer-run3-05.png", "run5");
+
+	TextureManager::Instance().load("assets/characters/player/jump/adventurer-jump-00.png", "jump0");
+	TextureManager::Instance().load("assets/characters/player/jump/adventurer-jump-01.png", "jump1");
+	TextureManager::Instance().load("assets/characters/player/jump/adventurer-jump-02.png", "jump2");
+	TextureManager::Instance().load("assets/characters/player/jump/adventurer-jump-03.png", "jump3");
+
+	TextureManager::Instance().load("assets/characters/player/fall/adventurer-fall-00.png", "fall0");
+	TextureManager::Instance().load("assets/characters/player/fall/adventurer-fall-01.png", "fall1");
+
+	// dead
+	TextureManager::Instance().load("assets/characters/player/die/adventurer-knock-dwn-00.png", "die0");
+	TextureManager::Instance().load("assets/characters/player/die/adventurer-knock-dwn-01.png", "die1");
+	TextureManager::Instance().load("assets/characters/player/die/adventurer-knock-dwn-02.png", "die2");
+	TextureManager::Instance().load("assets/characters/player/die/adventurer-knock-dwn-03.png", "die3");
+	TextureManager::Instance().load("assets/characters/player/die/adventurer-knock-dwn-04.png", "die4");
+	TextureManager::Instance().load("assets/characters/player/die/adventurer-knock-dwn-05.png", "die5");
+	TextureManager::Instance().load("assets/characters/player/die/adventurer-knock-dwn-06.png", "die6");
+
 }
 
 void Napkin::m_setSwordUI()

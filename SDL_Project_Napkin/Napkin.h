@@ -24,16 +24,16 @@ public:
 	void changeSwordLeft();
 
 	bool getGameOver() const;
-	bool getGameClear() const;
 
 	void cleanSword();
+
+	void reloadTexture();
 
 private:
 	EnergyBar* m_energyBar;
 	Label* m_swordDurability;
 
 	bool m_gameOver;
-	bool m_gameClear;
 	int m_jumpNum;
 
 	bool m_isJumpPushed;

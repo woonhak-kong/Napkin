@@ -47,7 +47,7 @@ void PlayScene2::update()
 		TheGame::Instance().changeSceneState(SceneState::END_SCENE);
 	}
 
-	if (dynamic_cast<Napkin*>(getPlayer())->getGameClear())
+	if (getGameClear())
 	{
 		TheGame::Instance().changeSceneState(SceneState::CLEAR_SCENE);
 	}
@@ -86,6 +86,7 @@ void PlayScene2::clean()
 
 bool PlayScene2::onExit()
 {
+	removeOnlyInList(dynamic_cast<DisplayObject*>(getPlayer()));
 	Scene::removeAllChildren();
 	SoundManager::Instance().clear();
 	return true;
@@ -135,7 +136,7 @@ bool PlayScene2::onEnter()
 
 	//setPlayer(player);
 	setLevel(level);
-
+	getDoor()->setEnabled(true);
 	return true;
 }
 

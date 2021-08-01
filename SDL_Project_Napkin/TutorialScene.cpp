@@ -44,7 +44,7 @@ void TutorialScene::update()
 	{
 		TheGame::Instance().changeSceneState(SceneState::END_SCENE);
 	}
-	if (dynamic_cast<Napkin*>(getPlayer())->getGameClear())
+	if (getGameClear())
 	{
 		TheGame::Instance().changeSceneState(SceneState::PLAY_SCENE1);
 	}
@@ -83,6 +83,7 @@ void TutorialScene::update()
 bool TutorialScene::onExit()
 {
 	std::cout << "Tutorial Scene on exit" << std::endl;
+	removeOnlyInList(dynamic_cast<DisplayObject*>(getPlayer()));
 	Scene::removeAllChildren();
 	SoundManager::Instance().clear();
 	return true;
