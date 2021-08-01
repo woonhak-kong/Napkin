@@ -401,7 +401,7 @@ void Napkin::hit()
 
 void Napkin::collision(DisplayObject* obj)
 {
-	if (obj->getType() == GameObjectType::ENEMY_ATTACK)
+	if (obj->getType() == GameObjectType::ENEMY_ATTACK && m_hitMotionNum == 0)
 	{
 		takeDamage(dynamic_cast<AttackBox*>(obj)->getAttackPower());
 		dynamic_cast<AttackBox*>(obj)->deleteAttackBox();
@@ -413,7 +413,7 @@ void Napkin::collision(DisplayObject* obj)
 	}
 	if (obj->getType() == GameObjectType::FOOD && obj->isEnabled())
 	{
-		gainHP(1);
+		gainHP(4);
 		SoundManager::Instance().playSound(SoundID::COLLECTING_ITEM);
 		m_energyBar->setEnergy(getPresentHp());
 		getParent()->addChildRemoving(obj);
