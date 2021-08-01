@@ -94,7 +94,19 @@ void EnemyHuman1::draw()
 							//std::cout << "die call back" << std::endl;
 							ScoreManager::addScore(10);
 							getParent()->addChildDuringUpdating(new Explosion(getTransform().getPosition().x, getTransform().getPosition().y, getWidth(), getWidth(), ExplosionType::EXPLOSION_BIG));
-							getParent()->addChildDuringUpdating(new Sword(getRealCollisionRect().x, getRealCollisionRect().y, static_cast<SwordType>(rand() % 3 + 1)));
+
+							if(getParent()->getState() == SceneState::TUTORIAL_SCENE)
+							{
+
+							}
+							else
+							{
+								if (rand() % 100 < 20)
+								{
+									getParent()->addChildDuringUpdating(new Sword(getRealCollisionRect().x, getRealCollisionRect().y, static_cast<SwordType>(rand() % 3 + 1)));
+								}
+							}
+
 							for (int i = 0; i < 10; ++i)
 							{
 								getParent()->addChildDuringUpdating(new Food(getRealCollisionRect().x, getRealCollisionRect().y));

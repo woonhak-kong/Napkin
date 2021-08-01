@@ -72,7 +72,7 @@
   <properties>
    <property name="heightOfTexture" type="int" value="500"/>
    <property name="id" value="boss1"/>
-   <property name="maxHp" type="int" value="300"/>
+   <property name="maxHp" type="int" value="3000"/>
    <property name="power" type="int" value="10"/>
    <property name="realHeight" type="int" value="160"/>
    <property name="realWidth" type="int" value="80"/>
