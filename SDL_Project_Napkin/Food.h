@@ -16,6 +16,10 @@ private:
 
 	std::vector<SDL_Rect> m_foodTexturePosition;
 	SDL_Rect m_currentPosition;
+
+	float m_time;
+
+
 };
 
 #endif // __FOOD__

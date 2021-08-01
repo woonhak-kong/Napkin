@@ -47,9 +47,9 @@ void PlayScene2::update()
 		TheGame::Instance().changeSceneState(SceneState::END_SCENE);
 	}
 
-	if (dynamic_cast<Napkin*>(getPlayer())->getGameClear())
+	if (getGameClear())
 	{
-		TheGame::Instance().changeSceneState(SceneState::CLEAR_SCENE);
+		TheGame::Instance().changeSceneState(SceneState::PLAY_SCENE1);
 	}
 
 	// Checking all Collisions
@@ -86,6 +86,7 @@ void PlayScene2::clean()
 
 bool PlayScene2::onExit()
 {
+	removeOnlyInList(dynamic_cast<DisplayObject*>(getPlayer()));
 	Scene::removeAllChildren();
 	SoundManager::Instance().clear();
 	return true;
@@ -104,7 +105,7 @@ void PlayScene2::handleEvents()
 
 bool PlayScene2::onEnter()
 {
-	ScoreManager::resetScore();
+	//ScoreManager::resetScore();
 	// texture loading
 	StateParser stateParser;
 	stateParser.ParseState(Config::TEXTURE_LOCATION.c_str(), Config::PLAY_SCENE2);
@@ -135,7 +136,7 @@ bool PlayScene2::onEnter()
 
 	//setPlayer(player);
 	setLevel(level);
-
+	getDoor()->setEnabled(true);
 	return true;
 }
 

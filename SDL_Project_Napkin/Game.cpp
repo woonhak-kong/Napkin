@@ -28,7 +28,8 @@ Game::Game() :
 	m_deltaTime(0),
 	m_mousePosition(glm::vec2()),
 	m_pWindow(nullptr),
-	m_sceneStateMachine(nullptr)
+	m_sceneStateMachine(nullptr),
+	m_pPlayer(nullptr)
 {
 	srand(unsigned(time(nullptr)));  // random seed
 }
@@ -112,7 +113,7 @@ void Game::start()
 {
 	m_sceneStateMachine = new GameSceneStateMachine();
 	// in the first time, there is no scene. So, we need to push
-	pushSceneState(SceneState::PLAY_SCENE1);
+	pushSceneState(SceneState::START_SCENE);
 }
 
 bool Game::isRunning() const
@@ -221,6 +222,16 @@ void Game::pushSceneState(SceneState newState)
 void Game::popSceneState()
 {
 	m_sceneStateMachine->popState();
+}
+
+void Game::setPlayer(Napkin* player)
+{
+	m_pPlayer = player;
+}
+
+Napkin* Game::getPlayer()
+{
+	return m_pPlayer;
 }
 
 void Game::quit()

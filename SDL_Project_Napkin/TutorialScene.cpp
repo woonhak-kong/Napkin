@@ -44,9 +44,9 @@ void TutorialScene::update()
 	{
 		TheGame::Instance().changeSceneState(SceneState::END_SCENE);
 	}
-	if (dynamic_cast<Napkin*>(getPlayer())->getGameClear())
+	if (getGameClear())
 	{
-		TheGame::Instance().changeSceneState(SceneState::PLAY_SCENE1);
+		TheGame::Instance().changeSceneState(SceneState::PLAY_SCENE2);
 	}
 	// Checking all Collisions
 	auto displayList = getDisplayList();
@@ -83,6 +83,7 @@ void TutorialScene::update()
 bool TutorialScene::onExit()
 {
 	std::cout << "Tutorial Scene on exit" << std::endl;
+	removeOnlyInList(dynamic_cast<DisplayObject*>(getPlayer()));
 	Scene::removeAllChildren();
 	SoundManager::Instance().clear();
 	return true;
@@ -123,11 +124,18 @@ bool TutorialScene::onEnter()
 	addChild(moveExplanation);
 
 	Label* hpExplanation = new Label("-This is your HP-", "Consolas", 20, { 255, 255, 0, 255 },
-		glm::vec2(80, 60.0f), 0, false);
+		glm::vec2(80, 70.0f), 0, false);
 	addChild(hpExplanation);
 
-	Label* scoreExplanation = new Label("You can get a score by killing enemies --> ", "Consolas", 20, { 255, 255, 0, 255 },
-		glm::vec2(450, 40.0f), 0, false);
+	Label* qKey = new Label("Q", "Consolas", 20, { 255, 0, 0, 255 },
+		glm::vec2(540, 62.0f), 0, false);
+	addChild(qKey);
+	Label* eKey = new Label("E", "Consolas", 20, { 255, 0, 0, 255 },
+		glm::vec2(730, 62.0f), 0, false);
+	addChild(eKey);
+
+	Label* scoreExplanation = new Label("You can get a score by killing enemies", "Consolas", 20, { 255, 100, 0, 255 },
+		glm::vec2(800, 60.0f), 0, false);
 	addChild(scoreExplanation);
 
 	Label* doubleJumpExplanation = new Label("You can double jump by clicking 'Space' twice ", "Consolas", 20, { 255, 255, 0, 255 },
@@ -142,9 +150,17 @@ bool TutorialScene::onEnter()
 		glm::vec2(1100, 400.0f), 0, false, true);
 	addChild(hitExplanation);
 
+	Label* foodExplanation = new Label("If kill the enemy, you can get food curing", "Consolas", 20, { 255, 55, 0, 255 },
+		glm::vec2(1100, 300.0f), 0, false, true);
+	addChild(foodExplanation);
+
 	Label* gateExplanation = new Label("The gate sends you to next level", "Consolas", 20, { 255, 180, 0, 255 },
-		glm::vec2(2000, 200.0f), 0, false, true);
+		glm::vec2(2800, 200.0f), 0, false, true);
 	addChild(gateExplanation);
+
+	Label* weaponExplanation = new Label("Sometimes, you can get weapon when you kill enemies", "Consolas", 20, { 255, 180, 0, 255 },
+		glm::vec2(2000, 600.0f), 0, false, true);
+	addChild(weaponExplanation);
 
 
 	/*Napkin* player = new Napkin(LoaderParams(100, 400, 80, 70, 40, 70, 100, 20, "napkin"));

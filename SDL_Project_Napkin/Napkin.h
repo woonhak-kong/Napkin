@@ -24,20 +24,21 @@ public:
 	void changeSwordLeft();
 
 	bool getGameOver() const;
-	bool getGameClear() const;
 
 	void cleanSword();
+
+	void reloadTexture();
 
 private:
 	EnergyBar* m_energyBar;
 	Label* m_swordDurability;
 
 	bool m_gameOver;
-	bool m_gameClear;
 	int m_jumpNum;
 
 	bool m_isJumpPushed;
 	bool m_isQEPushed;
+	bool m_isHPushed;
 	int m_hitMotionNum;
 
 	std::vector<Sword*> m_swordVector;

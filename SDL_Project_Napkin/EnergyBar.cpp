@@ -35,5 +35,5 @@ void EnergyBar::setEnergy(float energy)
 		m_curHp = m_maxHp;
 	}
 	m_curHp = energy;
-	std::cout << m_curHp << std::endl;
+	//std::cout << m_curHp << std::endl;
 }

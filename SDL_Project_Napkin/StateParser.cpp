@@ -435,7 +435,6 @@ void StateParser::ParseTextures(TiXmlElement* pStateRoot)
         }
         else if (idAttribute == TextureID::SLASH_DARK)
         {
-        std::cout << "aaaa" << std::endl;
             Animation animation = Animation();
             Frame frame;
             const glm::vec2 size(106, 32);

@@ -58,6 +58,8 @@ void StartScene::handleEvents()
 
 bool StartScene::onEnter()
 {
+	delete Game::Instance().getPlayer();
+	Game::Instance().setPlayer(nullptr);
 	//const SDL_Color blue = { 0, 0, 255, 255 };
 	StateParser stateParser;
 	stateParser.ParseState(Config::TEXTURE_LOCATION.c_str(), Config::START_SCENE);

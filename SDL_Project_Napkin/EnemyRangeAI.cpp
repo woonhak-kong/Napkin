@@ -26,7 +26,27 @@ void EnemyRangeAI::update()
 	int direction;
 	//std::cout << "distance : " << distance << std::endl;
 
-	if (playerPosition.y > selfPosition.y - 100 && playerPosition.y < selfPosition.y + 100)
+	if (m_self->getParent()->getState() == SceneState::PLAY_SCENE2)
+	{
+		if (distance > 500)
+		{
+			m_self->idle();
+		}
+		else
+		{
+			direction = playerPosition.x - selfPosition.x;
+			if (direction < 0)
+			{
+				m_self->setIsFlip(true);
+			}
+			else if (direction > 0)
+			{
+				m_self->setIsFlip(false);
+			}
+			m_self->attack();
+		}
+	}
+	else if (playerPosition.y > selfPosition.y - 100 && playerPosition.y < selfPosition.y + 100)
 	{
 
 

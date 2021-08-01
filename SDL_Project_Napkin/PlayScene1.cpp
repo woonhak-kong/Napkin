@@ -47,7 +47,7 @@ void PlayScene1::update()
 		TheGame::Instance().changeSceneState(SceneState::END_SCENE);
 	}
 
-	if (dynamic_cast<Napkin*>(getPlayer())->getGameClear())
+	if (getGameClear())
 	{
 		TheGame::Instance().changeSceneState(SceneState::CLEAR_SCENE);
 	}
@@ -86,6 +86,7 @@ void PlayScene1::clean()
 
 bool PlayScene1::onExit()
 {
+	removeOnlyInList(dynamic_cast<DisplayObject*>(getPlayer()));
 	Scene::removeAllChildren();
 	SoundManager::Instance().clear();
 	return true;
@@ -104,7 +105,7 @@ void PlayScene1::handleEvents()
 
 bool PlayScene1::onEnter()
 {
-	ScoreManager::resetScore();
+	//ScoreManager::resetScore();
 	// texture loading
 	StateParser stateParser;
 	stateParser.ParseState(Config::TEXTURE_LOCATION.c_str(), Config::PLAY_SCENE1);
@@ -135,7 +136,6 @@ bool PlayScene1::onEnter()
 
 	//setPlayer(player);
 	setLevel(level);
-
 	return true;
 }
 
