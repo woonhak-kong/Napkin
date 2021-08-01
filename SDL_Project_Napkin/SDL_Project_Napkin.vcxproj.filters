@@ -262,6 +262,9 @@
     <ClInclude Include="Food.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
+    <ClInclude Include="Jewel.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -427,6 +430,9 @@
       <Filter>Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Food.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Jewel.cpp">
       <Filter>GameObjects</Filter>
     </ClCompile>
   </ItemGroup>

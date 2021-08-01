@@ -6,6 +6,7 @@
 #include "EnemyHumanAI.h"
 #include "Explosion.h"
 #include "Food.h"
+#include "Jewel.h"
 #include "Particle.h"
 #include "Scene.h"
 #include "ScoreManager.h"
@@ -98,6 +99,10 @@ void EnemyHuman1::draw()
 							for (int i = 0; i < 10; ++i)
 							{
 								getParent()->addChildDuringUpdating(new Food(getRealCollisionRect().x, getRealCollisionRect().y));
+							}
+							for (int i = 0; i < 2; ++i)
+							{
+								getParent()->addChildDuringUpdating(new Jewel(getRealCollisionRect().x, getRealCollisionRect().y));
 							}
 							getParent()->addChildRemoving(this);
 							break;

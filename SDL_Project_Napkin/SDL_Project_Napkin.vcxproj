@@ -180,6 +180,7 @@ xcopy "$(ProjectDir)assets" "$(TargetDir)assets" /s /h /e /d /y /i</Command>
     <ClInclude Include="Explosion.h" />
     <ClInclude Include="ExplosionType.h" />
     <ClInclude Include="Food.h" />
+    <ClInclude Include="Jewel.h" />
     <ClInclude Include="MagicBall.h" />
     <ClInclude Include="MagicBallType.h" />
     <ClInclude Include="Particle.h" />
@@ -265,6 +266,7 @@ xcopy "$(ProjectDir)assets" "$(TargetDir)assets" /s /h /e /d /y /i</Command>
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectFactory.cpp" />
     <ClCompile Include="GameSceneStateMachine.cpp" />
+    <ClCompile Include="Jewel.cpp" />
     <ClCompile Include="KnightAI.cpp" />
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="Level.cpp" />
