@@ -44,6 +44,7 @@
             <sound filename="assets/sounds/sfx/extracting_knife.mp3" soundtype="sfx" ID="extract_sword"/>
             <sound filename="assets/sounds/sfx/collecting_item.wav" soundtype="sfx" ID="collecting_item"/>
             <sound filename="assets/sounds/sfx/shot.wav" soundtype="sfx" ID="shot"/>
+            <sound filename="assets/sounds/sfx/coin_object.wav" soundtype="sfx" ID="coin_object"/>
         </SOUNDS>
     </TUTORIALSCENE>
     <STARTSCENE>
@@ -102,6 +103,7 @@
             <sound filename="assets/sounds/sfx/extracting_knife.mp3" soundtype="sfx" ID="extract_sword"/>
             <sound filename="assets/sounds/sfx/collecting_item.wav" soundtype="sfx" ID="collecting_item"/>
             <sound filename="assets/sounds/sfx/shot.wav" soundtype="sfx" ID="shot"/>
+            <sound filename="assets/sounds/sfx/coin_object.wav" soundtype="sfx" ID="coin_object"/>
         </SOUNDS>
     </PLAYSCENE1>
     <PLAYSCENE2>
@@ -148,6 +150,7 @@
             <sound filename="assets/sounds/sfx/extracting_knife.mp3" soundtype="sfx" ID="extract_sword"/>
             <sound filename="assets/sounds/sfx/collecting_item.wav" soundtype="sfx" ID="collecting_item"/>
             <sound filename="assets/sounds/sfx/shot.wav" soundtype="sfx" ID="shot"/>
+            <sound filename="assets/sounds/sfx/coin_object.wav" soundtype="sfx" ID="coin_object"/>
         </SOUNDS>
     </PLAYSCENE2>
     <PLAYSCENE3>
@@ -179,6 +182,7 @@
             <sound filename="assets/sounds/sfx/extracting_knife.mp3" soundtype="sfx" ID="extract_sword"/>
             <sound filename="assets/sounds/sfx/collecting_item.wav" soundtype="sfx" ID="collecting_item"/>
             <sound filename="assets/sounds/sfx/shot.wav" soundtype="sfx" ID="shot"/>
+            <sound filename="assets/sounds/sfx/coin_object.wav" soundtype="sfx" ID="coin_object"/>
         </SOUNDS>
     </PLAYSCENE3>
    

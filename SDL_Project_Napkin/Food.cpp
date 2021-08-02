@@ -17,7 +17,7 @@ Food::Food(int x, int y) :
 	getRigidBody().setMass(5);
 	getRigidBody().getVelocity().y = -(getRigidBody().getMass() * getFallingRate());
 	int velocityX = (rand() % 500) + (-(rand() % 500));
-	std::cout << velocityX << std::endl;
+	//std::cout << velocityX << std::endl;
 	getRigidBody().getVelocity().x = velocityX;
 
 	setType(GameObjectType::FOOD);

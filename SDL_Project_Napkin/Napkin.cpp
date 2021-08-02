@@ -11,6 +11,7 @@
 #include "Particle.h"
 #include "ParticleType.h"
 #include "Scene.h"
+#include "ScoreManager.h"
 #include "SoundID.h"
 #include "SoundManager.h"
 #include "TextureID.h"
@@ -417,6 +418,12 @@ void Napkin::collision(DisplayObject* obj)
 		gainHP(4);
 		SoundManager::Instance().playSound(SoundID::COLLECTING_ITEM);
 		m_energyBar->setEnergy(getPresentHp());
+		getParent()->addChildRemoving(obj);
+	}
+	if (obj->getType() == GameObjectType::JEWEL && obj->isEnabled())
+	{
+		ScoreManager::addScore(30);
+		SoundManager::Instance().playSound(SoundID::COLLECTING_JEWEL);
 		getParent()->addChildRemoving(obj);
 	}
 	if (obj->getType() == GameObjectType::SWORD)
