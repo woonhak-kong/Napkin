@@ -1,10 +1,12 @@
 #include "Jewel.h"
 #include "Camera.h"
 #include <iostream>
+
+#include "Game.h"
 #include "TextureManager.h"
 
-Jewel::Jewel(int x, int y)
-
+Jewel::Jewel(int x, int y):
+	m_time(0)
 {
 	getTransform().getPosition().x = x;
 	getTransform().getPosition().y = y;
@@ -40,10 +42,15 @@ void Jewel::draw()
 
 void Jewel::update()
 {
+	m_time += Game::Instance().getDeltaTime();
 	PhysicsObject::update();
 	if (isOnGround())
 	{
 		getRigidBody().getVelocity() = { 0,0 };
+	}
+	if (m_time > 10)
+	{
+		getParent()->addChildRemoving(this);
 	}
 }
 

@@ -21,7 +21,7 @@ private:
 	std::vector<SDL_Rect> m_JewelPosition;
 	SDL_Rect m_currentPosition;
 
-
+	float m_time;
 };
 
 #endif // !__JEWEL__
