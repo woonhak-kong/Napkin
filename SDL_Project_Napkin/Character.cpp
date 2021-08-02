@@ -93,7 +93,7 @@ void Character::update()
 	}
 
 	// checking falling
-	if (m_isJumping && !m_isAttacking && !m_isDead)
+	if (m_isJumping && !m_isAttacking && !m_isDead && !m_isHit)
 	{
 		// if falling
 		if (getRigidBody().getVelocity().y > 0)
