@@ -112,7 +112,7 @@ void EnemyHuman1::draw()
 							{
 								getParent()->addChildDuringUpdating(new Food(getRealCollisionRect().x, getRealCollisionRect().y));
 							}
-							for (int i = 0; i < 2; ++i)
+							for (int i = 0; i < 5; ++i)
 							{
 								getParent()->addChildDuringUpdating(new Jewel(getRealCollisionRect().x, getRealCollisionRect().y));
 							}

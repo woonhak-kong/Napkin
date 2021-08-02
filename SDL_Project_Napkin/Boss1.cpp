@@ -5,6 +5,8 @@
 #include "Camera.h"
 #include "Explosion.h"
 #include "ExplosionType.h"
+#include "Food.h"
+#include "Jewel.h"
 #include "MagicBall.h"
 #include "Scene.h"
 #include "ScoreManager.h"
@@ -103,6 +105,16 @@ void Boss1::draw()
 						case CallbackType::ANIMATION_END:
 							ScoreManager::addScore(100);
 							getParent()->addChildDuringUpdating(new Explosion(getTransform().getPosition().x, getTransform().getPosition().y, getWidth(), getHeight(), ExplosionType::EXPLOSION_BIG));
+
+							for (int i = 0; i < 10; ++i)
+							{
+								getParent()->addChildDuringUpdating(new Food(getRealCollisionRect().x, getRealCollisionRect().y));
+							}
+							for (int i = 0; i < 30; ++i)
+							{
+								getParent()->addChildDuringUpdating(new Jewel(getRealCollisionRect().x, getRealCollisionRect().y));
+							}
+
 							getParent()->getDoor()->setEnabled(true);
 							getParent()->addChildRemoving(this);
 							break;
