@@ -3,14 +3,14 @@
 #include <iostream>
 #include "TextureManager.h"
 
-Jewel::Jewel(int x, int y) 
+Jewel::Jewel(int x, int y)
 
 {
 	getTransform().getPosition().x = x;
 	getTransform().getPosition().y = y;
-	setWidth(40);
-	setHeight(40);
-	setRealCollisionRect(32, 32);
+	setWidth(30);
+	setHeight(30);
+	setRealCollisionRect(30, 30);
 	getRigidBody().setMass(5);
 	getRigidBody().getVelocity().y = -(getRigidBody().getMass() * getFallingRate());
 	int velocityX = (rand() % 500) + (-(rand() % 500));
@@ -21,7 +21,6 @@ Jewel::Jewel(int x, int y)
 
 	TextureManager::Instance().load("assets/objects/Jewel.png", "Jewel");
 
-	m_currentPosition = m_JewelPosition[rand() % 64];
 }
 
 
@@ -35,8 +34,7 @@ void Jewel::draw()
 	PhysicsObject::draw();
 
 
-	TextureManager::Instance().draw("Jewel", m_currentPosition, getTransform(), getPosition().x - Camera::Instance().getPosition().x, getTransform().getPosition()
-		.y - Camera::Instance().getPosition().y, getWidth(), getHeight());
+	TextureManager::Instance().draw("Jewel", getTransform().getPosition().x - Camera::Instance().getPosition().x, getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight());
 
 }
 
