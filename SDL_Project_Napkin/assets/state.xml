@@ -14,6 +14,7 @@
             <texture filename="assets/particles/explosion/explosion1.png" ID="explosion1"/>
             <texture filename="assets/particles/explosion/explosion2.png" ID="explosion2"/>
             <texture filename="assets/UI/energy_background.png" ID="energy_background"/>
+            
             <texture filename="assets/characters/boss1/Attack1.png" ID="boss1_attack1"/>
             <texture filename="assets/characters/boss1/Attack2.png" ID="boss1_attack2"/>
             <texture filename="assets/characters/boss1/Death.png" ID="boss1_death"/>
@@ -50,12 +51,18 @@
         </SOUNDS>
     </TUTORIALSCENE>
     <STARTSCENE>
+        <TEXTURES>
+            <texture filename="assets/UI/main_background.png" ID="main_background"/>
+        </TEXTURES>
         <SOUNDS>
             <sound filename="assets/sounds/sfx/btn_hover.ogg" soundtype="sfx" ID="btn_hover"/>
             <sound filename="assets/sounds/sfx/btn_click.wav" soundtype="sfx" ID="btn_click"/>
         </SOUNDS>
     </STARTSCENE>
     <ENDSCENE>
+        <TEXTURES>
+            <texture filename="assets/UI/game_over.png" ID="game_over"/>
+        </TEXTURES>
         <SOUNDS>
             <sound filename="assets/sounds/sfx/btn_hover.ogg" soundtype="sfx" ID="btn_hover"/>
             <sound filename="assets/sounds/sfx/btn_click.wav" soundtype="sfx" ID="btn_click"/>

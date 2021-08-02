@@ -30,6 +30,9 @@ public:
 	inline static const std::string EXPLOSION2 = "explosion2";
 	inline static const std::string ENERGY_BACKGROUND = "energy_background";
 
+	inline static const std::string GAME_OVER = "game_over";
+	inline static const std::string MAIN_BG = "main_background";
+
 	inline static const std::string BOSS1 = "boss1";
 	inline static const std::string BOSS1_ATTACK1 = "boss1_attack1";
 	inline static const std::string BOSS1_ATTACK2 = "boss1_attack2";

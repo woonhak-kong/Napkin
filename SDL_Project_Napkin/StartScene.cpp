@@ -11,6 +11,7 @@
 #include "StateParser.h"
 #include "TextureManager.h"
 #include "SoundManager.h"
+#include "TextureID.h"
 
 
 StartScene::StartScene() :
@@ -25,6 +26,7 @@ StartScene::~StartScene()
 void StartScene::draw()
 {
 	SDL_SetRenderDrawColor(TextureManager::Instance().getRenderer(), 0, 0, 255, 255);
+	TextureManager::Instance().draw(TextureID::MAIN_BG, 0, 0, Config::SCREEN_WIDTH, Config::SCREEN_HEIGHT);
 	Scene::drawDisplayList();
 }
 
@@ -65,8 +67,8 @@ bool StartScene::onEnter()
 	stateParser.ParseState(Config::TEXTURE_LOCATION.c_str(), Config::START_SCENE);
 
 
-	Label* name = new Label("Napkin", "Consolas", 200, {0, 255, 0, 255}, glm::vec2(Config::SCREEN_WIDTH /2, 120.0f));
-	addChild(name);
+	/*Label* name = new Label("Napkin", "Consolas", 200, {0, 255, 0, 255}, glm::vec2(Config::SCREEN_WIDTH /2, 120.0f));
+	addChild(name);*/
 
 	m_pSartButton = new Button("assets/UI/PlayButton.png", "startbutton", GameObjectType::START_BUTTON,
 		glm::vec2(Config::SCREEN_WIDTH / 2, Config::SCREEN_HEIGHT / 2), true);

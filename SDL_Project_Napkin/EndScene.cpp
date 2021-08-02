@@ -7,6 +7,8 @@
 #include "SoundID.h"
 #include "SoundManager.h"
 #include "StateParser.h"
+#include "TextureID.h"
+#include "TextureManager.h"
 
 EndScene::EndScene() :
 	m_state(SceneState::END_SCENE)
@@ -19,6 +21,7 @@ EndScene::~EndScene()
 
 void EndScene::draw()
 {
+	TextureManager::Instance().draw(TextureID::GAME_OVER, 0, 0, Config::SCREEN_WIDTH, Config::SCREEN_HEIGHT);
 	Scene::drawDisplayList();
 }
 
@@ -54,8 +57,8 @@ bool EndScene::onEnter()
 	StateParser stateParser;
 	stateParser.ParseState(Config::TEXTURE_LOCATION.c_str(), Config::END_SCENE);
 
-	Label* gameOver = new Label("Game Over", "lazy", 200, { 255,0,0,255 }, glm::vec2(Config::SCREEN_WIDTH / 2, 120.0f));
-	addChild(gameOver);
+	/*Label* gameOver = new Label("Game Over", "lazy", 200, { 255,0,0,255 }, glm::vec2(Config::SCREEN_WIDTH / 2, 120.0f));
+	addChild(gameOver);*/
 
 	m_pMenuButton = new Button("assets/UI/MenuButton.png", "menubutton", GameObjectType::MENU_BUTTON,
 		glm::vec2(Config::SCREEN_WIDTH / 2, Config::SCREEN_HEIGHT / 2), true);
