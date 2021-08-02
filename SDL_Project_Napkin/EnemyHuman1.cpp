@@ -19,7 +19,21 @@
 EnemyHuman1::EnemyHuman1(const LoaderParams& loader) :
 	Character(loader)
 {
-	setAnimation(TextureManager::Instance().getAnimation(TextureID::ENEMY_HUMAN));
+	switch (rand() % 3)
+	{
+		case 0:
+			setAnimation(TextureManager::Instance().getAnimation(TextureID::ENEMY_HUMAN1));
+			break;
+		case 1:
+			setAnimation(TextureManager::Instance().getAnimation(TextureID::ENEMY_HUMAN2));
+			break;
+		case 2:
+			setAnimation(TextureManager::Instance().getAnimation(TextureID::ENEMY_HUMAN3));
+			break;
+		default:
+			break;
+	}
+
 
 	// todo make it automatic
 	setType(GameObjectType::ENEMY);

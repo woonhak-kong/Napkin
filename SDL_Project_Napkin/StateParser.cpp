@@ -82,7 +82,9 @@ void StateParser::ParseTextures(TiXmlElement* pStateRoot)
         std::string idAttribute = e->Attribute("ID");
         TextureManager::Instance().load(filenameAttribute, idAttribute);
         std::cout << idAttribute << std::endl;
-    	if (idAttribute == TextureID::ENEMY_HUMAN)
+    	if (idAttribute == TextureID::ENEMY_HUMAN1 ||
+            idAttribute == TextureID::ENEMY_HUMAN2 ||
+            idAttribute == TextureID::ENEMY_HUMAN3)
     	{
             Animation animation = Animation();
             Frame frame;

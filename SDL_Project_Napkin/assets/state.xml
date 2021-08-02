@@ -2,7 +2,9 @@
 <STATES>
     <TUTORIALSCENE>
         <TEXTURES>
-            <texture filename="assets/characters/enemy/human1/Human1_64x48.png" ID="enemy_human"/>
+            <texture filename="assets/characters/enemy/human1/Human1_64x48.png" ID="enemy_human1"/>
+            <texture filename="assets/characters/enemy/human2/Human2_64x48.png" ID="enemy_human2"/>
+            <texture filename="assets/characters/enemy/human3/Human3_64x48.png" ID="enemy_human3"/>
             <texture filename="assets/characters/enemy/range/attack.png" ID="range_attack"/>
             <texture filename="assets/characters/enemy/range/dead.png" ID="range_dead"/>
             <texture filename="assets/characters/enemy/range/idle.png" ID="range_idle"/>
@@ -61,7 +63,9 @@
     </ENDSCENE>
     <PLAYSCENE1>
         <TEXTURES>
-            <texture filename="assets/characters/enemy/human1/Human1_64x48.png" ID="enemy_human"/>
+            <texture filename="assets/characters/enemy/human1/Human1_64x48.png" ID="enemy_human1"/>
+            <texture filename="assets/characters/enemy/human2/Human2_64x48.png" ID="enemy_human2"/>
+            <texture filename="assets/characters/enemy/human3/Human3_64x48.png" ID="enemy_human3"/>
             <texture filename="assets/characters/enemy/range/attack.png" ID="range_attack"/>
             <texture filename="assets/characters/enemy/range/dead.png" ID="range_dead"/>
             <texture filename="assets/characters/enemy/range/idle.png" ID="range_idle"/>
@@ -108,7 +112,9 @@
     </PLAYSCENE1>
     <PLAYSCENE2>
         <TEXTURES>
-            <texture filename="assets/characters/enemy/human1/Human1_64x48.png" ID="enemy_human"/>
+            <texture filename="assets/characters/enemy/human1/Human1_64x48.png" ID="enemy_human1"/>
+            <texture filename="assets/characters/enemy/human2/Human2_64x48.png" ID="enemy_human2"/>
+            <texture filename="assets/characters/enemy/human3/Human3_64x48.png" ID="enemy_human3"/>
             <texture filename="assets/characters/enemy/range/attack.png" ID="range_attack"/>
             <texture filename="assets/characters/enemy/range/dead.png" ID="range_dead"/>
             <texture filename="assets/characters/enemy/range/idle.png" ID="range_idle"/>
@@ -155,7 +161,9 @@
     </PLAYSCENE2>
     <PLAYSCENE3>
         <TEXTURES>
-            <texture filename="assets/characters/enemy/human3/Human3_64x48.png" ID="enemy_human"/>
+            <texture filename="assets/characters/enemy/human1/Human1_64x48.png" ID="enemy_human1"/>
+            <texture filename="assets/characters/enemy/human2/Human2_64x48.png" ID="enemy_human2"/>
+            <texture filename="assets/characters/enemy/human3/Human3_64x48.png" ID="enemy_human3"/>
             <texture filename="assets/particles/explosion/explosion1.png" ID="explosion1"/>
             <texture filename="assets/particles/explosion/explosion2.png" ID="explosion2"/>
             <texture filename="assets/UI/energy_background.png" ID="energy_background"/>

@@ -7,7 +7,9 @@
 class TextureID
 {
 public:
-	inline static const std::string ENEMY_HUMAN = "enemy_human";
+	inline static const std::string ENEMY_HUMAN1 = "enemy_human1";
+	inline static const std::string ENEMY_HUMAN2 = "enemy_human2";
+	inline static const std::string ENEMY_HUMAN3 = "enemy_human3";
 	inline static const std::string ENEMY_HUMAN_IDLE = "enemy_human_idle";
 	inline static const std::string ENEMY_HUMAN_ATTACK = "enemy_human_attack";
 	inline static const std::string ENEMY_HUMAN_RUN = "enemy_human_run";
