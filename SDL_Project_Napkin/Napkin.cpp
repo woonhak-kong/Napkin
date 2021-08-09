@@ -218,7 +218,7 @@ Napkin::Napkin(const LoaderParams& loader) :
 
 	//UI
 	m_energyBar = new EnergyBar(loader.m_maxHp);
-	m_swordDurability = new Label("[00/00]", "Consolas", 13, { 0, 255, 0, 255 },
+	m_swordDurability = new Label("[00/00]", "Consolas", 20, { 255, 100, 0, 255 },
 		glm::vec2(Config::SCREEN_WIDTH * 0.5 - 5, 85), 0, false);
 
 }
