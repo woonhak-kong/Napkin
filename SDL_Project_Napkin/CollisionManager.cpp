@@ -546,7 +546,7 @@ bool CollisionManager::checkCollideTile(SDL_Rect rect, const std::vector<Layer*>
 	for (std::vector<Layer*>::const_iterator it = collisionLayers.begin(); it != collisionLayers.end(); ++it)
 	{
 		TileLayer* pTileLayer = static_cast<TileLayer*>(*it);
-		std::vector<std::vector<int>> tiles = pTileLayer->getTileIDs();
+		//std::vector<std::vector<int>> tiles = pTileLayer->getTileIDs();
 		glm::vec2 layerPos = pTileLayer->getPosition();
 		int tileColumn, tileRow, tileid, realTileColumn, tileSize, realTimeRow = 0;
 		tileSize = pTileLayer->getTileSize();
@@ -572,11 +572,11 @@ bool CollisionManager::checkCollideTile(SDL_Rect rect, const std::vector<Layer*>
 				tileRow = j / tileSize;
 				realTileColumn = tileColumn + x;
 				realTimeRow = tileRow + y;
-				if (realTileColumn < 0 || realTimeRow < 0 || realTimeRow >= tiles.size() || realTileColumn >= tiles[realTimeRow].size())
+				if (realTileColumn < 0 || realTimeRow < 0 || realTimeRow >= pTileLayer->getTileIDs().size() || realTileColumn >= pTileLayer->getTileIDs()[realTimeRow].size())
 				{
 					return false;
 				}
-				tileid = tiles[realTimeRow][realTileColumn];
+				tileid = pTileLayer->getTileIDs()[realTimeRow][realTileColumn];
 				if (tileid != 0)
 				{
 					return true;

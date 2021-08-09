@@ -55,10 +55,10 @@ void PhysicsObject::update()
 	m_groundCollisionRect.w = getRealCollisionRect().w;
 	m_groundCollisionRect.h = 5;
 
-	auto collisionLayers = getParent()->getLevel()->getCollisionLayers();
+	//auto collisionLayers = getParent()->getLevel()->getCollisionLayers();
 
 	// checking object is on ground
-	if (CollisionManager::checkCollideTile(m_groundCollisionRect, *collisionLayers))
+	if (CollisionManager::checkCollideTile(m_groundCollisionRect, *getParent()->getLevel()->getCollisionLayers()))
 	{
 		m_isGroundCollision = true;
 	}
@@ -73,7 +73,7 @@ void PhysicsObject::update()
 	previousPosition.x = getTransform().getPosition().x;
 	newPosition.x = getTransform().getPosition().x + (getRigidBody().getVelocity().x * Game::Instance().getDeltaTime());
 	getTransform().getPosition().x = newPosition.x;
-	if (CollisionManager::checkCollideTile(this, *collisionLayers))
+	if (CollisionManager::checkCollideTile(this, *getParent()->getLevel()->getCollisionLayers()))
 	{
 		getTransform().getPosition().x = previousPosition.x;
 	}
@@ -82,7 +82,7 @@ void PhysicsObject::update()
 	previousPosition.y = getTransform().getPosition().y;
 	newPosition.y = getTransform().getPosition().y + (getRigidBody().getVelocity().y * Game::Instance().getDeltaTime());
 	getTransform().getPosition().y = newPosition.y;
-	if (CollisionManager::checkCollideTile(this, *collisionLayers))
+	if (CollisionManager::checkCollideTile(this, *getParent()->getLevel()->getCollisionLayers()))
 	{
 		m_isGroundCollision ? getRigidBody().getVelocity().y = 0 : getRigidBody().getVelocity().y = 10;
 		getTransform().getPosition().y = previousPosition.y;
