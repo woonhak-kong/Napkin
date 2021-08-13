@@ -17,6 +17,9 @@
 StartScene::StartScene() :
 	m_state(SceneState::START_SCENE)
 {
+	SoundManager::Instance().load("assets/sounds/bgm/start scene.mp3", "bgm", SoundType::SOUND_MUSIC);
+	SoundManager::Instance().playMusic("bgm", 10, 0);
+	SoundManager::Instance().setMusicVolume(30);
 
 }
 
@@ -43,6 +46,7 @@ void StartScene::clean()
 bool StartScene::onExit()
 {
 	Scene::removeAllChildren();
+	//SoundManager::Instance().clear();
 	return true;
 }
 
@@ -65,6 +69,8 @@ bool StartScene::onEnter()
 	//const SDL_Color blue = { 0, 0, 255, 255 };
 	StateParser stateParser;
 	stateParser.ParseState(Config::TEXTURE_LOCATION.c_str(), Config::START_SCENE);
+
+	//SoundManager::Instance().playMusic(SoundID::BGM);
 
 
 	/*Label* name = new Label("Napkin", "Consolas", 200, {0, 255, 0, 255}, glm::vec2(Config::SCREEN_WIDTH /2, 120.0f));
