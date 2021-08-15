@@ -27,7 +27,8 @@ Napkin::Napkin(const LoaderParams& loader) :
 	m_isQEPushed(false),
 	m_isHPushed(false),
 	m_hitMotionNum(0),
-	m_swordIdx(0)
+	m_swordIdx(0),
+	m_attackSequence(0)
 {
 
 	//todo / we should control load function XML
@@ -260,21 +261,65 @@ void Napkin::draw()
 
 			break;
 		case CharacterState::ATTACK:
-			TextureManager::Instance().playAnimation(getAnimation("attack2"), getTransform().getPosition().x - Camera::Instance().getPosition().x,
-				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), getAttackSpeed(), 0.0f, alpha, flip, true, [&](CallbackType type) -> void
-				{
-					switch (type)
+			if (m_attackSequence == 0)
+			{
+				TextureManager::Instance().playAnimation(getAnimation("attack1"), getTransform().getPosition().x - Camera::Instance().getPosition().x,
+					getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), getAttackSpeed(), 0.0f, alpha, flip, true, [&](CallbackType type) -> void
 					{
-						case CallbackType::ATTACK_BOX:
-							this->makingAttackCollisionBox(m_swordVector[m_swordIdx]->getSwordType());
-							break;
-						case CallbackType::ANIMATION_END:
-							this->setIsAttacking(false);
-							break;
-						default:
-							break;
-					}
-				},3);
+						switch (type)
+						{
+							case CallbackType::ATTACK_BOX:
+								this->makingAttackCollisionBox(m_swordVector[m_swordIdx]->getSwordType());
+								break;
+							case CallbackType::ANIMATION_END:
+								this->setIsAttacking(false);
+								m_attackSequence++;
+								break;
+							default:
+								break;
+						}
+					}, 3);
+			}
+			else if (m_attackSequence == 1)
+			{
+				TextureManager::Instance().playAnimation(getAnimation("attack2"), getTransform().getPosition().x - Camera::Instance().getPosition().x,
+					getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), getAttackSpeed(), 0.0f, alpha, flip, true, [&](CallbackType type) -> void
+					{
+						switch (type)
+						{
+							case CallbackType::ATTACK_BOX:
+								this->makingAttackCollisionBox(m_swordVector[m_swordIdx]->getSwordType());
+								break;
+							case CallbackType::ANIMATION_END:
+								this->setIsAttacking(false);
+								m_attackSequence++;
+								break;
+							default:
+								break;
+						}
+					}, 3);
+			}
+			else if(m_attackSequence == 2)
+			{
+				TextureManager::Instance().playAnimation(getAnimation("attack3"), getTransform().getPosition().x - Camera::Instance().getPosition().x,
+					getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), getAttackSpeed(), 0.0f, alpha, flip, true, [&](CallbackType type) -> void
+					{
+						switch (type)
+						{
+							case CallbackType::ATTACK_BOX:
+								this->makingAttackCollisionBox(m_swordVector[m_swordIdx]->getSwordType());
+								break;
+							case CallbackType::ANIMATION_END:
+								this->setIsAttacking(false);
+								m_attackSequence = 0;
+								break;
+							default:
+								break;
+						}
+					}, 3);
+			}
+
+
 			break;
 		case CharacterState::RUN:
 			TextureManager::Instance().playAnimation(getAnimation("run"), getTransform().getPosition().x - Camera::Instance().getPosition().x,

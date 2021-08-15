@@ -43,6 +43,7 @@ private:
 
 	std::vector<Sword*> m_swordVector;
 	int m_swordIdx;
+	int m_attackSequence;
 
 private:
 
