@@ -460,36 +460,46 @@ void Napkin::collision(DisplayObject* obj)
 	}
 	if (obj->getType() == GameObjectType::FOOD && obj->isEnabled())
 	{
-		gainHP(4);
-		SoundManager::Instance().playSound(SoundID::COLLECTING_ITEM);
-		m_energyBar->setEnergy(getPresentHp());
-		getParent()->addChildRemoving(obj);
+		if(dynamic_cast<PhysicsObject*>(obj)->isOnGround())
+		{
+			gainHP(4);
+			SoundManager::Instance().playSound(SoundID::COLLECTING_ITEM);
+			m_energyBar->setEnergy(getPresentHp());
+			getParent()->addChildRemoving(obj);
+		}
+
 	}
 	if (obj->getType() == GameObjectType::JEWEL && obj->isEnabled())
 	{
-		ScoreManager::addScore(30);
-		SoundManager::Instance().playSound(SoundID::COLLECTING_JEWEL);
-		getParent()->addChildRemoving(obj);
+		if (dynamic_cast<PhysicsObject*>(obj)->isOnGround())
+		{
+			ScoreManager::addScore(30);
+			SoundManager::Instance().playSound(SoundID::COLLECTING_JEWEL);
+			getParent()->addChildRemoving(obj);
+		}
 	}
 	if (obj->getType() == GameObjectType::SWORD)
 	{
-		bool sameSword = false;
-		for (auto& sword : m_swordVector)
+		if (dynamic_cast<PhysicsObject*>(obj)->isOnGround())
 		{
-			if (dynamic_cast<Sword*>(obj)->getSwordType() == sword->getSwordType())
+			bool sameSword = false;
+			for (auto& sword : m_swordVector)
 			{
-				sword->setDurability(sword->getMaxDrability());
-				getParent()->addChildRemoving(obj);
-				sameSword = true;
-				break;
+				if (dynamic_cast<Sword*>(obj)->getSwordType() == sword->getSwordType())
+				{
+					sword->setDurability(sword->getMaxDrability());
+					getParent()->addChildRemoving(obj);
+					sameSword = true;
+					break;
+				}
 			}
-		}
-		if (!sameSword)
-		{
-			m_swordVector.push_back(dynamic_cast<Sword*>(obj));
-			getParent()->removeFromListExceptDeleting(obj);
-			m_setSwordUI();
-			changeSwordRight();
+			if (!sameSword)
+			{
+				m_swordVector.push_back(dynamic_cast<Sword*>(obj));
+				getParent()->removeFromListExceptDeleting(obj);
+				m_setSwordUI();
+				changeSwordRight();
+			}
 		}
 	}
 

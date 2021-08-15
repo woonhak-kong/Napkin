@@ -42,7 +42,7 @@ void Boss1AI::update()
 		{
 			// if minus, player is on left side
 			direction = playerPosition.x - selfPosition.x;
-			if ((static_cast<float>(m_self->getPresentHp()) / static_cast<float>(m_self->getMaxHp())) > 0.2f)
+			if ((static_cast<float>(m_self->getPresentHp()) / static_cast<float>(m_self->getMaxHp())) > 0.5f)
 			{
 				if (distance > 500)
 				{
@@ -85,6 +85,7 @@ void Boss1AI::update()
 
 				}
 			}
+			// below 50%
 			else
 			{
 				if (distance < 400)

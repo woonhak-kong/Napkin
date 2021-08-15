@@ -16,7 +16,7 @@ Food::Food(int x, int y) :
 	setRealCollisionRect(32, 32);
 	getRigidBody().setMass(5);
 	getRigidBody().getVelocity().y = -(getRigidBody().getMass() * getFallingRate());
-	int velocityX = (rand() % 500) + (-(rand() % 500));
+	int velocityX = (rand() % 300) + (-(rand() % 300));
 	//std::cout << velocityX << std::endl;
 	getRigidBody().getVelocity().x = velocityX;
 
