@@ -11,6 +11,9 @@ enum class MagicBallType
 	BALL5,
 	BALL6,
 	BALL7,
+	BALL8,
+	BALL9,
+	BALL10
 };
 
 

@@ -70,6 +70,10 @@ void Boss1::draw()
 					{
 						case CallbackType::ATTACK_BOX:
 							magicAttack1();
+							if (static_cast<float>(getPresentHp()) / static_cast<float>(getMaxHp()) < 0.5f)
+							{
+								magicAttack2();
+							}
 							break;
 						case CallbackType::ANIMATION_END:
 							this->setIsAttacking(false);
@@ -187,4 +191,27 @@ void Boss1::magicAttack1()
 
 void Boss1::magicAttack2()
 {
+	glm::vec2 ball[11];
+
+	ball[0] = glm::vec2(0.3, -1);
+	ball[1] = glm::vec2(0.6, -1);
+	ball[2] = glm::vec2(0.9, -1);
+	ball[3] = glm::vec2(1.2, -1);
+	ball[4] = glm::vec2(0, -1);
+	ball[5] = glm::vec2(-0.3, -1);
+	ball[6] = glm::vec2(-0.6, -1);
+	ball[7] = glm::vec2(-0.9, -1);
+	ball[8] = glm::vec2(-1.2, -1);
+	ball[9] = glm::vec2(-1.5, -1);
+	ball[10] = glm::vec2(-1.8, -1);
+
+	for (auto& vec2 : ball)
+	{
+		vec2 *= 500;
+		vec2 = getCenterPosition() + vec2;
+		//std::cout << getParent()->getPlayer()->getCenterPosition().x << ", " << getParent()->getPlayer()->getCenterPosition().y << std::endl;
+		std::cout << vec2.x << ", " << vec2.y << std::endl;
+		getParent()->addChildDuringUpdating(new MagicBall({ vec2.x, vec2.y }, { 0,0 },
+			GameObjectType::ENEMY_ATTACK, 10, MagicBallType::BALL10, getParent()->getPlayer()));
+	}
 }

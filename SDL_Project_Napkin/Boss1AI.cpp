@@ -42,71 +42,50 @@ void Boss1AI::update()
 		{
 			// if minus, player is on left side
 			direction = playerPosition.x - selfPosition.x;
-			if ((static_cast<float>(m_self->getPresentHp()) / static_cast<float>(m_self->getMaxHp())) > 0.5f)
+
+			if (distance > 500)
 			{
-				if (distance > 500)
+
+				if (m_previousPostion.x == selfPosition.x && m_self->getCurrentState() == CharacterState::RUN)
+				{
+					m_self->jump();
+				}
+				if (direction < 0)
+				{
+					m_self->moveToLeft();
+				}
+				else if (direction > 0)
+				{
+					m_self->moveToRight();
+				}
+				m_previousPostion = selfPosition;
+			}
+			else
+			{
+				if (direction < 0)
+				{
+					m_self->setIsFlip(true);
+				}
+				else if (direction > 0)
+				{
+					m_self->setIsFlip(false);
+				}
+
+				if (m_attackDelay > 3)
 				{
 
-					if (m_previousPostion.x == selfPosition.x && m_self->getCurrentState() == CharacterState::RUN)
-					{
-						m_self->jump();
-					}
-					if (direction < 0)
-					{
-						m_self->moveToLeft();
-					}
-					else if (direction > 0)
-					{
-						m_self->moveToRight();
-					}
-					m_previousPostion = selfPosition;
+					//std::cout << "==========================" << std::endl;
+					m_self->attack();
+					m_attackDelay = 0;
+
 				}
 				else
 				{
-					if (direction < 0)
-					{
-						m_self->setIsFlip(true);
-					}
-					else if (direction > 0)
-					{
-						m_self->setIsFlip(false);
-					}
-
-					if (m_attackDelay > 3)
-					{
-						//std::cout << "==========================" << std::endl;
-						m_self->attack();
-						m_attackDelay = 0;
-					}
-					else
-					{
-						m_self->idle();
-					}
-
-				}
-			}
-			// below 50%
-			else
-			{
-				if (distance < 400)
-				{
-
-					/*if (m_previousPostion.x == selfPosition.x && m_self->getCurrentState() == CharacterState::RUN)
-					{
-						m_self->jump();
-					}*/
-					if (direction < 0)
-					{
-						m_self->moveToRight();
-					}
-					else if (direction > 0)
-					{
-						m_self->moveToLeft();
-					}
-					m_previousPostion = selfPosition;
+					m_self->idle();
 				}
 
 			}
+
 		}
 	}
 	else
