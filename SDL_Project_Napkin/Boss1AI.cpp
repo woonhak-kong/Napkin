@@ -74,7 +74,7 @@ void Boss1AI::update()
 
 					if (m_attackDelay > 3)
 					{
-						std::cout << "==========================" << std::endl;
+						//std::cout << "==========================" << std::endl;
 						m_self->attack();
 						m_attackDelay = 0;
 					}

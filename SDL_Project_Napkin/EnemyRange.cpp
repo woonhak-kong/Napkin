@@ -120,7 +120,7 @@ void EnemyRange::draw()
 							}
 							else
 							{
-								if (rand() % 100 < 20)
+								if (rand() % 100 < 30)
 								{
 									getParent()->addChildDuringUpdating(new Sword(getRealCollisionRect().x, getRealCollisionRect().y, static_cast<SwordType>(rand() % 3 + 1)));
 								}
